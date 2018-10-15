@@ -1,0 +1,27 @@
+Package: fhi
+Title: FHI Convenience functions
+Version: 1.0.1
+Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
+Description: Convenience functions for use at folkehelseinstituttet.
+Depends:
+  R (>= 3.1.0)
+Imports:
+  ggplot2,
+  grid,
+  maptools,
+  rmarkdown,
+  stringr,
+  readxl,
+  gmailr,
+  broom,
+  magrittr,
+  lubridate,
+  data.table,
+  scales,
+  tinytex,
+  RAWmisc
+Suggests: testthat
+License: GPL-3
+LazyData: true
+RoxygenNote: 6.0.1
+Additional_repositories: https://raubreywhite.github.io/drat/
