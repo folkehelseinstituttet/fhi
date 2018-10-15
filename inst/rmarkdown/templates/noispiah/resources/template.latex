@@ -8,9 +8,16 @@
 \renewcommand{\tabular}{\tiny\oldtabular}
 
 \usepackage{svg}
+\usepackage{pdflscape}
+\usepackage{blindtext}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+
+\usepackage{fontspec}
+\IfFontExistsTF{Ubuntu}{%
+  \setmainfont{Ubuntu}
+}
 
 \fancyhf{}
 \fancyfoot[R]{\sffamily\nouppercase{\thepage}}
@@ -18,6 +25,10 @@
 \fancyhead[L]{\sffamily\nouppercase{$header$}}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 $for(header-includes)$
 $header-includes$
