@@ -4,11 +4,9 @@
 \alias{noispiah_document}
 \title{hi}
 \usage{
-noispiah_document(tinytex = FALSE, ...)
+noispiah_document(...)
 }
 \arguments{
-\item{tinytex}{a}
-
 \item{...}{test}
 }
 \description{

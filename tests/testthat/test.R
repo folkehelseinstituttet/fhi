@@ -2,7 +2,8 @@ library(stringr)
 context("String length")
 
 test_that("str_length is number of characters", {
-  expect_equal(str_length("a"), 1)
-  expect_equal(str_length("ab"), 2)
-  expect_equal(str_length("abc"), 3)
+  f <- system.file("rmarkdown/templates/noispiah/skeleton", "skeleton.Rmd", package = "fhi")
+  rmarkdown::render(input=f,output_dir = tempdir())
+
+  testthat::expect_equal(1,1)
 })

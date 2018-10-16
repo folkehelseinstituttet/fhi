@@ -13,7 +13,7 @@ addToDrat(){
   git config --global push.default simple
 
   ## Get drat repo
-  git remote add upstream "https://$GH_TOKEN@github.com/raubreywhite/drat.git"
+  git remote add upstream "https://$GH_TOKEN@github.com/folkehelseinstituttet/drat.git"
   git fetch upstream 2>err.txt
   git checkout gh-pages
 
@@ -21,7 +21,7 @@ addToDrat(){
     repodir = '.', \
     commit='Travis update $PKG_REPO: build $TRAVIS_BUILD_NUMBER')"
   Rscript -e "saveRDS(read.dcf('src/contrib/PACKAGES'),'src/contrib/PACKAGES.rds')"
-  git commit -a -m "Fixing PACKAGES.rds"
+  git commit -a -m "Travis update $PKG_REPO: build $TRAVIS_BUILD_NUMBER"
   git push 2>err.txt
 
 }

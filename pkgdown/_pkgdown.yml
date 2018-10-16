@@ -1,0 +1,26 @@
+url: https://folkehelseinstituttet.github.io/dashboards_sykdomspuls/
+navbar:
+  title: "sykdomspuls"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Articles"
+      menu:
+      - text: "Input data"
+        href: articles/inputdata.html
+      - text: "Signals"
+        href: articles/signals.html
+    - text: "Reference"
+      href: reference/
+    - text: "Changelog"
+      href: news/
+    - text: "Contributing"
+      href: CONTRIBUTING.html
+  right:
+    - icon: fa-github
+      href: https://github.com/folkehelseinstituttet/dashboards_sykdomspuls/
+template:
+  params:
+    docsearch:
+      api_key: f6722ec7c9eec7d8d2b5ad767e6e5c45
+      index_name: sykdomspuls

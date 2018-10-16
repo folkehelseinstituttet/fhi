@@ -3,14 +3,23 @@ cache: packages
 r_packages:
 - covr
 - drat
+- pkgdown
 before_install:
 - bash make.sh
 after_success:
 - Rscript -e 'library(covr); codecov()'
-- test $TRAVIS_PULL_REQUEST == "false" && 
-  test $TRAVIS_BRANCH == "master" && 
-  bash deploy.sh
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+  deploy.sh
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && Rscript
+  -e 'Sys.sleep(10);install.packages("sykdomspuls",repos="https://folkehelseinstituttet.github.io/drat/");pkgdown::build_site()'
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GH_TOKEN"
+  keep-history: true
+  local-dir: docs
+  on:
+    branch: master
 env:
   global:
-  - secure: KI00gGFos3rTKCDVY2cJgwokhBuOHJ1nWKPQwQ8HAKt3oXdb6a7/5NQuAsPY3Td8oVT5d35GMnvSsogRHojyJciYB+ZkA3Ljs8pNAYwTMFRt0RzGdVDZ3RXwpg8OY3dfnQ3dfzX5+JoILgpVRLJIVylTcFZg3f7kp2k/DG2hdQEuE7q+ztHLhblry50PuwCM6QI/o2qB0xs+iJs5YY/ooXnIEuXuK8AMxBfAEZKBSl6kU1yishm/OhId1Y0JbcTmfH4GT7lOcZ8Z2vjelzswnocwKmA5Ov15/X1fNd9Jn4C6tPZ8q+Vdj7IQqDnsxy3BgS2DTb2fo7unSVVOdnngVVmmBdyxyhMMbXkpZRJynRLUpLVxmRlbr6e17QEuE6t38IKyTgsOpZnPJisyE7tHhiG3td7fekYoUmyXeqYi7eFvZB8BLjkv5AHBqvvgN9JZTVz/dzrXoY8IPG/eXG9pB9mIACf906ZyjiPfCDfjW+6+v/9A1YzBiiJ/TUgYkuB7rd7EQ/WneBoFp0TkFzi6Cl+rTy2JZXwoChtVkSlXYSf+phDZ4iaJ+S0wjQzanT9dB4uYKmzKMl7PJZSck02qzXtHJR/VVub7P5AwbBGxJNioYom60xVuvqo/51f1fQZmy0jx4MxUiYwcTwjc+0wwlFbX5yrQ2/GXXxKT4NCvFvA=
-  - secure: fPV+U1Vz4fCq4/SNdA+n3wK9z1u+VEg9VJ6ViVv71qAFyHpCRbzDKQbUndq1UrMQTYrtU7G1BCwbNLuHIRCwJ8KHj8zgIHtdGs3TAWwH0QmR4q+yw5BpCnTFSrZ7I6xqcQdwABFnh5M2FFLmoH8QkB3TyLI1cW1to6pNFiDDI/dEiLel+80rzx9BvrHbSiW8SgDXbYowzfYzl891OUWYXlt0T8CMvS+1SmQSffIlyiee7cwRXjB5NF4GINauEyCZXOIhKcNPJV0Wkl+ycyvG6Ho9SZoqtrTYf8ilzqhD1AP04RM10YgoGQxInrv5sqdv06h9CcJa+ylgOMutxV/gh/0IuZP8fF0Zes8U3OwmrhrcoB4vdYLsVmte8KgouuuoeOx+poGCIVd+AE9Y5ZSLWk2Oh3/xJhnJ9It6SW9Silso/Vp7R3I1qune6KBF0Xj3mM339hQipwjn0dcYApq6NdFurBGFWkYA3yjfVoVo5idEDA6Aa5QRBrnxR+7Zk+MOcsL8f/pgLxgaWNdvC5Q3sosrQd+3m97Rv7Z5YjPaY/M4JmASaUVtpDonH5/9ZcUT8to4MELzgtyyTA2SpfLmyVNbcMNQR+caG9B4z/DSi7xsJu838oAAjz34rY4RzlBOe9n5BKA2MadWToTYI8IS9qcjNgeCyRIaMCoB+4EVBjw=
+    secure: rRWS3BaLxm5OeAUt2Q/HnKzW/+680vN77Hu8YGYJXBlDrKtYyYjXmkAqCsMu3dA41qOBYQvdmkOy/D/5TEhIIc0D18ohsoqqxAxGtpGnIDkw54GXyyoZ3fdTCrh/MPqMMt/n/3oCQ5TTRToz/VwXfGOBfVBWYeIEYiTW3WWhdUPd1KDZGSBNudutTddBb9Hss6/FSomD/1bVeImnSmEjiY8do/tW1xFPR/N8o0a0aA1Q5vtQLy2EdX1EYeg1JMNxInNIdOjuHgvfYii+uctOym5n7L5Phf58YsBQ1ymYiRyIE9GJXJenz025N6ZN+m86h/97LQ8JChkFLq8G883Y718eiKOJ0pou301l71B/cw3e7H5or6GQGa3YihT1/3+b4Oe978FhmTNo4HZkpBbmlnUldRPYBiz7MR1rYGZSZS2US/MBWfLIJlhpIKgbatQuFNoOanyTa1gmy8CYeR0FEIAUlhjSP+EPrSzCIbargNBLc/A4mhCdhQmobt+cfHQH3a0DbBk3gVrW/fX3obu84JVcrQGzBEvuz2s8IJI5n3W0s5X97QecCG5ql3beug8sVmUP4Qcxqz/BnebopWo1erj72zq8UcsVmdwmPH433hOQ83JGJMWtY0ePjlnhwaqe9SXLOzstff/kp/8eDY5DZCiIIVf2ljq6lSux7H+hryk=
