@@ -21,7 +21,8 @@ Imports:
   tinytex,
   RAWmisc
 Suggests: testthat
+Remotes: raubreywhite/RAWmisc
 License: GPL-3
 LazyData: true
 RoxygenNote: 6.0.1
-Additional_repositories: https://raubreywhite.github.io/drat/
+Additional_repositories: https://folkehelseinstituttet.github.io/drat/, https://raubreywhite.github.io/drat/
