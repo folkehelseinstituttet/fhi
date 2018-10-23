@@ -4,10 +4,13 @@
 \alias{DashboardInitialiseOpinionated}
 \title{DashboardInitialiseOpinionated}
 \usage{
-DashboardInitialiseOpinionated(NAME, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
+DashboardInitialiseOpinionated(NAME, FORCE_DEV_PACKAGE_LOAD = FALSE,
+  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
 \item{NAME}{a}
+
+\item{FORCE_DEV_PACKAGE_LOAD}{a}
 
 \item{DEV_IF_RSTUDIO}{a}
 
