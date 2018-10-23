@@ -4,6 +4,12 @@ DashboardIsProduction <- function(){
   return(PROJ$IS_PRODUCTION)
 }
 
+#' Is the dashboard in development?
+#' @export DashboardIsDev
+DashboardIsDev <- function(){
+  return(PROJ$IS_DEV)
+}
+
 #' If folders are setup according to the
 #' dashboard philosophy, then this function
 #' sets RPROJ
