@@ -84,8 +84,9 @@ DashboardInitialiseOpinionated <- function(NAME,FORCE_DEV_PACKAGE_LOAD=FALSE,DEV
     } else {
       library(NAME,character.only = TRUE)
     }
+
     if(PROJ$COMPUTER_NAME==PROJ$PRODUCTION_NAME){
-      PROJ$IS_PRODUCTION <- FALSE
+      PROJ$IS_PRODUCTION <- TRUE
     }
   }
 
