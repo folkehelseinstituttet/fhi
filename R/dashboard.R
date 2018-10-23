@@ -35,7 +35,7 @@ DashboardMsg <- function(txt){
   if(!exists("CONFIG")){
     stop("")
   }
-  base::message(sprintf("%s/%s/%s STARTING UP!!",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME))
+  base::message(sprintf("%s/%s/%s %s!!",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
 }
 
 #' DashboardInitialiseOpinionated
