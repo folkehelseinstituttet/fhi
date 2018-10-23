@@ -8,6 +8,8 @@
 #' @importFrom rmarkdown render
 #' @export RenderExternally
 RenderExternally <- function(input, output_file, output_dir, params="x=1"){
+  file.remove(file.path(output_dir,output_file))
+
   tmp_dir <- tempdir()
   tmp_name <- sprintf("%s.pdf",uuid::UUIDgenerate())
 
