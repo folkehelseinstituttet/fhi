@@ -46,19 +46,21 @@ DashboardInitialise <- function(
 #' @param txt a
 #' @export DashboardMsg
 DashboardMsg <- function(txt){
-  if(!PROJ$IS_INITIALIZED){
-    stop("Project not initialized yet")
+  if(PROJ$IS_INITIALIZED){
+    base::message(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
+  } else {
+    base::message(sprintf("%s %s",Sys.time(),txt))
   }
-  base::message(sprintf("%s/%s/%s %s!!",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
 }
 
 #' DashboardInitialiseOpinionated
 #' @param NAME a
+#' @param FORCE_DEV_PACKAGE_LOAD a
 #' @param DEV_IF_RSTUDIO a
 #' @param SILENT a
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
-DashboardInitialiseOpinionated <- function(NAME,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
+DashboardInitialiseOpinionated <- function(NAME,FORCE_DEV_PACKAGE_LOAD=FALSE,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
   DashboardInitialise(
     STUB="/",
     SRC="src",
@@ -67,7 +69,7 @@ DashboardInitialiseOpinionated <- function(NAME,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE
 
   if(!SILENT) DashboardMsg("Starting up")
 
-  if(Sys.getenv("RSTUDIO") == "1"){
+  if(Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD){
     if(SILENT){
       suppressPackageStartupMessages(devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE, quiet=TRUE))
     } else {
