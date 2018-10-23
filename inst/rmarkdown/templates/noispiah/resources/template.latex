@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 
-\usepackage[top=3cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
+\usepackage[top=5cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
 \renewcommand{\baselinestretch}{1.5}
 
 
@@ -24,7 +24,7 @@
 \fancyfoot[L]{\sffamily\nouppercase{$footer$}}
 \fancyhead[L]{\sffamily\nouppercase{$header$}}
 \renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.0pt}
 
 $if(highlighting-macros)$
 $highlighting-macros$
