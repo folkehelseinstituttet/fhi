@@ -1,3 +1,9 @@
+#' Is the dashboard in production?
+#' @export DashboardIsProduction
+DashboardIsProduction <- function(){
+  return(PROJ$IS_PRODUCTION)
+}
+
 #' If folders are setup according to the
 #' dashboard philosophy, then this function
 #' sets RPROJ
@@ -20,10 +26,52 @@ DashboardInitialise <- function(
   if(changeWorkingDirToTmp){
     setwd(tempdir())
   }
-  #setwd(file.path(PROJ$STUB,PROJ$SRC,PROJ$NAME))
+}
 
-  # fileSources = file.path("code", list.files("code", pattern = "*.[rR]$"))
-  #  sapply(fileSources, source, .GlobalEnv)
+#' Messaging
+#' @param txt a
+#' @export DashboardMsg
+DashboardMsg <- function(txt){
+  if(!exists("CONFIG")){
+    stop("")
+  }
+  base::message(sprintf("%s/%s/%s STARTING UP!!",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME))
+}
+
+#' DashboardInitialiseOpinionated
+#' @param NAME a
+#' @param TEST_IF_RSTUDIO a
+#' @importFrom devtools load_all
+#' @export DashboardInitialiseOpinionated
+DashboardInitialiseOpinionated <- function(NAME,TEST_IF_RSTUDIO=TRUE){
+  con <- file("/tmp/computer","r")
+  COMPUTER_NAME <- readLines(con,n=1)
+  close(con)
+  Sys.setenv(COMPUTER=COMPUTER_NAME)
+
+  PROJ$COMPUTER_NAME <- COMPUTER_NAME
+
+  DashboardInitialise(
+    STUB="/",
+    SRC="src",
+    NAME=NAME
+  )
+
+  DashboardMsg("Starting up")
+
+  if(Sys.getenv("RSTUDIO") == "1"){
+    devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE)
+    if(TEST_IF_RSTUDIO){
+      PROJ$IS_TESTING <- TRUE
+    }
+  } else {
+    library(NAME,character.only = TRUE)
+    if(PROJ$COMPUTER_NAME==PROJ$PRODUCTION_NAME){
+      PROJ$IS_PRODUCTION <- FALSE
+    }
+  }
+
+
 }
 
 #' If folders are setup according to the
