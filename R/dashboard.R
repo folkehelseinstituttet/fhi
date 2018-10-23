@@ -19,6 +19,13 @@ DashboardInitialise <- function(
   changeWorkingDirToTmp=TRUE
   ){
 
+  con <- file("/tmp/computer","r")
+  COMPUTER_NAME <- readLines(con,n=1)
+  close(con)
+  Sys.setenv(COMPUTER=COMPUTER_NAME)
+
+  PROJ$COMPUTER_NAME <- COMPUTER_NAME
+
   PROJ$STUB <- STUB
   PROJ$SRC <- SRC
   PROJ$NAME <- NAME
@@ -26,14 +33,15 @@ DashboardInitialise <- function(
   if(changeWorkingDirToTmp){
     setwd(tempdir())
   }
+  PROJ$IS_INITIALIZED <- TRUE
 }
 
 #' Messaging
 #' @param txt a
 #' @export DashboardMsg
 DashboardMsg <- function(txt){
-  if(!exists("CONFIG")){
-    stop("")
+  if(!PROJ$IS_INITIALIZED){
+    stop("Project not initialized yet")
   }
   base::message(sprintf("%s/%s/%s %s!!",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
 }
@@ -44,13 +52,6 @@ DashboardMsg <- function(txt){
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
 DashboardInitialiseOpinionated <- function(NAME,TEST_IF_RSTUDIO=TRUE){
-  con <- file("/tmp/computer","r")
-  COMPUTER_NAME <- readLines(con,n=1)
-  close(con)
-  Sys.setenv(COMPUTER=COMPUTER_NAME)
-
-  PROJ$COMPUTER_NAME <- COMPUTER_NAME
-
   DashboardInitialise(
     STUB="/",
     SRC="src",
