@@ -19,6 +19,15 @@
     <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardInitialise.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardInitialiseOpinionated.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardIsProduction.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardMsg.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DateBreaks.html</loc>
   </url>
   <url>
@@ -38,6 +47,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/PROJ.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/RenderExternally.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/SMAOpng.html</loc>
