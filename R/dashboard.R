@@ -1,3 +1,15 @@
+#' Is the dashboard in production?
+#' @export DashboardIsProduction
+DashboardIsProduction <- function(){
+  return(PROJ$IS_PRODUCTION)
+}
+
+#' Is the dashboard in development?
+#' @export DashboardIsDev
+DashboardIsDev <- function(){
+  return(PROJ$IS_DEV)
+}
+
 #' If folders are setup according to the
 #' dashboard philosophy, then this function
 #' sets RPROJ
@@ -13,6 +25,13 @@ DashboardInitialise <- function(
   changeWorkingDirToTmp=TRUE
   ){
 
+  con <- file("/tmp/computer","r")
+  COMPUTER_NAME <- readLines(con,n=1)
+  close(con)
+  Sys.setenv(COMPUTER=COMPUTER_NAME)
+
+  PROJ$COMPUTER_NAME <- COMPUTER_NAME
+
   PROJ$STUB <- STUB
   PROJ$SRC <- SRC
   PROJ$NAME <- NAME
@@ -20,10 +39,58 @@ DashboardInitialise <- function(
   if(changeWorkingDirToTmp){
     setwd(tempdir())
   }
-  #setwd(file.path(PROJ$STUB,PROJ$SRC,PROJ$NAME))
+  PROJ$IS_INITIALIZED <- TRUE
+}
 
-  # fileSources = file.path("code", list.files("code", pattern = "*.[rR]$"))
-  #  sapply(fileSources, source, .GlobalEnv)
+#' Messaging
+#' @param txt a
+#' @export DashboardMsg
+DashboardMsg <- function(txt){
+  if(PROJ$IS_INITIALIZED){
+    base::message(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
+  } else {
+    base::message(sprintf("%s %s",Sys.time(),txt))
+  }
+}
+
+#' DashboardInitialiseOpinionated
+#' @param NAME a
+#' @param FORCE_DEV_PACKAGE_LOAD a
+#' @param DEV_IF_RSTUDIO a
+#' @param SILENT a
+#' @importFrom devtools load_all
+#' @export DashboardInitialiseOpinionated
+DashboardInitialiseOpinionated <- function(NAME,FORCE_DEV_PACKAGE_LOAD=FALSE,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
+  DashboardInitialise(
+    STUB="/",
+    SRC="src",
+    NAME=NAME
+  )
+
+  if(Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD){
+    if(SILENT){
+      suppressPackageStartupMessages(devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE, quiet=TRUE))
+    } else {
+      devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE)
+    }
+
+    if(DEV_IF_RSTUDIO){
+      PROJ$IS_DEV <- TRUE
+    }
+
+  } else {
+    if(SILENT){
+      suppressPackageStartupMessages(library(NAME,character.only = TRUE))
+    } else {
+      library(NAME,character.only = TRUE)
+    }
+
+    if(PROJ$COMPUTER_NAME==PROJ$PRODUCTION_NAME){
+      PROJ$IS_PRODUCTION <- TRUE
+    }
+  }
+
+
 }
 
 #' If folders are setup according to the

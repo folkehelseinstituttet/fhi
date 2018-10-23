@@ -40,7 +40,7 @@ $endfor$
 \begin{figure}
     \centering
     \def\svgwidth{0.3\columnwidth}
-    \input{fhi.pdf_tex}
+    \input{_skeleton_fhi.pdf_tex}
 \end{figure}
 
   \vspace*{9em}{\raggedright\Huge

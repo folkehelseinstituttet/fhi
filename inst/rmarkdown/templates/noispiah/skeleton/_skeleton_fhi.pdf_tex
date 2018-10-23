@@ -20,7 +20,7 @@
 %%   \import{<path to file>}{<filename>.pdf_tex}
 %% Alternatively, one can specify
 %%   \graphicspath{{<path to file>/}}
-%% 
+%%
 %% For more information, please see info/svg-inkscape on CTAN:
 %%   http://tug.ctan.org/tex-archive/info/svg-inkscape
 %%
@@ -49,6 +49,6 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.48069278)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{fhi.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{_skeleton_fhi.pdf}}%
   \end{picture}%
 \endgroup%

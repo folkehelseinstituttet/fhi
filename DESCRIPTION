@@ -19,6 +19,9 @@ Imports:
   data.table,
   scales,
   tinytex,
+  uuid,
+  processx,
+  devtools,
   RAWmisc
 Suggests: testthat
 Remotes: raubreywhite/RAWmisc
