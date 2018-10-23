@@ -4,12 +4,14 @@
 \alias{DashboardInitialiseOpinionated}
 \title{DashboardInitialiseOpinionated}
 \usage{
-DashboardInitialiseOpinionated(NAME, TEST_IF_RSTUDIO = TRUE)
+DashboardInitialiseOpinionated(NAME, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
 \item{NAME}{a}
 
-\item{TEST_IF_RSTUDIO}{a}
+\item{DEV_IF_RSTUDIO}{a}
+
+\item{SILENT}{a}
 }
 \description{
 DashboardInitialiseOpinionated

@@ -4,6 +4,12 @@ DashboardIsProduction <- function(){
   return(PROJ$IS_PRODUCTION)
 }
 
+#' Is the dashboard in development?
+#' @export DashboardIsDev
+DashboardIsDev <- function(){
+  return(PROJ$IS_DEV)
+}
+
 #' If folders are setup according to the
 #' dashboard philosophy, then this function
 #' sets RPROJ
@@ -48,25 +54,36 @@ DashboardMsg <- function(txt){
 
 #' DashboardInitialiseOpinionated
 #' @param NAME a
-#' @param TEST_IF_RSTUDIO a
+#' @param DEV_IF_RSTUDIO a
+#' @param SILENT a
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
-DashboardInitialiseOpinionated <- function(NAME,TEST_IF_RSTUDIO=TRUE){
+DashboardInitialiseOpinionated <- function(NAME,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
   DashboardInitialise(
     STUB="/",
     SRC="src",
     NAME=NAME
   )
 
-  DashboardMsg("Starting up")
+  if(!SILENT) DashboardMsg("Starting up")
 
   if(Sys.getenv("RSTUDIO") == "1"){
-    devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE)
-    if(TEST_IF_RSTUDIO){
-      PROJ$IS_TESTING <- TRUE
+    if(SILENT){
+      suppressPackageStartupMessages(devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE, quiet=TRUE))
+    } else {
+      devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE)
     }
+
+    if(DEV_IF_RSTUDIO){
+      PROJ$IS_DEV <- TRUE
+    }
+
   } else {
-    library(NAME,character.only = TRUE)
+    if(SILENT){
+      suppressPackageStartupMessages(library(NAME,character.only = TRUE))
+    } else {
+      library(NAME,character.only = TRUE)
+    }
     if(PROJ$COMPUTER_NAME==PROJ$PRODUCTION_NAME){
       PROJ$IS_PRODUCTION <- FALSE
     }
