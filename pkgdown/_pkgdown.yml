@@ -1,15 +1,15 @@
-url: https://folkehelseinstituttet.github.io/dashboards_sykdomspuls/
+url: https://folkehelseinstituttet.github.io/fhi/
 navbar:
-  title: "sykdomspuls"
+  title: "fhi"
   left:
     - text: "Home"
       href: index.html
     - text: "Articles"
       menu:
-      - text: "Input data"
-        href: articles/inputdata.html
-      - text: "Signals"
-        href: articles/signals.html
+      - text: "Dashboard Basics"
+        href: articles/dashboardbasics.html
+      - text: "PDF Documents"
+        href: articles/pdfdocuments.html
     - text: "Reference"
       href: reference/
     - text: "Changelog"
@@ -18,9 +18,5 @@ navbar:
       href: CONTRIBUTING.html
   right:
     - icon: fa-github
-      href: https://github.com/folkehelseinstituttet/dashboards_sykdomspuls/
-template:
-  params:
-    docsearch:
-      api_key: f6722ec7c9eec7d8d2b5ad767e6e5c45
-      index_name: sykdomspuls
+      href: https://github.com/folkehelseinstituttet/fhi/
+

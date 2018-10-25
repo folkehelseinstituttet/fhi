@@ -1,0 +1,25 @@
+---
+params:
+  dev: TRUE
+  level: landsdekkende
+  location: Fræna
+  DATE_USE: 2017-11-08
+title: "Prevalensundersøkelsen for helsetjenesteassosierte infeksjoner og antibiotikabruk"
+sub_title: "`r params$location` --- Høst 2017"
+header: "Prevalensundersøkelsen for helsetjenesteassosierte infeksjoner og antibiotikabruk \\newline `r params$location` --- Høst 2017"
+footer: "Folkehelseinstituttet, Oslo, Norge"
+authors:
+  - "Torunn Alberg"
+  - "Hanne-Merete Eriksen"
+  - "Hege Line Magnussen Løwer"
+  - "Richard Aubrey White"
+output: fhi::noispiah_document
+---
+
+# Introduction
+
+This template demonstrates some of the basic latex you'll need to know to create a JSS article.
+
+## Code formatting
+
+Don't use markdown, instead use the more precise latex commands:
