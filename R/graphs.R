@@ -439,8 +439,8 @@ MakeLineExcessPlot <- function(pd,x,dataVal,dataZ,dataCIL=NULL,dataCIU=NULL,allP
   q <- q + scale_x_date("", breaks = breaksDF$xShifted,  labels = breaksDF$printLabel)
   q <- q + scale_y_continuous("")
   #q <- q + scale_fill_manual(values=GetCols(),labels=c(
-  #  "Betydelig høyere enn forventet",
-  #  "Høyere enn forventet",
+  #  "Betydelig hyere enn forventet",
+  #  "Hyere enn forventet",
   #  "Forventet"))
   if(!is.null(colours)) q <- q + scale_colour_manual(values=colours)
   q <- q + guides(colour=FALSE)
