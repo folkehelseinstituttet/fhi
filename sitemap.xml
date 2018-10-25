@@ -1,102 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//index.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//index.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/Censor.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/Censor.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardEmail.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardEmail.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardEmailSpecific.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardEmailSpecific.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardFolder.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardInitialise.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialise.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardInitialiseOpinionated.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardIsDev.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsDev.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardIsProduction.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsProduction.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DashboardMsg.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardMsg.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/DateBreaks.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DateBreaks.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/FortifyShapeFile.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/FortifyShapeFile.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/MakeLineBrushPlot.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineBrushPlot.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/MakeLineComparisonPlot.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineComparisonPlot.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/MakeLineExcessPlot.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineExcessPlot.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/MakeLineThresholdPlot.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineThresholdPlot.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/PROJ.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/PROJ.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/RenderExternally.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/RenderExternally.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/SMAOpng.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/SMAOpng.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/StatStepribbon.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/StatStepribbon.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/ThemeShiny.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/ThemeShiny.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/countyToMunicip.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/countyToMunicip.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/noispiah_document.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/noispiah_document.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/noispiah_resources_copy.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/noispiah_resources_copy.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/noispiah_resources_remove.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/noispiah_resources_remove.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/png_a4.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/normomo_document.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/stairstepn.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/normomo_resources_copy.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/stat_stepribbon.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/normomo_resources_remove.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/theme_SMAO.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/png_a4.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/theme_SMAO45.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/stairstepn.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/theme_SMAO_V1.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/stat_stepribbon.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/theme_SMAO_V2.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference/theme_SMAO_V3.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO45.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO_V1.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO_V2.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO_V3.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//articles/dashboardbasics.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//articles/pdfdocuments.html</loc>
   </url>
 </urlset>

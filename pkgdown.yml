@@ -1,8 +1,10 @@
 pandoc: '2.2'
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles: []
+articles:
+  dashboardbasics: dashboardbasics.html
+  pdfdocuments: pdfdocuments.html
 urls:
-  reference: https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//reference
-  article: https://folkehelseinstituttet.github.io/dashboards_sykdomspuls//articles
+  reference: https://folkehelseinstituttet.github.io/fhi//reference
+  article: https://folkehelseinstituttet.github.io/fhi//articles
 

@@ -29,12 +29,6 @@
 <script src="pkgdown.js"></script>
 
 
-<!-- docsearch -->
-<script src="docsearch.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-
 
 <meta property="og:title" content="NA" />
 
@@ -64,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fhi</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.23</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.25</span>
       </span>
     </div>
 
@@ -81,10 +75,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/inputdata.html">Input data</a>
+      <a href="articles/dashboardbasics.html">Dashboard Basics</a>
     </li>
     <li>
-      <a href="articles/signals.html">Signals</a>
+      <a href="articles/pdfdocuments.html">PDF Documents</a>
     </li>
   </ul>
 </li>
@@ -101,18 +95,12 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/folkehelseinstituttet/dashboards_sykdomspuls/">
+  <a href="https://github.com/folkehelseinstituttet/fhi/">
     <span class="fa fa-github"></span>
      
   </a>
 </li>
       </ul>
-      
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-        </div>
-      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -130,25 +118,7 @@
 <div id="development-guidelines" class="section level2">
 <h2 class="hasAnchor">
 <a href="#development-guidelines" class="anchor"></a>Development guidelines</h2>
-<p>We try to follow the <a href="https://guides.github.com/introduction/flow/">GitHub flow</a> for development.</p>
-<ol>
-<li>Fork [this repo][repo] and clone it to your computer. To learn more about this process, see <a href="https://guides.github.com/activities/forking/">this guide</a>.</li>
-<li>If you have forked and cloned the project before and it has been a while since you worked on it, merge changes from the original repo to your clone by using: <code>git fetch upstream</code> followed by <code>git merge upstream/master</code>.</li>
-<li>Open the RStudio project file (<code>.Rproj</code>).</li>
-<li>Make your changes:
-<ul>
-<li>Write your code.</li>
-<li>Test your code (bonus points for adding unit tests).</li>
-<li>Document your code (see function documentation above).</li>
-<li>Do an <code>R CMD check</code> using <code><a href="http://www.rdocumentation.org/packages/devtools/topics/check">devtools::check()</a></code> and aim for 0 errors and warnings.</li>
-<li>Commit your changes locally</li>
-<li>Merge changes from the original repo (again)</li>
-<li>Do an <code>R CMD check</code> using <code><a href="http://www.rdocumentation.org/packages/devtools/topics/check">devtools::check()</a></code> and aim for 0 errors and warnings.</li>
-</ul>
-</li>
-<li>Commit and push your changes.</li>
-<li>Submit a <a href="https://guides.github.com/activities/forking/#making-a-pull-request">pull request</a>.</li>
-</ol>
+<p>Please refer to the <a href="https://folkehelseinstituttet.github.io/dashboards/contributing.html">umbrella Dashboards project for guidelines</a>.</p>
 </div>
 
   </div>
@@ -169,23 +139,6 @@
    </div>
 
   
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    
-    
-    apiKey: 'f6722ec7c9eec7d8d2b5ad767e6e5c45',
-    indexName: 'sykdomspuls',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-
 
   </body>
 </html>
