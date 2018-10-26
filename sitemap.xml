@@ -25,6 +25,9 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsDev.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsInitialised.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsProduction.html</loc>
   </url>
   <url>
@@ -56,6 +59,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/SMAOpng.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/SYSCALLS.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/StatStepribbon.html</loc>
@@ -92,6 +98,12 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/stat_stepribbon.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulsepdf_document_luft.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulsepdf_document_mage.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO.html</loc>

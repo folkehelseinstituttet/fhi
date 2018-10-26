@@ -6,9 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>If folders are setup according to the
-dashboard philosophy, then this function
-sets RPROJ — DashboardInitialise • fhi</title>
+<title>Initialise the automated analysis — DashboardInitialise • fhi</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,13 +30,12 @@ sets RPROJ — DashboardInitialise • fhi</title>
 
 
 
-<meta property="og:title" content="If folders are setup according to the
-dashboard philosophy, then this function
-sets RPROJ — DashboardInitialise" />
+<meta property="og:title" content="Initialise the automated analysis — DashboardInitialise" />
 
 <meta property="og:description" content="If folders are setup according to the
 dashboard philosophy, then this function
-sets RPROJ" />
+locates the computer's name in `/tmp/computer`
+and sets PROJ as appropriate" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +64,7 @@ sets RPROJ" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.25</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.26</span>
       </span>
     </div>
 
@@ -121,9 +118,7 @@ sets RPROJ" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>If folders are setup according to the
-dashboard philosophy, then this function
-sets RPROJ</h1>
+    <h1>Initialise the automated analysis</h1>
     
     <div class="hidden name"><code>DashboardInitialise.Rd</code></div>
     </div>
@@ -132,7 +127,8 @@ sets RPROJ</h1>
     
     <p>If folders are setup according to the
 dashboard philosophy, then this function
-sets RPROJ</p>
+locates the computer's name in `/tmp/computer`
+and sets PROJ as appropriate</p>
     
     </div>
 
@@ -144,19 +140,19 @@ sets RPROJ</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>STUB</th>
-      <td><p>a</p></td>
+      <td><p>The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders</p></td>
     </tr>
     <tr>
       <th>SRC</th>
-      <td><p>a</p></td>
+      <td><p>The directory inside `STUB` containing `ANALYSIS/RunProcess.R`</p></td>
     </tr>
     <tr>
       <th>NAME</th>
-      <td><p>a</p></td>
+      <td><p>The name of the automated analysis</p></td>
     </tr>
     <tr>
       <th>changeWorkingDirToTmp</th>
-      <td><p>a</p></td>
+      <td><p>Do you want to change the working directory to a temporary directory?</p></td>
     </tr>
     </table>
     

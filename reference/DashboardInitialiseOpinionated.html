@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.25</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.10.26</span>
       </span>
     </div>
 
@@ -126,15 +126,24 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
+  <span class='kw'>PACKAGE_DIR</span> <span class='kw'>=</span> <span class='fu'>sprintf</span>(<span class='st'>"/packages/dashboards_%s"</span>, <span class='no'>NAME</span>),
+  <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>NAME</th>
-      <td><p>a</p></td>
+      <td><p>The name of the automated analysis</p></td>
+    </tr>
+    <tr>
+      <th>STUB</th>
+      <td><p>The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders</p></td>
+    </tr>
+    <tr>
+      <th>PACKAGE_DIR</th>
+      <td><p>The directory containing the package source code</p></td>
     </tr>
     <tr>
       <th>FORCE_DEV_PACKAGE_LOAD</th>
@@ -142,11 +151,11 @@
     </tr>
     <tr>
       <th>DEV_IF_RSTUDIO</th>
-      <td><p>a</p></td>
+      <td><p>If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`</p></td>
     </tr>
     <tr>
       <th>SILENT</th>
-      <td><p>a</p></td>
+      <td><p>Load all packages silently?</p></td>
     </tr>
     </table>
     
