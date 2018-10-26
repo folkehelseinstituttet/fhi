@@ -33,3 +33,4 @@ Temporary Items
 .Rproj.user
 inst/doc
 docs/*
+*.log
