@@ -82,7 +82,7 @@ dir.create(file.path(tmpdir,"results","ANALYSIS"))
 dir.create(file.path(tmpdir,"src","ANALYSIS"))
 
 # Initialise
-fhi::DashboardInitialiseOpinionated("ANALYSIS",STUB=tmpdir, PACKAGE_DIR=pkg)
+fhi::DashboardInitialiseOpinionated("ANALYSIS",STUB=tmpdir, PACKAGE_DIR=pkg, FORCE_DEV_PACKAGE_LOAD=TRUE)
 
 # Lets see how `fhi::PROJ` has changed:
 for(i in names(fhi::PROJ)){
