@@ -1,3 +1,7 @@
+# fhi
+[![Build Status](https://travis-ci.org/folkehelseinstituttet/fhi.svg?branch=master)](https://travis-ci.org/folkehelseinstituttet/fhi)
+[![codecov](https://codecov.io/gh/folkehelseinstituttet/fhi/branch/master/graph/badge.svg)](https://codecov.io/gh/folkehelseinstituttet/fhi)
+
 ## The 'dashboards' project
 
 The dashboards project is a project at FHI concerned with running automated analyses on data.

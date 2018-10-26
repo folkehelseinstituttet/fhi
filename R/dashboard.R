@@ -10,13 +10,22 @@ DashboardIsDev <- function(){
   return(PROJ$IS_DEV)
 }
 
+#' Is the dashboard initialised?
+#' @export DashboardIsInitialised
+DashboardIsInitialised <- function(){
+  return(PROJ$IS_INITIALISED)
+}
+
+#' Initialise the automated analysis
+#'
 #' If folders are setup according to the
 #' dashboard philosophy, then this function
-#' sets RPROJ
-#' @param STUB a
-#' @param SRC a
-#' @param NAME a
-#' @param changeWorkingDirToTmp a
+#' locates the computer's name in `/tmp/computer`
+#' and sets PROJ as appropriate
+#' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
+#' @param SRC The directory inside `STUB` containing `ANALYSIS/RunProcess.R`
+#' @param NAME The name of the automated analysis
+#' @param changeWorkingDirToTmp Do you want to change the working directory to a temporary directory?
 #' @export DashboardInitialise
 DashboardInitialise <- function(
   STUB="/",
@@ -25,9 +34,13 @@ DashboardInitialise <- function(
   changeWorkingDirToTmp=TRUE
   ){
 
-  con <- file("/tmp/computer","r")
-  COMPUTER_NAME <- readLines(con,n=1)
-  close(con)
+  if(file.exists("/tmp/computer")){
+    con <- file("/tmp/computer","r")
+    COMPUTER_NAME <- readLines(con,n=1)
+    close(con)
+  } else {
+    COMPUTER_NAME <- "NO_NAME_FOUND"
+  }
   Sys.setenv(COMPUTER=COMPUTER_NAME)
 
   PROJ$COMPUTER_NAME <- COMPUTER_NAME
@@ -39,39 +52,72 @@ DashboardInitialise <- function(
   if(changeWorkingDirToTmp){
     setwd(tempdir())
   }
-  PROJ$IS_INITIALIZED <- TRUE
+  PROJ$IS_INITIALISED <- TRUE
 }
 
 #' Messaging
-#' @param txt a
+#' @param txt Text
+#' @param type msg, warn, err
+#' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
 #' @export DashboardMsg
-DashboardMsg <- function(txt){
-  if(PROJ$IS_INITIALIZED){
-    base::message(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
+DashboardMsg <- function(txt,type="msg",syscallsDepth=2){
+  SYSCALLS$CALLS <- sys.calls()
+  if(syscallsDepth<0) stop("syscallsDepth cannot be less than zero")
+  if(!type %in% c("msg","warn","err")) stop(sprintf("%s not msg, warn, err",type))
+
+  fn <- switch(type,
+               msg=base::message,
+               warn=base::warning,
+               err=base::stop
+               )
+
+  depth <- sys.nframe()-1
+  x <- sys.calls()
+  if(depth>=1 & syscallsDepth>0){
+    depthSeq <- depth:1
+    if(length(depthSeq)>syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
+    depthSeq <- rev(depthSeq)
+    for(i in depthSeq){
+      base::message(depth-i+1,"/",depth,": ",deparse(x[[i]]))
+    }
+  }
+
+  if(type=="msg"){
+    if(PROJ$IS_INITIALISED){
+      fn(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
+    } else {
+      fn(sprintf("%s %s",Sys.time(),txt))
+    }
   } else {
-    base::message(sprintf("%s %s",Sys.time(),txt))
+    if(PROJ$IS_INITIALISED){
+      fn(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt),call.=F)
+    } else {
+      fn(sprintf("%s %s",Sys.time(),txt),call.=F)
+    }
   }
 }
 
 #' DashboardInitialiseOpinionated
-#' @param NAME a
+#' @param NAME The name of the automated analysis
+#' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
+#' @param PACKAGE_DIR The directory containing the package source code
 #' @param FORCE_DEV_PACKAGE_LOAD a
-#' @param DEV_IF_RSTUDIO a
-#' @param SILENT a
+#' @param DEV_IF_RSTUDIO If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`
+#' @param SILENT Load all packages silently?
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
-DashboardInitialiseOpinionated <- function(NAME,FORCE_DEV_PACKAGE_LOAD=FALSE,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
+DashboardInitialiseOpinionated <- function(NAME,STUB="/",PACKAGE_DIR=sprintf("/packages/dashboards_%s",NAME),FORCE_DEV_PACKAGE_LOAD=FALSE,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
   DashboardInitialise(
-    STUB="/",
+    STUB=STUB,
     SRC="src",
     NAME=NAME
   )
 
   if(Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD){
     if(SILENT){
-      suppressPackageStartupMessages(devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE, quiet=TRUE))
+      suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all=FALSE, quiet=TRUE))
     } else {
-      devtools::load_all(sprintf("/packages/dashboards_%s/",PROJ$NAME), export_all=FALSE)
+      devtools::load_all(PACKAGE_DIR, export_all=FALSE)
     }
 
     if(DEV_IF_RSTUDIO){

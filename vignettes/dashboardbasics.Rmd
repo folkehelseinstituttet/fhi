@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -16,50 +18,83 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Bounded context for the dashboards project
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+The `fhi` package contains a number of functions that span the [dashboards](https://folkehelseinstituttet.github.io/dashboards/) project.
 
-## Vignette Info
+As mentioned in the [umbrella documentation](https://folkehelseinstituttet.github.io/dashboards/integrating-the-r-package-into-the-physical-system.html#bounded-context), we expect that for the automated analysis `ANALYSIS`, there is an R package called `ANALYSIS` and the following folder structure exists on the system:
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{}
+/data_raw/
+  |-- ANALYSIS/
+/data_clean/
+  |-- ANALYSIS/
+/data_app/
+  |-- ANALYSIS/
+/results/
+  |-- ANALYSIS/
+/src/
+  |-- ANALYSIS/
+     |-- 0_run.sh
+     |-- RunProcess.R
+     |-- RunTest.R
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## fhi::DashboardInitialiseOpinionated
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+[fhi::DashboardInitialiseOpinionated](../reference/DashboardInitialiseOpinionated.html) is always the first function called in a [RunProcess.R](https://folkehelseinstituttet.github.io/dashboards/integrating-the-r-package-into-the-physical-system.html#runprocess.r) file. Its main purpose is to properly initialise the environment `fhi::PROJ`.
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+for(i in names(fhi::PROJ)){
+  print(sprintf("%s=%s",i,fhi::PROJ[[i]]))
+}
 ```
 
-Also a quote using `>`:
+`fhi::PROJ$PRODUCTION_NAME` contains a list of all the computer names that are consided to be production machines.
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+`fhi::PROJ$COMPUTER_NAME` is this current computer's name. It is obtained from the file `/tmp/computer`.
+
+`fhi::PROJ$IS_PRODUCTION` is used in the getter function [fhi::DashboardIsProduction](../reference/DashboardIsProduction.html). This is primarily used to choose the appropriate mailing lists (i.e. production computer sends emails to the customers, test/development computers send emails to the developers).
+
+`fhi::PROJ$IS_DEV` is used in the getter function [fhi::DashboardIsDev](../reference/DashboardIsDev.html). It is flagged to `TRUE` if the script is called from within RStudio (i.e. a development environment). All automated analyses check for existing results before running (and exit if existing results are found). This getter function is generally used decide if we should delete existing results (i.e. if we are developing code then we don't care if there are existing results, we just want to see what the new version of the results looks like).
+
+`fhi::PROJ$IS_INITIALISED` is used in the getter function [fhi::DashboardIsInitialised](../reference/DashboardIsInitialised.html). If the project is initialised, then you know that you are working in the integrated umbrella [dashboards](https://folkehelseinstituttet.github.io/dashboards/) environment. This function is not used very often.
+
+Here we now create the necessary file structure:
+```{r}
+# Create an empty package
+pkg <- file.path(tempdir(check=TRUE),"ANALYSIS")
+devtools::create(pkg,quiet=F)
+
+# Create the data/results/src folders
+tmpdir <- tempdir(check=TRUE)
+dir.create(file.path(tmpdir,"data_raw"))
+dir.create(file.path(tmpdir,"data_clean"))
+dir.create(file.path(tmpdir,"data_app"))
+dir.create(file.path(tmpdir,"results"))
+dir.create(file.path(tmpdir,"src"))
+
+# Create the `ANALYSIS` specific folders inside
+dir.create(file.path(tmpdir,"data_raw","ANALYSIS"))
+dir.create(file.path(tmpdir,"data_clean","ANALYSIS"))
+dir.create(file.path(tmpdir,"data_app","ANALYSIS"))
+dir.create(file.path(tmpdir,"results","ANALYSIS"))
+dir.create(file.path(tmpdir,"src","ANALYSIS"))
+
+# Initialise
+fhi::DashboardInitialiseOpinionated("ANALYSIS",STUB=tmpdir, PACKAGE_DIR=pkg)
+
+# Lets see how `fhi::PROJ` has changed:
+for(i in names(fhi::PROJ)){
+  print(sprintf("%s=%s",i,fhi::PROJ[[i]]))
+}
+```
+
+## fhi::DashboardMsg
+
+According to the [code style guidelines](https://folkehelseinstituttet.github.io/dashboards/contributing.html#code-style) we do not use `print`. We instead use `message`, `warning`, and `stop`. 
+
+[fhi::DashboardMsg](../reference/DashboardMsg.html) is a stylised version of `message`, `warning`, and `stop`. It prints the requested message with a traceback of system calls
+
+
+

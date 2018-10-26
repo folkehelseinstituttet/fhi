@@ -4,10 +4,14 @@
 \alias{DashboardMsg}
 \title{Messaging}
 \usage{
-DashboardMsg(txt)
+DashboardMsg(txt, type = "msg", syscallsDepth = 2)
 }
 \arguments{
-\item{txt}{a}
+\item{txt}{Text}
+
+\item{type}{msg, warn, err}
+
+\item{syscallsDepth}{The number of syscalls included in the message. Set to 0 to disable.}
 }
 \description{
 Messaging

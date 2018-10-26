@@ -4,17 +4,22 @@
 \alias{DashboardInitialiseOpinionated}
 \title{DashboardInitialiseOpinionated}
 \usage{
-DashboardInitialiseOpinionated(NAME, FORCE_DEV_PACKAGE_LOAD = FALSE,
-  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
+DashboardInitialiseOpinionated(NAME, STUB = "/",
+  PACKAGE_DIR = sprintf("/packages/dashboards_\%s", NAME),
+  FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
-\item{NAME}{a}
+\item{NAME}{The name of the automated analysis}
+
+\item{STUB}{The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders}
+
+\item{PACKAGE_DIR}{The directory containing the package source code}
 
 \item{FORCE_DEV_PACKAGE_LOAD}{a}
 
-\item{DEV_IF_RSTUDIO}{a}
+\item{DEV_IF_RSTUDIO}{If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`}
 
-\item{SILENT}{a}
+\item{SILENT}{Load all packages silently?}
 }
 \description{
 DashboardInitialiseOpinionated
