@@ -1,0 +1,44 @@
+---
+params:
+  dev: TRUE
+  date: "`r format(Sys.time(), '%d.%m.%Y')`"
+header: "Sist oppdatert: `r format(Sys.time(), '%d.%m.%Y')`"
+#footer: "Sykdomspulsen fra Folkehelseinsttutet \\newline AAA \\newline A \\newline A "
+output: fhi::sykdompulsepdf_document_luft
+fig_caption: true
+---
+
+# Luftveisinfeksjoner, `r f` {-}
+
+Denne rapporten baseres på Sykdomspulsen som er et overvåkningssystem som innhenter anonyme diagnosedata fra primærlegene og legevakten.
+Luftveisinfeksjoner er en samlebetegnelse for diagnosekodene (ICPC-2) R05-Hoste, R74-Akutt øvre luftveisinfeksjon, R78-Bronkitt/bronkiolitt og R83-Luftveisinfeksjon IKA.
+En økning av luftveisinfeksjoner er vanlig på vinterstid, spesielt hos barn og unge. I aldersgruppen 5-19 år ser vi en stor økning av luftveisinfeksjoner fra sesongen 2016/2017. Dette skyldes hovedsakelig de nye fraværsreglene som ble innført i den videregående skole fra høsten 2016.
+Vil du vite mer om Sykdomspulsen kan du gå tilbake til hovedsiden til Sykdomspulsen og klikke på «Om Sykdomspulsen».
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE, results='asis',fig1,  fig.height = 4.2, fig.width = 6.8, fig.align = 'center', fig.pos="H"}
+
+CreatePlots1(alle,weeknow = weeknow, Ukenummer = Ukenummer, title=paste(mytittle, ", ",f,", alle aldersgrupper", sep ="" ),
+ yrange=yrange)
+
+```
+
+\begingroup\footnotesize
+Fig. 1: Antall konsultasjoner vedrørende luftveisinfeksjoner per uke i `r f` for de siste 6 sesongene. Ulike sesonger er angitt med forskjellig farge, årets sesong er markert med svart linje. Antallet konsultasjoner er lavere i ferier og på helligdager. Dette er spesielt tydelig rundt jul/nyttår og påske (markert med svarte stiplede vertikale linjer), men også i sommerferieukene og høstferien.
+
+
+\endgroup
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE, results='asis',fig2, fig.height = 4.2, fig.width = 6.8, fig.align = 'center'}
+
+CreatePlots2(d1=data,weeknow = weeknow, Ukenummer = Ukenummer,Fylkename=f,S=SYNDROM,mytittle=mytittle)
+
+```
+
+\begingroup\footnotesize
+
+
+Fig. 2: Antall konsultasjoner vedrørende luftveisinfeksjoner per uke i `r f` for de siste 6 sesongene for forskjellige aldersgrupper. Ulike sesonger er angitt med forskjellig farge (se fig. 1 for informasjon om hvilken farge som tilhører hvilken sesong), årets sesong er markert med svart linje. Antallet konsultasjoner er lavere i ferier og på helligdager. Dette er spesielt tydelig rundt jul/nyttår og påske (markert med svarte stiplede vertikale linjer), men også i sommerferieukene og høstferien. Vær oppmerksom på at den vertikale skalaen (y-aksen) er forskjellig fra graf til graf.
+
+\endgroup
+
