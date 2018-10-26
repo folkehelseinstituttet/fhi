@@ -24,8 +24,4 @@ This template demonstrates some of the basic latex you'll need to know to create
 
 Don't use markdown, instead use the more precise latex commands:
 
-```{r}
-summary(cars)
-
-```
 
