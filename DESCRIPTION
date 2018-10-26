@@ -26,7 +26,8 @@ Imports:
   devtools,
   RAWmisc
 Suggests: testthat,
-    knitr
+    knitr,
+    usethis
 Remotes: raubreywhite/RAWmisc
 License: GPL-3
 LazyData: true
