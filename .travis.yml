@@ -11,7 +11,7 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deploy.sh
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && Rscript
-  -e 'Sys.sleep(10);install.packages("fhi",repos="https://folkehelseinstituttet.github.io/drat/");pkgdown::build_site()'
+  -e 'Sys.sleep(30);install.packages("fhi",repos="https://folkehelseinstituttet.github.io/drat/");pkgdown::build_site()'
 deploy:
   provider: pages
   skip-cleanup: true
