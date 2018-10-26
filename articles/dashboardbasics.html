@@ -83,7 +83,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Initializing a dashboard</h1>
-                        <h4 class="author">Vignette Author</h4>
+                        <h4 class="author">Richard White</h4>
             
             <h4 class="date">2018-10-26</h4>
       
@@ -99,19 +99,20 @@
 <a href="#bounded-context-for-the-dashboards-project" class="anchor"></a>Bounded context for the dashboards project</h2>
 <p>The <code>fhi</code> package contains a number of functions that span the <a href="https://folkehelseinstituttet.github.io/dashboards/">dashboards</a> project.</p>
 <p>As mentioned in the <a href="https://folkehelseinstituttet.github.io/dashboards/integrating-the-r-package-into-the-physical-system.html#bounded-context">umbrella documentation</a>, we expect that for the automated analysis <code>ANALYSIS</code>, there is an R package called <code>ANALYSIS</code> and the following folder structure exists on the system:</p>
-<pre><code>/data_raw/
+<pre><code>/MASTERFOLDER/data_raw/
   |-- ANALYSIS/
-/data_clean/
+/MASTERFOLDER/data_clean/
   |-- ANALYSIS/
-/data_app/
+/MASTERFOLDER/data_app/
   |-- ANALYSIS/
-/results/
+/MASTERFOLDER/results/
   |-- ANALYSIS/
-/src/
+/MASTERFOLDER/src/
   |-- ANALYSIS/
      |-- 0_run.sh
      |-- RunProcess.R
      |-- RunTest.R</code></pre>
+<p>It is important to note that we generally do not use <code>MASTERFOLDER</code> in production settings.</p>
 </div>
 <div id="fhidashboardinitialiseopinionated" class="section level2">
 <h2 class="hasAnchor">
@@ -128,78 +129,84 @@
 <p><code>fhi::PROJ$PRODUCTION_NAME</code> contains a list of all the computer names that are consided to be production machines.</p>
 <p><code>fhi::PROJ$COMPUTER_NAME</code> is this current computer’s name. It is obtained from the file <code>/tmp/computer</code>.</p>
 <p><code>fhi::PROJ$IS_PRODUCTION</code> is used in the getter function <a href="../reference/DashboardIsProduction.html">fhi::DashboardIsProduction</a>. This is primarily used to choose the appropriate mailing lists (i.e. production computer sends emails to the customers, test/development computers send emails to the developers).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsProduction.html">DashboardIsProduction</a></span>()</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p><code>fhi::PROJ$IS_DEV</code> is used in the getter function <a href="../reference/DashboardIsDev.html">fhi::DashboardIsDev</a>. It is flagged to <code>TRUE</code> if the script is called from within RStudio (i.e. a development environment). All automated analyses check for existing results before running (and exit if existing results are found). This getter function is generally used decide if we should delete existing results (i.e. if we are developing code then we don’t care if there are existing results, we just want to see what the new version of the results looks like).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsDev.html">DashboardIsDev</a></span>()</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p><code>fhi::PROJ$IS_INITIALISED</code> is used in the getter function <a href="../reference/DashboardIsInitialised.html">fhi::DashboardIsInitialised</a>. If the project is initialised, then you know that you are working in the integrated umbrella <a href="https://folkehelseinstituttet.github.io/dashboards/">dashboards</a> environment. This function is not used very often.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsInitialised.html">DashboardIsInitialised</a></span>()</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p>Here we now create the necessary file structure:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Create an empty package</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/devtools-deprecated">create</a></span>(pkg,<span class="dt">quiet=</span>F)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Warning: 'devtools::create' is deprecated.</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Use 'usethis::create_package()' instead.</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; See help("Deprecated") and help("devtools-deprecated").</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; Warning: 'setup' is deprecated.</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Use 'usethis::create_package()' instead.</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; See help("Deprecated") and help("devtools-deprecated").</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; Creating package 'ANALYSIS' in '/tmp/Rtmpe3tX5L'</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; Warning: 'create_description' is deprecated.</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; Use 'usethis::use_description()' instead.</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; See help("Deprecated") and help("devtools-deprecated").</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; No DESCRIPTION found. Creating with values:</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; Package: ANALYSIS</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; Title: What the Package Does (one line, title case)</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; Version: 0.0.0.9000</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; Description: What the package does (one paragraph).</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; Depends: R (&gt;= 3.5.1)</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; License: What license is it under?</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; Encoding: UTF-8</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; LazyData: true</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; Warning: 'use_rstudio' is deprecated.</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; Use 'usethis::use_rstudio()' instead.</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; See help("Deprecated") and help("devtools-deprecated").</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; Warning in warn_unless_current_dir(pkg): `pkg` is not `.`, which is now unsupported.</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt;   Please use `usethis::proj_set()` to set the project directory.</span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; ✔ Writing 'ANALYSIS.Rproj'</span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; ✔ Adding '.Rproj.user' to '.gitignore'</span></a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; ✔ Adding '^ANALYSIS\\.Rproj$', '^\\.Rproj\\.user$' to '.Rbuildignore'</span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co"># Create the data/results/src folders</span></a>
-<a class="sourceLine" id="cb3-34" data-line-number="34">tmpdir &lt;-<span class="st"> </span><span class="kw">tempdir</span>(<span class="dt">check=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_raw"</span>))</a>
-<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_clean"</span>))</a>
-<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_app"</span>))</a>
-<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"results"</span>))</a>
-<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"src"</span>))</a>
-<a class="sourceLine" id="cb3-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co"># Create the `ANALYSIS` specific folders inside</span></a>
-<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb3-43" data-line-number="43"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"src"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb3-47" data-line-number="47"></a>
-<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co"># Initialise</span></a>
-<a class="sourceLine" id="cb3-49" data-line-number="49">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html">DashboardInitialiseOpinionated</a></span>(<span class="st">"ANALYSIS"</span>,<span class="dt">STUB=</span>tmpdir, <span class="dt">PACKAGE_DIR=</span>pkg, <span class="dt">FORCE_DEV_PACKAGE_LOAD=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt; Loading ANALYSIS</span></a>
-<a class="sourceLine" id="cb3-51" data-line-number="51"></a>
-<a class="sourceLine" id="cb3-52" data-line-number="52"><span class="co"># Lets see how `fhi::PROJ` has changed:</span></a>
-<a class="sourceLine" id="cb3-53" data-line-number="53"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">names</span>(fhi<span class="op">::</span>PROJ)){</a>
-<a class="sourceLine" id="cb3-54" data-line-number="54">  <span class="kw">print</span>(<span class="kw">sprintf</span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
-<a class="sourceLine" id="cb3-55" data-line-number="55">}</a>
-<a class="sourceLine" id="cb3-56" data-line-number="56"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
-<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; [1] "SRC=src"</span></a>
-<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; [1] "IS_INITIALISED=TRUE"</span></a>
-<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; [1] "NAME=ANALYSIS"</span></a>
-<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
-<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
-<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
-<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; [1] "STUB=/tmp/Rtmpe3tX5L"</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Create an empty package</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">usethis<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/usethis/topics/create_package">create_package</a></span>(pkg)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpwsQ3kR/ANALYSIS'</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ✔ Creating 'R/'</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; ✔ Creating 'man/'</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; ✔ Writing 'DESCRIPTION'</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; ✔ Writing 'NAMESPACE'</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co"># Create the data/results/src folders</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">tmpdir &lt;-<span class="st"> </span><span class="kw">tempdir</span>(<span class="dt">check=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_raw"</span>))</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_clean"</span>))</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_app"</span>))</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"results"</span>))</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"src"</span>))</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co"># Create the `ANALYSIS` specific folders inside</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw">dir.create</span>(<span class="kw">file.path</span>(tmpdir,<span class="st">"src"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co"># Initialise</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html">DashboardInitialiseOpinionated</a></span>(<span class="st">"ANALYSIS"</span>,<span class="dt">STUB=</span>tmpdir, <span class="dt">PACKAGE_DIR=</span>pkg, <span class="dt">FORCE_DEV_PACKAGE_LOAD=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt; Loading ANALYSIS</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co"># Lets see how `fhi::PROJ` has changed:</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">names</span>(fhi<span class="op">::</span>PROJ)){</a>
+<a class="sourceLine" id="cb6-31" data-line-number="31">  <span class="kw">print</span>(<span class="kw">sprintf</span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
+<a class="sourceLine" id="cb6-32" data-line-number="32">}</a>
+<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
+<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="co">#&gt; [1] "SRC=src"</span></a>
+<a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt; [1] "IS_INITIALISED=TRUE"</span></a>
+<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="co">#&gt; [1] "NAME=ANALYSIS"</span></a>
+<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
+<a class="sourceLine" id="cb6-38" data-line-number="38"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
+<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
+<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="co">#&gt; [1] "STUB=/tmp/RtmpwsQ3kR"</span></a></code></pre></div>
+<p>We can see that we have a few new extra variables:</p>
+<p><code>fhi::PROJ$SRC</code> is the location of the <code>src</code> directory.</p>
+<p><code>fhi::PROJ$NAME</code> is the name of the automated analysis.</p>
+<p><code>fhi::PROJ$STUB</code> is the master folder containing all of the data folders.</p>
+<p>We can also see how the getter functions have changed:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Hopefully not!</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsProduction.html">DashboardIsProduction</a></span>()</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [1] FALSE</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co"># This one is a little special, because we used the flag `FORCE_DEV_PACKAGE_LOAD=TRUE`</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsDev.html">DashboardIsDev</a></span>()</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co"># Obvious</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsInitialised.html">DashboardIsInitialised</a></span>()</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 </div>
 <div id="fhidashboardmsg" class="section level2">
 <h2 class="hasAnchor">
 <a href="#fhidashboardmsg" class="anchor"></a>fhi::DashboardMsg</h2>
 <p>According to the <a href="https://folkehelseinstituttet.github.io/dashboards/contributing.html#code-style">code style guidelines</a> we do not use <code>print</code>. We instead use <code>message</code>, <code>warning</code>, and <code>stop</code>.</p>
-<p><a href="../reference/DashboardMsg.html">fhi::DashboardMsg</a> is a stylised version of <code>message</code>, <code>warning</code>, and <code>stop</code>. It prints the requested message with a traceback of system calls</p>
+<p><a href="../reference/DashboardMsg.html">fhi::DashboardMsg</a> is a stylised version of <code>message</code>, <code>warning</code>, and <code>stop</code>. It prints the requested message with a timestamp and a traceback of system calls. This is useful in log files.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">MyFirstFunction &lt;-<span class="st"> </span><span class="cf">function</span>(d){ fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardMsg.html">DashboardMsg</a></span>(<span class="st">"Important message!"</span>)}</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">MySecondFunction &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a=</span><span class="dv">2</span>){ <span class="kw">MyFirstFunction</span>(<span class="dt">d=</span><span class="dv">4</span>) }</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">MyThirdFunction &lt;-<span class="st"> </span><span class="cf">function</span>(){ <span class="kw">MySecondFunction</span>() }</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">MyThirdFunction</span>()</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 2/33: MySecondFunction()</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 1/33: MyFirstFunction(d = 4)</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 2018-10-26 12:43:44/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
 </div>
   </div>
 
