@@ -78,7 +78,7 @@ Here we now create the necessary file structure:
 ```{r}
 # Create an empty package
 pkg <- file.path(tempdir(check=TRUE),"ANALYSIS")
-usethis::create_package(pkg,quiet=F)
+usethis::create_package(pkg)
 
 # Create the data/results/src folders
 tmpdir <- tempdir(check=TRUE)
