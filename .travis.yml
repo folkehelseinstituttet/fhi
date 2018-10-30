@@ -9,7 +9,7 @@ r_packages:
 before_install:
 - bash make.sh
 after_success:
-- Rscript -e 'lintr::lint_package()'
+- Rscript -e 'lintr::lint_package(lint=lintr::with_defaults(camel_case_linter = NULL, line_length_linter = lintr::line_length_linter(120)))'
 - Rscript -e 'library(covr); codecov()'
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deploy.sh
