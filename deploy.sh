@@ -29,8 +29,12 @@ addToDrat(){
 addToDrat
 
 rm $PKG_REPO/$PKG_TARBALL
-Rscript -e "styler::style_pkg('$PKG_REPO/')"
 cd $PKG_REPO
+
+git remote add upstream "https://$GH_TOKEN@github.com/folkehelseinstituttet/fhi.git"
+#git fetch upstream 2>err.txt
+
+Rscript -e "styler::style_pkg('$PKG_REPO/')"
 git commit -a -m "styler::style_pkg: build $TRAVIS_BUILD_NUMBER"
 git push 2>err.txt
 
