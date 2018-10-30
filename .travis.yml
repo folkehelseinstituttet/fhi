@@ -4,9 +4,11 @@ r_packages:
 - covr
 - drat
 - pkgdown
+- lintr
 before_install:
 - bash make.sh
 after_success:
+- Rscript -e 'lintr::lint_package()'
 - Rscript -e 'library(covr); codecov()'
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deploy.sh

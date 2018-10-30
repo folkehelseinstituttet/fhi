@@ -125,11 +125,20 @@ fhi::DashboardIsDev()
 fhi::DashboardIsInitialised()
 ```
 
+## fhi::DashboardFolder
+
+Now that we have initialised our project, we need to access folder and datafiles. [fhi::DashboardFolder](../reference/DashboardFolder.html) is our function for this.
+
+```{r}
+fhi::DashboardFolder("data_raw")
+fhi::DashboardFolder("data_raw","myfile.txt")
+```
+
 ## fhi::DashboardMsg
 
 According to the [code style guidelines](https://folkehelseinstituttet.github.io/dashboards/contributing.html#code-style) we do not use `print`. We instead use `message`, `warning`, and `stop`. 
 
-[fhi::DashboardMsg](../reference/DashboardMsg.html) is a stylised version of `message`, `warning`, and `stop`. It prints the requested message with a timestamp and a traceback of system calls. This is useful in log files.
+[fhi::DashboardMsg](../reference/DashboardMsg.html) is a stylised version of `message`, `warning`, and `stop`. It prints the requested message with a timestamp, computer name, analysis name, and a traceback of system calls. This is useful in log files.
 
 ```{r}
 MyFirstFunction <- function(d){ fhi::DashboardMsg("Important message!")}
@@ -137,6 +146,4 @@ MySecondFunction <- function(a=2){ MyFirstFunction(d=4) }
 MyThirdFunction <- function(){ MySecondFunction() }
 MyThirdFunction()
 ```
-
-
 
