@@ -5,6 +5,7 @@ r_packages:
 - drat
 - pkgdown
 - lintr
+- styler
 before_install:
 - bash make.sh
 after_success:
