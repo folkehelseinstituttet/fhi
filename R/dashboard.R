@@ -1,18 +1,18 @@
 #' Is the dashboard in production?
 #' @export DashboardIsProduction
-DashboardIsProduction <- function(){
+DashboardIsProduction <- function() {
   return(PROJ$IS_PRODUCTION)
 }
 
 #' Is the dashboard in development?
 #' @export DashboardIsDev
-DashboardIsDev <- function(){
+DashboardIsDev <- function() {
   return(PROJ$IS_DEV)
 }
 
 #' Is the dashboard initialised?
 #' @export DashboardIsInitialised
-DashboardIsInitialised <- function(){
+DashboardIsInitialised <- function() {
   return(PROJ$IS_INITIALISED)
 }
 
@@ -28,20 +28,18 @@ DashboardIsInitialised <- function(){
 #' @param changeWorkingDirToTmp Do you want to change the working directory to a temporary directory?
 #' @export DashboardInitialise
 DashboardInitialise <- function(
-  STUB="/",
-  SRC="src",
-  NAME=NULL,
-  changeWorkingDirToTmp=TRUE
-  ){
-
-  if(file.exists("/tmp/computer")){
-    con <- file("/tmp/computer","r")
-    COMPUTER_NAME <- readLines(con,n=1)
+                                STUB = "/",
+                                SRC = "src",
+                                NAME = NULL,
+                                changeWorkingDirToTmp = TRUE) {
+  if (file.exists("/tmp/computer")) {
+    con <- file("/tmp/computer", "r")
+    COMPUTER_NAME <- readLines(con, n = 1)
     close(con)
   } else {
     COMPUTER_NAME <- "NO_NAME_FOUND"
   }
-  Sys.setenv(COMPUTER=COMPUTER_NAME)
+  Sys.setenv(COMPUTER = COMPUTER_NAME)
 
   PROJ$COMPUTER_NAME <- COMPUTER_NAME
 
@@ -49,7 +47,7 @@ DashboardInitialise <- function(
   PROJ$SRC <- SRC
   PROJ$NAME <- NAME
 
-  if(changeWorkingDirToTmp){
+  if (changeWorkingDirToTmp) {
     setwd(tempdir())
   }
   PROJ$IS_INITIALISED <- TRUE
@@ -60,39 +58,39 @@ DashboardInitialise <- function(
 #' @param type msg, warn, err
 #' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
 #' @export DashboardMsg
-DashboardMsg <- function(txt,type="msg",syscallsDepth=2){
+DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
   SYSCALLS$CALLS <- sys.calls()
-  if(syscallsDepth<0) stop("syscallsDepth cannot be less than zero")
-  if(!type %in% c("msg","warn","err")) stop(sprintf("%s not msg, warn, err",type))
+  if (syscallsDepth < 0) stop("syscallsDepth cannot be less than zero")
+  if (!type %in% c("msg", "warn", "err")) stop(sprintf("%s not msg, warn, err", type))
 
   fn <- switch(type,
-               msg=base::message,
-               warn=base::warning,
-               err=base::stop
-               )
+    msg = base::message,
+    warn = base::warning,
+    err = base::stop
+  )
 
-  depth <- sys.nframe()-1
+  depth <- sys.nframe() - 1
   x <- sys.calls()
-  if(depth>=1 & syscallsDepth>0){
+  if (depth >= 1 & syscallsDepth > 0) {
     depthSeq <- depth:1
-    if(length(depthSeq)>syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
+    if (length(depthSeq) > syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
     depthSeq <- rev(depthSeq)
-    for(i in depthSeq){
-      base::message(depth-i+1,"/",depth,": ",deparse(x[[i]]))
+    for (i in depthSeq) {
+      base::message(depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
     }
   }
 
-  if(type=="msg"){
-    if(PROJ$IS_INITIALISED){
-      fn(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt))
+  if (type == "msg") {
+    if (PROJ$IS_INITIALISED) {
+      fn(sprintf("%s/%s/%s %s", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
     } else {
-      fn(sprintf("%s %s",Sys.time(),txt))
+      fn(sprintf("%s %s", Sys.time(), txt))
     }
   } else {
-    if(PROJ$IS_INITIALISED){
-      fn(sprintf("%s/%s/%s %s",Sys.time(),PROJ$COMPUTER_NAME,PROJ$NAME,txt),call.=F)
+    if (PROJ$IS_INITIALISED) {
+      fn(sprintf("%s/%s/%s %s", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
     } else {
-      fn(sprintf("%s %s",Sys.time(),txt),call.=F)
+      fn(sprintf("%s %s", Sys.time(), txt), call. = F)
     }
   }
 }
@@ -106,37 +104,34 @@ DashboardMsg <- function(txt,type="msg",syscallsDepth=2){
 #' @param SILENT Load all packages silently?
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
-DashboardInitialiseOpinionated <- function(NAME,STUB="/",PACKAGE_DIR=sprintf("/packages/dashboards_%s",NAME),FORCE_DEV_PACKAGE_LOAD=FALSE,DEV_IF_RSTUDIO=TRUE,SILENT=FALSE){
+DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   DashboardInitialise(
-    STUB=STUB,
-    SRC="src",
-    NAME=NAME
+    STUB = STUB,
+    SRC = "src",
+    NAME = NAME
   )
 
-  if(Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD){
-    if(SILENT){
-      suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all=FALSE, quiet=TRUE))
+  if (Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD) {
+    if (SILENT) {
+      suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all = FALSE, quiet = TRUE))
     } else {
-      devtools::load_all(PACKAGE_DIR, export_all=FALSE)
+      devtools::load_all(PACKAGE_DIR, export_all = FALSE)
     }
 
-    if(DEV_IF_RSTUDIO){
+    if (DEV_IF_RSTUDIO) {
       PROJ$IS_DEV <- TRUE
     }
-
   } else {
-    if(SILENT){
-      suppressPackageStartupMessages(library(NAME,character.only = TRUE))
+    if (SILENT) {
+      suppressPackageStartupMessages(library(NAME, character.only = TRUE))
     } else {
-      library(NAME,character.only = TRUE)
+      library(NAME, character.only = TRUE)
     }
 
-    if(PROJ$COMPUTER_NAME==PROJ$PRODUCTION_NAME){
+    if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
       PROJ$IS_PRODUCTION <- TRUE
     }
   }
-
-
 }
 
 #' If folders are setup according to the
@@ -145,11 +140,11 @@ DashboardInitialiseOpinionated <- function(NAME,STUB="/",PACKAGE_DIR=sprintf("/p
 #' @param inside where it is inside
 #' @param f an optional file
 #' @export DashboardFolder
-DashboardFolder <- function(inside="data_raw",f=NULL){
-  retVal <- file.path(PROJ$STUB,inside,PROJ$NAME)
-  retVal <- paste0(retVal,"/")
-  if(!is.null(f)){
-    retVal <- file.path(retVal,f)
+DashboardFolder <- function(inside = "data_raw", f = NULL) {
+  retVal <- file.path(PROJ$STUB, inside, PROJ$NAME)
+  retVal <- paste0(retVal, "/")
+  if (!is.null(f)) {
+    retVal <- file.path(retVal, f)
   }
   return(retVal)
 }
@@ -169,31 +164,35 @@ DashboardFolder <- function(inside="data_raw",f=NULL){
 DashboardEmail <- function(emailBCC,
                            emailSubject,
                            emailText,
-                           emailAttachFiles=NULL,
-                           emailFooter=TRUE,
-                           BCC=TRUE,
-                           XLSXLocation=file.path("/etc","gmailr","emails.xlsx"),
-                           OAUTHLocation=file.path("/etc","gmailr",".httr-oauth")){
+                           emailAttachFiles = NULL,
+                           emailFooter = TRUE,
+                           BCC = TRUE,
+                           XLSXLocation = file.path("/etc", "gmailr", "emails.xlsx"),
+                           OAUTHLocation = file.path("/etc", "gmailr", ".httr-oauth")) {
   emails <- readxl::read_excel(XLSXLocation)
   emails <- stats::na.omit(emails[[emailBCC]])
 
-  if(emailFooter) emailText <- paste0(emailText,
-                                      "<br><br><br>
+  if (emailFooter) {
+    emailText <- paste0(
+      emailText,
+      "<br><br><br>
     ------------------------
     <br>
     DO NOT REPLY TO THIS EMAIL! This email address is not checked by anyone!
     <br>
     To add or remove people to/from this notification list, send their details to richard.white@fhi.no
-    ")
+    "
+    )
+  }
 
   text_msg <- gmailr::mime()
 
   sendEmailsBCC <- sendEmailsTo <- NULL
-  if(BCC){
+  if (BCC) {
     sendEmailsTo <- "dashboards@fhi.no"
-    sendEmailsBCC <- paste0(emails,collapse=",")
+    sendEmailsBCC <- paste0(emails, collapse = ",")
   } else {
-    sendEmailsTo <- paste0(emails,collapse=",")
+    sendEmailsTo <- paste0(emails, collapse = ",")
     sendEmailsBCC <- "dashboards@fhi.no"
   }
 
@@ -204,16 +203,16 @@ DashboardEmail <- function(emailBCC,
     gmailr::subject(emailSubject) %>%
     gmailr::html_body(emailText) -> text_msg
 
-  if(!is.null(emailAttachFiles)){
-    text_msg %>% gmailr::attach_part(emailText, content_type="text/html") -> text_msg
-    for(i in emailAttachFiles){
+  if (!is.null(emailAttachFiles)) {
+    text_msg %>% gmailr::attach_part(emailText, content_type = "text/html") -> text_msg
+    for (i in emailAttachFiles) {
       text_msg %>% gmailr::attach_file(i) -> text_msg
     }
   }
 
   currentWD <- getwd()
   tmp <- tempdir()
-  file.copy(OAUTHLocation,paste0(tmp,"/.httr-oauth"))
+  file.copy(OAUTHLocation, paste0(tmp, "/.httr-oauth"))
   setwd(tmp)
   gmailr::gmail_auth()
   gmailr::send_message(text_msg)
@@ -229,20 +228,24 @@ DashboardEmail <- function(emailBCC,
 #' @importFrom magrittr %>%
 #' @export DashboardEmailSpecific
 DashboardEmailSpecific <- function(emailBCC,
-                           emailSubject,
-                           emailText,
-                           emailFooter=TRUE,
-                           OAUTHLocation=file.path("/etc","gmailr",".httr-oauth")){
-  if(length(emailBCC)>1) emailBCC <- paste0(emailBCC,collapse=",")
+                                   emailSubject,
+                                   emailText,
+                                   emailFooter = TRUE,
+                                   OAUTHLocation = file.path("/etc", "gmailr", ".httr-oauth")) {
+  if (length(emailBCC) > 1) emailBCC <- paste0(emailBCC, collapse = ",")
 
-  if(emailFooter) emailText <- paste0(emailText,
-                      "<br><br><br>
+  if (emailFooter) {
+    emailText <- paste0(
+      emailText,
+      "<br><br><br>
     ------------------------
     <br>
     DO NOT REPLY TO THIS EMAIL! This email address is not checked by anyone!
     <br>
     To add or remove people to/from this notification list, send their details to richard.white@fhi.no
-    ")
+    "
+    )
+  }
 
   gmailr::mime() %>%
     gmailr::to("dashboards@fhi.no") %>%
@@ -253,10 +256,9 @@ DashboardEmailSpecific <- function(emailBCC,
 
   currentWD <- getwd()
   tmp <- tempdir()
-  file.copy(OAUTHLocation,paste0(tmp,"/.httr-oauth"))
+  file.copy(OAUTHLocation, paste0(tmp, "/.httr-oauth"))
   setwd(tmp)
   gmailr::gmail_auth()
   gmailr::send_message(text_msg)
   setwd(currentWD)
 }
-
