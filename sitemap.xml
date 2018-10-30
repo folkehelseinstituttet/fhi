@@ -100,10 +100,16 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/stat_stepribbon.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulsepdf_document_luft.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompuls_luft_document.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulsepdf_document_mage.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompuls_mage_document.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_resources_copy.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_resources_remove.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/theme_SMAO.html</loc>
