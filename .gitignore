@@ -32,3 +32,6 @@ Temporary Items
 .apdisk
 .Rproj.user
 inst/doc
+docs/*
+*.log
+*.log

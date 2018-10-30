@@ -3,13 +3,10 @@
 #' @importFrom rmarkdown pandoc_available pdf_document
 #' @export sykdompuls_mage_document
 sykdompuls_mage_document <- function(...) {
-
   rmarkdown::pandoc_available('1.9', TRUE)
-
   template <- system.file("rmarkdown", "templates", "sykdompuls_mage_document", "resources", "template.latex",
                           package = "fhi")
-
-  base <- rmarkdown::pdf_document(... , template=template, latex_engine = "xelatex")
+  base <- rmarkdown::pdf_document(..., template = template, latex_engine = "xelatex")
   base$inherits <- "pdf_document"
 
   base

@@ -27,7 +27,7 @@ Imports:
   RAWmisc
 Suggests: testthat,
     knitr,
-    rmarkdown
+    usethis
 Remotes: raubreywhite/RAWmisc
 License: GPL-3
 LazyData: true
