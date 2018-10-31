@@ -1,7 +1,4 @@
 #!/bin/bash
-set -o errexit -o nounset
-PKG_REPO=$PWD
-cd ..
 
 # see https://github.com/travis-ci/travis-ci/issues/1701
 function travis-branch-commit() {
@@ -31,16 +28,16 @@ function travis-branch-commit() {
         return 1
     fi
     # make Travis CI skip this build
-    if ! git commit -m "Travis CI update [ci skip]"; then
+    if ! git commit -m "Travis CI update [$TRAVIS_BUILD_NUMBER]"; then
         err "failed to commit updates"
         return 1
     fi
     # add to your .travis.yml: `branches\n  except:\n  - "/\\+travis\\d+$/"\n`
-    local git_tag=SOME_TAG_TRAVIS_WILL_NOT_BUILD+travis$TRAVIS_BUILD_NUMBER
-    if ! git tag "$git_tag" -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"; then
-        err "failed to create git tag: $git_tag"
-        return 1
-    fi
+    #local git_tag=SOME_TAG_TRAVIS_WILL_NOT_BUILD+travis$TRAVIS_BUILD_NUMBER
+    #if ! git tag "$git_tag" -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"; then
+    #    err "failed to create git tag: $git_tag"
+    #    return 1
+    #fi
     local remote=origin
     if [[ $GH_TOKEN ]]; then
         remote=https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG
@@ -86,27 +83,15 @@ addToDrat(){
 
 }
 
+set -o errexit -o nounset
+PKG_REPO=$PWD
+cd ..
+
 addToDrat
 
 rm $PKG_REPO/$PKG_TARBALL
 cd $PKG_REPO
 
-echo "BLAH BLAH"
-
-#git reset --hard
-#git remote add upstream "https://$GH_TOKEN@github.com/folkehelseinstituttet/fhi.git"
-#git fetch upstream 2>err.txt
-
 Rscript -e "styler::style_pkg('$PKG_REPO/')"
 
 travis-branch-commit 
-#git commit -a -m "styler::style_pkg: build $TRAVIS_BUILD_NUMBER"
-#git push 2>err.txt
-
-
-## Other options:
-## Only add if the commit is tagged: so something like:
-#if [ $TRAVIS_TAG ] ; then
-#   addToDrat
-#fi
-##but will need to edit .travis.yml since $TRAVIS_BRANCH will now equal $TRAVIS_TAG

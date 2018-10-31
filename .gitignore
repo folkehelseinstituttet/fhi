@@ -30,9 +30,12 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-.Rproj.user
-inst/doc
-docs/*
 *.log
 
 *.Rcheck
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+inst/doc
+docs/*

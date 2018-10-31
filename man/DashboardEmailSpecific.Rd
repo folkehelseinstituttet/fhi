@@ -5,7 +5,7 @@
 \title{Sends out mass emails that are stored in an xlsx file}
 \usage{
 DashboardEmailSpecific(emailBCC, emailSubject, emailText, emailFooter = TRUE,
-  OAUTHLocation = file.path("/etc", "gmailr", ".httr-oauth"))
+  OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION)
 }
 \arguments{
 \item{emailBCC}{a}
