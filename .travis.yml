@@ -6,6 +6,9 @@ r_packages:
 - pkgdown
 - lintr
 - styler
+branches:
+  except:
+    - travis
 before_install:
 - bash travis/make.sh
 after_success:
