@@ -1,6 +1,6 @@
 Package: fhi
 Title: FHI Convenience functions
-Version: 1.0.2
+Version: 2018.10.31
 Authors@R: person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre"))
 Description: Convenience functions for use at folkehelseinstituttet.
 URL: https://folkehelseinstituttet.github.io/fhi/

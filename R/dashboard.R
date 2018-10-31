@@ -28,9 +28,9 @@ DashboardIsInitialised <- function() {
 #' @param changeWorkingDirToTmp Do you want to change the working directory to a temporary directory?
 #' @export DashboardInitialise
 DashboardInitialise <- function(STUB = "/",
-                       SRC = "src",
-               NAME = NULL,
-          changeWorkingDirToTmp = TRUE) {
+                                SRC = "src",
+                                NAME = NULL,
+                                changeWorkingDirToTmp = TRUE) {
   if (file.exists("/tmp/computer")) {
     con <- file("/tmp/computer", "r")
     COMPUTER_NAME <- readLines(con, n = 1)
