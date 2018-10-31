@@ -29,7 +29,7 @@ DashboardIsInitialised <- function() {
 #' @export DashboardInitialise
 DashboardInitialise <- function(
   STUB = "/",
-                                SRC = "src",
+           SRC = "src",
                                 NAME = NULL,
                                 changeWorkingDirToTmp = TRUE
   ) {
