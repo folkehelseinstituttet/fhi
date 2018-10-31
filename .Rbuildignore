@@ -2,9 +2,8 @@
 ^\.Rproj\.user$
 ^.*\.git$
 README.md
-deploy.sh
-make.sh
 .travis.yml
+travis/*
 .Rhistory
 .DS_Store
 .Rhistory
