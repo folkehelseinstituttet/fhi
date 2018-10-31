@@ -31,4 +31,5 @@ mkdir drat; cd drat
 
 addToDrat
 
+rm $PKG_REPO/$PKG_TARBALL
 cd $PKG_REPO
