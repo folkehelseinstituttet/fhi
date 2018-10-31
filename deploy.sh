@@ -99,7 +99,7 @@ echo "BLAH BLAH"
 
 Rscript -e "styler::style_pkg('$PKG_REPO/')"
 
-travis-branch-commit() 
+travis-branch-commit 
 #git commit -a -m "styler::style_pkg: build $TRAVIS_BUILD_NUMBER"
 #git push 2>err.txt
 
