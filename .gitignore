@@ -34,4 +34,5 @@ Temporary Items
 inst/doc
 docs/*
 *.log
-*.log
+
+*.Rcheck
