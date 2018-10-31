@@ -3,7 +3,7 @@ Title: FHI Convenience functions
 Version: 2018.10.31
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
-  person("B", "V", email = "xx@fhi.no", role = c("aut")),
+  person("B", "V", email = "xx@fhi.no", role = c("aut"))
   )
 Description: Convenience functions for use at folkehelseinstituttet.
 URL: https://folkehelseinstituttet.github.io/fhi/
