@@ -31,6 +31,7 @@ DashboardInitialise <- function(STUB = "/",
                                 SRC = "src",
                                 NAME = NULL,
                                 changeWorkingDirToTmp = TRUE) {
+  # nolint start
   if (file.exists("/tmp/computer")) {
     con <- file("/tmp/computer", "r")
     COMPUTER_NAME <- readLines(con, n = 1)
@@ -38,6 +39,7 @@ DashboardInitialise <- function(STUB = "/",
   } else {
     COMPUTER_NAME <- "NO_NAME_FOUND"
   }
+  # nolint end
   Sys.setenv(COMPUTER = COMPUTER_NAME)
 
   PROJ$COMPUTER_NAME <- COMPUTER_NAME
@@ -103,7 +105,11 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 #' @param SILENT Load all packages silently?
 #' @importFrom devtools load_all
 #' @export DashboardInitialiseOpinionated
+
+# nolint start
 DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
+# nolint end
+
   DashboardInitialise(
     STUB = STUB,
     SRC = "src",
@@ -166,8 +172,8 @@ DashboardEmail <- function(emailBCC,
                            emailAttachFiles = NULL,
                            emailFooter = TRUE,
                            BCC = TRUE,
-                           XLSXLocation = file.path("/etc", "gmailr", "emails.xlsx"),
-                           OAUTHLocation = file.path("/etc", "gmailr", ".httr-oauth")) {
+                           XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
+                           OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
   emails <- readxl::read_excel(XLSXLocation)
   emails <- stats::na.omit(emails[[emailBCC]])
 
@@ -211,7 +217,7 @@ DashboardEmail <- function(emailBCC,
 
   currentWD <- getwd()
   tmp <- tempdir()
-  file.copy(OAUTHLocation, paste0(tmp, "/.httr-oauth"))
+  file.copy(OAUTHLocation, file.path(tmp, ".httr-oauth"))
   setwd(tmp)
   gmailr::gmail_auth()
   gmailr::send_message(text_msg)
@@ -230,7 +236,7 @@ DashboardEmailSpecific <- function(emailBCC,
                                    emailSubject,
                                    emailText,
                                    emailFooter = TRUE,
-                                   OAUTHLocation = file.path("/etc", "gmailr", ".httr-oauth")) {
+                                   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
   if (length(emailBCC) > 1) emailBCC <- paste0(emailBCC, collapse = ",")
 
   if (emailFooter) {
@@ -255,7 +261,7 @@ DashboardEmailSpecific <- function(emailBCC,
 
   currentWD <- getwd()
   tmp <- tempdir()
-  file.copy(OAUTHLocation, paste0(tmp, "/.httr-oauth"))
+  file.copy(OAUTHLocation, file.path(tmp, ".httr-oauth"))
   setwd(tmp)
   gmailr::gmail_auth()
   gmailr::send_message(text_msg)
