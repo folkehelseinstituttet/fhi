@@ -108,7 +108,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 
 # nolint start
 DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
-# nolint end
+  # nolint end
 
   DashboardInitialise(
     STUB = STUB,
