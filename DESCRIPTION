@@ -5,7 +5,7 @@ Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
   person("B", "V", email = "xx@fhi.no", role = c("aut"))
   )
-Description: Convenience functions for use at folkehelseinstituttet.
+Description: Convenience functions for use at Folkehelseinstituttet.
 URL: https://folkehelseinstituttet.github.io/fhi/
 BugReports: https://github.com/folkehelseinstituttet/fhi/issues/
 Depends:
