@@ -115,7 +115,7 @@ DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprin
     STUB = STUB,
     SRC = "src",
     NAME = NAME,
-    changeWorkingDirToTmp == (Sys.getenv("RSTUDIO") != "1")
+    changeWorkingDirToTmp = (Sys.getenv("RSTUDIO") != "1")
   )
 
   if (Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD) {
