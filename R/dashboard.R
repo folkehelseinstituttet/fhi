@@ -109,7 +109,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 #' @export DashboardInitialiseOpinionated
 
 # nolint start
-DashboardInitialiseOpinionated <- function(NAME, PKG=NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
+DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
 
   DashboardInitialise(
