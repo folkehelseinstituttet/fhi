@@ -4,12 +4,14 @@
 \alias{DashboardInitialiseOpinionated}
 \title{DashboardInitialiseOpinionated}
 \usage{
-DashboardInitialiseOpinionated(NAME, STUB = "/",
+DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
   PACKAGE_DIR = sprintf("/packages/dashboards_\%s", NAME),
   FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
-\item{NAME}{The name of the automated analysis}
+\item{NAME}{The name of the automated analysis folders}
+
+\item{PKG}{The name of the R package (generally the same as `NAME`)}
 
 \item{STUB}{The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders}
 

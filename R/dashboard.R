@@ -98,7 +98,8 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 }
 
 #' DashboardInitialiseOpinionated
-#' @param NAME The name of the automated analysis
+#' @param NAME The name of the automated analysis folders
+#' @param PKG The name of the R package (generally the same as `NAME`)
 #' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
 #' @param PACKAGE_DIR The directory containing the package source code
 #' @param FORCE_DEV_PACKAGE_LOAD a
@@ -108,7 +109,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 #' @export DashboardInitialiseOpinionated
 
 # nolint start
-DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
+DashboardInitialiseOpinionated <- function(NAME, PKG=NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
 
   DashboardInitialise(
@@ -130,9 +131,9 @@ DashboardInitialiseOpinionated <- function(NAME, STUB = "/", PACKAGE_DIR = sprin
     }
   } else {
     if (SILENT) {
-      suppressPackageStartupMessages(library(NAME, character.only = TRUE))
+      suppressPackageStartupMessages(library(PKG, character.only = TRUE))
     } else {
-      library(NAME, character.only = TRUE)
+      library(PKG, character.only = TRUE)
     }
 
     if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
