@@ -9,7 +9,7 @@ DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
   FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
-\item{NAME}{The name of the automated analysis}
+\item{NAME}{The name of the automated analysis folders}
 
 \item{PKG}{The name of the R package (generally the same as `NAME`)}
 

@@ -98,7 +98,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 }
 
 #' DashboardInitialiseOpinionated
-#' @param NAME The name of the automated analysis
+#' @param NAME The name of the automated analysis folders
 #' @param PKG The name of the R package (generally the same as `NAME`)
 #' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
 #' @param PACKAGE_DIR The directory containing the package source code
