@@ -126,7 +126,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
+    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>PKG</span> <span class='kw'>=</span> <span class='no'>NAME</span>, <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
   <span class='kw'>PACKAGE_DIR</span> <span class='kw'>=</span> <span class='fu'>sprintf</span>(<span class='st'>"/packages/dashboards_%s"</span>, <span class='no'>NAME</span>),
   <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
@@ -135,7 +135,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>NAME</th>
-      <td><p>The name of the automated analysis</p></td>
+      <td><p>The name of the automated analysis folders</p></td>
+    </tr>
+    <tr>
+      <th>PKG</th>
+      <td><p>The name of the R package (generally the same as `NAME`)</p></td>
     </tr>
     <tr>
       <th>STUB</th>
