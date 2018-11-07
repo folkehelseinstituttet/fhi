@@ -84,15 +84,15 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 
   if (type == "msg") {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s/%s/%s %s", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
+      fn(sprintf("%s/%s/%s %s\r", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
     } else {
-      fn(sprintf("%s %s", Sys.time(), txt))
+      fn(sprintf("%s %s\r", Sys.time(), txt))
     }
   } else {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s/%s/%s %s", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
+      fn(sprintf("%s/%s/%s %s\r", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
     } else {
-      fn(sprintf("%s %s", Sys.time(), txt), call. = F)
+      fn(sprintf("%s %s\r", Sys.time(), txt), call. = F)
     }
   }
 }
