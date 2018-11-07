@@ -1,7 +1,7 @@
 #!/bin/bash
 TZ=":CET"
 DATE=`date +%Y.%m.%d`
-DATETIME=`date +%Y.%m.%d/%H:%M`
+DATETIME=`date +%Y.%m.%d @ %H:%M`
 sed -i "s/^Version: .*$/Version: $DATE/" DESCRIPTION
 head DESCRIPTION
 
