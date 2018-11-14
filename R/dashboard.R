@@ -113,7 +113,7 @@ DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE
   # nolint end
 
   # make warnings appear immediately
-  options(warn=1)
+  options(warn = 1)
 
   DashboardInitialise(
     STUB = STUB,
