@@ -112,6 +112,9 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
 
+  # make warnings appear immediately
+  options(warn=1)
+
   DashboardInitialise(
     STUB = STUB,
     SRC = "src",
