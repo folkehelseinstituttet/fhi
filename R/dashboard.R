@@ -61,6 +61,12 @@ DashboardInitialise <- function(
 #' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
 #' @export DashboardMsg
 DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
+
+  # make warnings print immediately
+  op <- options("warn")
+  on.exit(options(op))
+  options(warn=1)
+
   SYSCALLS$CALLS <- sys.calls()
   if (syscallsDepth < 0) stop("syscallsDepth cannot be less than zero")
   if (!type %in% c("msg", "warn", "err")) stop(sprintf("%s not msg, warn, err", type))
@@ -78,7 +84,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
     if (length(depthSeq) > syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
     depthSeq <- rev(depthSeq)
     for (i in depthSeq) {
-      base::message(depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
+      base::message("           ",depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
     }
   }
 
@@ -111,9 +117,6 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 # nolint start
 DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
-
-  # make warnings appear immediately
-  options(warn = 1)
 
   DashboardInitialise(
     STUB = STUB,
