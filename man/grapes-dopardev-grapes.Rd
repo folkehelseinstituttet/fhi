@@ -2,7 +2,7 @@
 % Please edit documentation in R/dashboard.R
 \name{\%dopardev\%}
 \alias{\%dopardev\%}
-\title{`%dopardev%`}
+\title{\%dopardev\%}
 \usage{
 obj \%dopardev\% ex
 }
@@ -12,5 +12,5 @@ obj \%dopardev\% ex
 \item{ex}{the R expression to evaluate.}
 }
 \description{
-`%dopardev%`
+\%dopardev\%
 }
