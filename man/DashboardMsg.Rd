@@ -4,7 +4,7 @@
 \alias{DashboardMsg}
 \title{Messaging}
 \usage{
-DashboardMsg(txt, type = "msg", syscallsDepth = 2)
+DashboardMsg(txt, type = "msg", syscallsDepth = 2, newLine = FALSE)
 }
 \arguments{
 \item{txt}{Text}
@@ -12,6 +12,8 @@ DashboardMsg(txt, type = "msg", syscallsDepth = 2)
 \item{type}{msg, warn, err}
 
 \item{syscallsDepth}{The number of syscalls included in the message. Set to 0 to disable.}
+
+\item{newLine}{Should there be a new line at the start of the message?}
 }
 \description{
 Messaging
