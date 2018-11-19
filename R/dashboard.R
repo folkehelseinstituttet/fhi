@@ -10,19 +10,6 @@ DashboardIsDev <- function() {
   return(PROJ$IS_DEV)
 }
 
-#' \%dopardev\%
-#' @param obj foreach object used to control the evaluation of ex.
-#' @param ex the R expression to evaluate.
-#' @importFrom foreach %dopar% %do%
-#' @export %dopardev%
-`%dopardev%` <- function(obj, ex) {
-  if (DashboardIsDev()) {
-    return(foreach::`%dopar%`(obj, ex))
-  } else {
-    return(foreach::`%do%`(obj, ex))
-  }
-}
-
 #' Is the dashboard initialised?
 #' @export DashboardIsInitialised
 DashboardIsInitialised <- function() {
@@ -128,7 +115,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
 #' @export DashboardInitialiseOpinionated
 
 # nolint start
-DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = sprintf("/packages/dashboards_%s", NAME), FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
+DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
 
   DashboardInitialise(
