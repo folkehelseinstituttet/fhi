@@ -10,7 +10,7 @@ DashboardIsDev <- function() {
   return(PROJ$IS_DEV)
 }
 
-#' `%dopardev%`
+#' \%dopardev\%
 #' @param obj foreach object used to control the evaluation of ex.
 #' @param ex the R expression to evaluate.
 #' @importFrom foreach %dopar% %do%
