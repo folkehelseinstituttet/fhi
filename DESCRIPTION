@@ -27,6 +27,7 @@ Imports:
   uuid,
   processx,
   devtools,
+  foreach,
   RAWmisc
 Suggests: testthat,
     knitr,

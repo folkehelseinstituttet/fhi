@@ -10,6 +10,18 @@ DashboardIsDev <- function() {
   return(PROJ$IS_DEV)
 }
 
+#' `%dopardev%`
+#' @param obj foreach object used to control the evaluation of ex.
+#' @param ex the R expression to evaluate.
+#' @importFrom foreach %dopar% %do%
+`%dopardev%` <- function(obj, ex){
+  if(DashboardIsDev()){
+    return(foreach::`%dopar%`(obj, ex))
+  } else {
+    return(foreach::`%do%`(obj, ex))
+  }
+}
+
 #' Is the dashboard initialised?
 #' @export DashboardIsInitialised
 DashboardIsInitialised <- function() {
