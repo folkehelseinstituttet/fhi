@@ -170,24 +170,24 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
 
 #' Sends out mass emails
 #' @param emailsFromExcel a
-#' @param emailsDirect a
 #' @param emailSubject a
 #' @param emailText a
 #' @param emailAttachFiles a
 #' @param emailFooter a
 #' @param BCC a
+#' @param emailsDirect a
 #' @param XLSXLocation a
 #' @param OAUTHLocation a
 #' @import gmailr
 #' @importFrom magrittr %>%
 #' @export DashboardEmail
 DashboardEmail <- function(emailsFromExcel=NULL,
-                           emailsDirect=NULL,
                            emailSubject,
                            emailText,
                            emailAttachFiles = NULL,
                            emailFooter = TRUE,
                            BCC = TRUE,
+                           emailsDirect=NULL,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
   if(!is.null(emailsFromExcel)){
