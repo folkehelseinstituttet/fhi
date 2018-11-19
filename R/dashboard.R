@@ -14,6 +14,7 @@ DashboardIsDev <- function() {
 #' @param obj foreach object used to control the evaluation of ex.
 #' @param ex the R expression to evaluate.
 #' @importFrom foreach %dopar% %do%
+#' @export %dopardev%
 `%dopardev%` <- function(obj, ex) {
   if (DashboardIsDev()) {
     return(foreach::`%dopar%`(obj, ex))
