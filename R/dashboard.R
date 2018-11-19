@@ -77,7 +77,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
   # make warnings print immediately
   op <- options("warn")
   on.exit(options(op))
-  options(warn=1)
+  options(warn = 1)
 
   SYSCALLS$CALLS <- sys.calls()
   if (syscallsDepth < 0) stop("syscallsDepth cannot be less than zero")
@@ -96,7 +96,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
     if (length(depthSeq) > syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
     depthSeq <- rev(depthSeq)
     for (i in depthSeq) {
-      base::message("           ",depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
+      base::message("           ", depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
     }
   }
 
