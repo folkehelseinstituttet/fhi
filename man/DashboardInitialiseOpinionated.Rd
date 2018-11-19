@@ -5,8 +5,8 @@
 \title{DashboardInitialiseOpinionated}
 \usage{
 DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
-  PACKAGE_DIR = sprintf("/packages/dashboards_\%s", NAME),
-  FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
+  PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE,
+  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
 }
 \arguments{
 \item{NAME}{The name of the automated analysis folders}
