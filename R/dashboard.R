@@ -148,6 +148,7 @@ DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE
 
     if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
       PROJ$IS_PRODUCTION <- TRUE
+      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails.xlsx") # nolint
     }
   }
 }
@@ -189,6 +190,10 @@ DashboardEmail <- function(emailBCC,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
   emails <- readxl::read_excel(XLSXLocation)
   emails <- stats::na.omit(emails[[emailBCC]])
+
+  if(!fhi::DashboardIsProduction()){
+    emailSubject <- paste0("TESTING: ",emailSubject)
+  }
 
   if (emailFooter) {
     emailText <- paste0(
