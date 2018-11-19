@@ -168,8 +168,9 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
   return(retVal)
 }
 
-#' Sends out mass emails that are stored in an xlsx file
-#' @param emailBCC a
+#' Sends out mass emails
+#' @param emailsFromExcel a
+#' @param emailsDirect a
 #' @param emailSubject a
 #' @param emailText a
 #' @param emailAttachFiles a
@@ -180,7 +181,8 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
 #' @import gmailr
 #' @importFrom magrittr %>%
 #' @export DashboardEmail
-DashboardEmail <- function(emailBCC,
+DashboardEmail <- function(emailsFromExcel=NULL,
+                           emailsDirect=NULL,
                            emailSubject,
                            emailText,
                            emailAttachFiles = NULL,
@@ -188,8 +190,13 @@ DashboardEmail <- function(emailBCC,
                            BCC = TRUE,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  emails <- readxl::read_excel(XLSXLocation)
-  emails <- stats::na.omit(emails[[emailBCC]])
+  if(!is.null(emailsFromExcel)){
+    emails <- readxl::read_excel(XLSXLocation)
+    emails <- stats::na.omit(emails[[emailsFromExcel]])
+  } else {
+    emails <- emailsDirect
+    if (length(emails) > 1) emails <- paste0(emails, collapse = ",")
+  }
 
   if(!fhi::DashboardIsProduction()){
     emailSubject <- paste0("TESTING: ",emailSubject)
@@ -242,46 +249,3 @@ DashboardEmail <- function(emailBCC,
   setwd(currentWD)
 }
 
-#' Sends out mass emails that are stored in an xlsx file
-#' @param emailBCC a
-#' @param emailSubject a
-#' @param emailText a
-#' @param emailFooter a
-#' @param OAUTHLocation a
-#' @importFrom magrittr %>%
-#' @export DashboardEmailSpecific
-DashboardEmailSpecific <- function(emailBCC,
-                                   emailSubject,
-                                   emailText,
-                                   emailFooter = TRUE,
-                                   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  if (length(emailBCC) > 1) emailBCC <- paste0(emailBCC, collapse = ",")
-
-  if (emailFooter) {
-    emailText <- paste0(
-      emailText,
-      "<br><br><br>
-    ------------------------
-    <br>
-    DO NOT REPLY TO THIS EMAIL! This email address is not checked by anyone!
-    <br>
-    To add or remove people to/from this notification list, send their details to richard.white@fhi.no
-    "
-    )
-  }
-
-  gmailr::mime() %>%
-    gmailr::to("dashboards@fhi.no") %>%
-    gmailr::from("Dashboards FHI <dashboardsfhi@gmail.com>") %>%
-    gmailr::bcc(emailBCC) %>%
-    gmailr::subject(emailSubject) %>%
-    gmailr::html_body(emailText) -> text_msg
-
-  currentWD <- getwd()
-  tmp <- tempdir()
-  file.copy(OAUTHLocation, file.path(tmp, ".httr-oauth"))
-  setwd(tmp)
-  gmailr::gmail_auth()
-  gmailr::send_message(text_msg)
-  setwd(currentWD)
-}
