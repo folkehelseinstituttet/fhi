@@ -61,7 +61,7 @@ DashboardInitialise <- function(
 #' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
 #' @param newLine Should there be a new line at the start of the message?
 #' @export DashboardMsg
-DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine=FALSE) {
+DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) {
 
   # make warnings print immediately
   op <- options("warn")
@@ -73,7 +73,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine=FALSE) {
   if (!type %in% c("msg", "warn", "err")) stop(sprintf("%s not msg, warn, err", type))
 
   startOfLine <- ""
-  if(newLine) startOfLine <- "\r\n"
+  if (newLine) startOfLine <- "\r\n"
 
   fn <- switch(type,
     msg = base::message,
@@ -88,21 +88,21 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine=FALSE) {
     if (length(depthSeq) > syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
     depthSeq <- rev(depthSeq)
     for (i in depthSeq) {
-      base::message(startOfLine,"           ", depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
+      base::message(startOfLine, "           ", depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
     }
   }
 
   if (type == "msg") {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s%s/%s/%s %s\r",startOfLine,  Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
+      fn(sprintf("%s%s/%s/%s %s\r", startOfLine, Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
     } else {
-      fn(sprintf("%s%s %s\r",startOfLine, Sys.time(), txt))
+      fn(sprintf("%s%s %s\r", startOfLine, Sys.time(), txt))
     }
   } else {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s%s/%s/%s %s\r",startOfLine, Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
+      fn(sprintf("%s%s/%s/%s %s\r", startOfLine, Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
     } else {
-      fn(sprintf("%s%s %s\r",startOfLine, Sys.time(), txt), call. = F)
+      fn(sprintf("%s%s %s\r", startOfLine, Sys.time(), txt), call. = F)
     }
   }
 }
