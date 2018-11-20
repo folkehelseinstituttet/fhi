@@ -2,15 +2,15 @@
 % Please edit documentation in R/dashboard.R
 \name{DashboardEmail}
 \alias{DashboardEmail}
-\title{Sends out mass emails that are stored in an xlsx file}
+\title{Sends out mass emails}
 \usage{
-DashboardEmail(emailBCC, emailSubject, emailText, emailAttachFiles = NULL,
-  emailFooter = TRUE, BCC = TRUE,
-  XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
+DashboardEmail(emailsFromExcel = NULL, emailSubject, emailText,
+  emailAttachFiles = NULL, emailFooter = TRUE, BCC = TRUE,
+  emailsDirect = NULL, XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION)
 }
 \arguments{
-\item{emailBCC}{a}
+\item{emailsFromExcel}{a}
 
 \item{emailSubject}{a}
 
@@ -22,10 +22,12 @@ DashboardEmail(emailBCC, emailSubject, emailText, emailAttachFiles = NULL,
 
 \item{BCC}{a}
 
+\item{emailsDirect}{a}
+
 \item{XLSXLocation}{a}
 
 \item{OAUTHLocation}{a}
 }
 \description{
-Sends out mass emails that are stored in an xlsx file
+Sends out mass emails
 }
