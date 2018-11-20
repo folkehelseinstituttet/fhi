@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sends out mass emails that are stored in an xlsx file — DashboardEmail • fhi</title>
+<title>Sends out mass emails — DashboardEmail • fhi</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Sends out mass emails that are stored in an xlsx file — DashboardEmail" />
+<meta property="og:title" content="Sends out mass emails — DashboardEmail" />
 
-<meta property="og:description" content="Sends out mass emails that are stored in an xlsx file" />
+<meta property="og:description" content="Sends out mass emails" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.11.19</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2018.11.20</span>
       </span>
     </div>
 
@@ -115,27 +115,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sends out mass emails that are stored in an xlsx file</h1>
+    <h1>Sends out mass emails</h1>
     
     <div class="hidden name"><code>DashboardEmail.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Sends out mass emails that are stored in an xlsx file</p>
+    <p>Sends out mass emails</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>DashboardEmail</span>(<span class='no'>emailBCC</span>, <span class='no'>emailSubject</span>, <span class='no'>emailText</span>, <span class='kw'>emailAttachFiles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>emailFooter</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>BCC</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>XLSXLocation</span> <span class='kw'>=</span> <span class='no'>PROJ</span>$<span class='no'>DEFAULT_EMAILS_XLSX_LOCATION</span>,
+    <pre class="usage"><span class='fu'>DashboardEmail</span>(<span class='kw'>emailsFromExcel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>emailSubject</span>, <span class='no'>emailText</span>,
+  <span class='kw'>emailAttachFiles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>emailFooter</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>BCC</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>emailsDirect</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>XLSXLocation</span> <span class='kw'>=</span> <span class='no'>PROJ</span>$<span class='no'>DEFAULT_EMAILS_XLSX_LOCATION</span>,
   <span class='kw'>OAUTHLocation</span> <span class='kw'>=</span> <span class='no'>PROJ</span>$<span class='no'>DEFAULT_EMAILS_OAUTH_LOCATION</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>emailBCC</th>
+      <th>emailsFromExcel</th>
       <td><p>a</p></td>
     </tr>
     <tr>
@@ -156,6 +156,10 @@
     </tr>
     <tr>
       <th>BCC</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>emailsDirect</th>
       <td><p>a</p></td>
     </tr>
     <tr>
