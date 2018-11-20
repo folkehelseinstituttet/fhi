@@ -181,16 +181,16 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
 #' @import gmailr
 #' @importFrom magrittr %>%
 #' @export DashboardEmail
-DashboardEmail <- function(emailsFromExcel=NULL,
+DashboardEmail <- function(emailsFromExcel = NULL,
                            emailSubject,
                            emailText,
                            emailAttachFiles = NULL,
                            emailFooter = TRUE,
                            BCC = TRUE,
-                           emailsDirect=NULL,
+                           emailsDirect = NULL,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  if(!is.null(emailsFromExcel)){
+  if (!is.null(emailsFromExcel)) {
     emails <- readxl::read_excel(XLSXLocation)
     emails <- stats::na.omit(emails[[emailsFromExcel]])
   } else {
@@ -198,8 +198,8 @@ DashboardEmail <- function(emailsFromExcel=NULL,
     if (length(emails) > 1) emails <- paste0(emails, collapse = ",")
   }
 
-  if(!fhi::DashboardIsProduction()){
-    emailSubject <- paste0("TESTING: ",emailSubject)
+  if (!fhi::DashboardIsProduction()) {
+    emailSubject <- paste0("TESTING: ", emailSubject)
   }
 
   if (emailFooter) {
@@ -248,4 +248,3 @@ DashboardEmail <- function(emailsFromExcel=NULL,
   gmailr::send_message(text_msg)
   setwd(currentWD)
 }
-
