@@ -11,6 +11,9 @@
 
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+\usepackage{caption}
+\captionsetup[table]{name=Tabell}
+
 \usepackage{svg}
 \usepackage{pdflscape}
 \usepackage{blindtext}
