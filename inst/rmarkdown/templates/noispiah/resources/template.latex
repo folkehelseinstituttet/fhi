@@ -8,6 +8,7 @@
 
 \let\oldtabular\tabular
 \renewcommand{\tabular}{\tiny\oldtabular}
+\renewcommand\familydefault{\sfdefault}
 
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
@@ -23,9 +24,9 @@
 \pagestyle{fancy}
 
 \usepackage{fontspec}
-\IfFontExistsTF{Arial}{%
-  \setmainfont{Arial}
-}
+%\IfFontExistsTF{Arial}{%
+%  \setmainfont{Arial}
+%}
 
 \fancyhf{}
 \fancyfoot[R]{\sffamily\nouppercase{\thepage}}
