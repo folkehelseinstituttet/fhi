@@ -13,6 +13,7 @@
 
 \usepackage{caption}
 \captionsetup[table]{name=Tabell}
+\captionsetup[figure]{name=Figur}
 
 \usepackage{svg}
 \usepackage{pdflscape}
