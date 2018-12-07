@@ -23,9 +23,6 @@
 \pagestyle{fancy}
 
 \usepackage{fontspec}
-\IfFontExistsTF{Ubuntu}{%
-  \setmainfont{Ubuntu}
-}
 \IfFontExistsTF{Arial}{%
   \setmainfont{Arial}
 }
