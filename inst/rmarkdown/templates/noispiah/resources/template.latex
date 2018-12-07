@@ -26,6 +26,9 @@
 \IfFontExistsTF{Ubuntu}{%
   \setmainfont{Ubuntu}
 }
+\IfFontExistsTF{Arial}{%
+  \setmainfont{Arial}
+}
 
 \fancyhf{}
 \fancyfoot[R]{\sffamily\nouppercase{\thepage}}
