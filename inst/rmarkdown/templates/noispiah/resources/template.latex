@@ -3,9 +3,10 @@
 \usepackage[top=3cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
 \renewcommand{\baselinestretch}{1.5}
 
-
 \let\oldtabular\tabular
 \renewcommand{\tabular}{\tiny\oldtabular}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \usepackage{svg}
 \usepackage{pdflscape}
