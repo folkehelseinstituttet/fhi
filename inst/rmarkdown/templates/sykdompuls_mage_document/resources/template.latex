@@ -2,7 +2,8 @@
 \usepackage{float}
 \usepackage[top=4.2cm, bottom=4.2cm, left=1.8cm, right=1.8cm, headsep=1cm]{geometry}
 \renewcommand{\baselinestretch}{1.2}
-
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{10pt plus 2pt minus 1pt}{0pt plus 1pt minus 1pt}
 \usepackage{background}
 \backgroundsetup{contents={\def\svgwidth{0.111\columnwidth}\input{_skeleton_SP_template.png_tex}},placement=top,opacity=1}
 
