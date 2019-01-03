@@ -6,7 +6,7 @@ PROJ$PRODUCTION_NAME <- "smhb"
 PROJ$IS_PRODUCTION <- FALSE
 PROJ$IS_DEV <- FALSE
 PROJ$IS_INITIALISED <- FALSE
-PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails.xlsx") # nolint
+PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails_test.xlsx") # nolint
 PROJ$DEFAULT_EMAILS_OAUTH_LOCATION <- file.path("/etc", "gmailr", ".httr-oauth") # nolint
 
 #' SYSCALLS

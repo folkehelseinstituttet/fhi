@@ -63,9 +63,9 @@ stairstepn <- function(data, direction = "hv", yvars = "y") {
   }
 
   data.frame(
-    x = data$x[ xs ]
-    , data[ ys, yvars, drop = FALSE ]
-    , data[ xs, setdiff(names(data), c("x", yvars)), drop = FALSE ]
+    x =
+      data$x[ xs ],
+    data[ ys, yvars, drop = FALSE ], data[ xs, setdiff(names(data), c("x", yvars)), drop = FALSE ]
   )
 }
 

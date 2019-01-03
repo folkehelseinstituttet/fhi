@@ -1,11 +1,20 @@
 \documentclass[a4paper,12pt]{article}
 
 \usepackage[top=3cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
-\renewcommand{\baselinestretch}{1.5}
 
+\renewcommand{\baselinestretch}{2}
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
 
 \let\oldtabular\tabular
 \renewcommand{\tabular}{\tiny\oldtabular}
+\renewcommand\familydefault{\sfdefault}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{caption}
+\captionsetup[table]{name=Tabell}
+\captionsetup[figure]{name=Figur}
 
 \usepackage{svg}
 \usepackage{pdflscape}
@@ -15,9 +24,9 @@
 \pagestyle{fancy}
 
 \usepackage{fontspec}
-\IfFontExistsTF{Ubuntu}{%
-  \setmainfont{Ubuntu}
-}
+%\IfFontExistsTF{Arial}{%
+%  \setmainfont{Arial}
+%}
 
 \fancyhf{}
 \fancyfoot[R]{\sffamily\nouppercase{\thepage}}

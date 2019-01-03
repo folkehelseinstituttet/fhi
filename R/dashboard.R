@@ -59,8 +59,9 @@ DashboardInitialise <- function(
 #' @param txt Text
 #' @param type msg, warn, err
 #' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
+#' @param newLine Should there be a new line at the start of the message?
 #' @export DashboardMsg
-DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
+DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) {
 
   # make warnings print immediately
   op <- options("warn")
@@ -70,6 +71,9 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
   SYSCALLS$CALLS <- sys.calls()
   if (syscallsDepth < 0) stop("syscallsDepth cannot be less than zero")
   if (!type %in% c("msg", "warn", "err")) stop(sprintf("%s not msg, warn, err", type))
+
+  startOfLine <- ""
+  if (newLine) startOfLine <- "\r\n"
 
   fn <- switch(type,
     msg = base::message,
@@ -84,21 +88,21 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2) {
     if (length(depthSeq) > syscallsDepth) depthSeq <- depthSeq[1:syscallsDepth]
     depthSeq <- rev(depthSeq)
     for (i in depthSeq) {
-      base::message("           ", depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
+      base::message(startOfLine, "           ", depth - i + 1, "/", depth, ": ", deparse(x[[i]]))
     }
   }
 
   if (type == "msg") {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s/%s/%s %s\r", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
+      fn(sprintf("%s%s/%s/%s %s\r", startOfLine, Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt))
     } else {
-      fn(sprintf("%s %s\r", Sys.time(), txt))
+      fn(sprintf("%s%s %s\r", startOfLine, Sys.time(), txt))
     }
   } else {
     if (PROJ$IS_INITIALISED) {
-      fn(sprintf("%s/%s/%s %s\r", Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
+      fn(sprintf("%s%s/%s/%s %s\r", startOfLine, Sys.time(), PROJ$COMPUTER_NAME, PROJ$NAME, txt), call. = F)
     } else {
-      fn(sprintf("%s %s\r", Sys.time(), txt), call. = F)
+      fn(sprintf("%s%s %s\r", startOfLine, Sys.time(), txt), call. = F)
     }
   }
 }
@@ -144,6 +148,7 @@ DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE
 
     if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
       PROJ$IS_PRODUCTION <- TRUE
+      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails.xlsx") # nolint
     }
   }
 }
@@ -163,28 +168,39 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
   return(retVal)
 }
 
-#' Sends out mass emails that are stored in an xlsx file
-#' @param emailBCC a
+#' Sends out mass emails
+#' @param emailsFromExcel a
 #' @param emailSubject a
 #' @param emailText a
 #' @param emailAttachFiles a
 #' @param emailFooter a
 #' @param BCC a
+#' @param emailsDirect a
 #' @param XLSXLocation a
 #' @param OAUTHLocation a
 #' @import gmailr
 #' @importFrom magrittr %>%
 #' @export DashboardEmail
-DashboardEmail <- function(emailBCC,
+DashboardEmail <- function(emailsFromExcel = NULL,
                            emailSubject,
                            emailText,
                            emailAttachFiles = NULL,
                            emailFooter = TRUE,
                            BCC = TRUE,
+                           emailsDirect = NULL,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  emails <- readxl::read_excel(XLSXLocation)
-  emails <- stats::na.omit(emails[[emailBCC]])
+  if (!is.null(emailsFromExcel)) {
+    emails <- readxl::read_excel(XLSXLocation)
+    emails <- stats::na.omit(emails[[emailsFromExcel]])
+  } else {
+    emails <- emailsDirect
+    if (length(emails) > 1) emails <- paste0(emails, collapse = ",")
+  }
+
+  if (!fhi::DashboardIsProduction()) {
+    emailSubject <- paste0("TESTING: ", emailSubject)
+  }
 
   if (emailFooter) {
     emailText <- paste0(
@@ -223,50 +239,6 @@ DashboardEmail <- function(emailBCC,
       text_msg %>% gmailr::attach_file(i) -> text_msg
     }
   }
-
-  currentWD <- getwd()
-  tmp <- tempdir()
-  file.copy(OAUTHLocation, file.path(tmp, ".httr-oauth"))
-  setwd(tmp)
-  gmailr::gmail_auth()
-  gmailr::send_message(text_msg)
-  setwd(currentWD)
-}
-
-#' Sends out mass emails that are stored in an xlsx file
-#' @param emailBCC a
-#' @param emailSubject a
-#' @param emailText a
-#' @param emailFooter a
-#' @param OAUTHLocation a
-#' @importFrom magrittr %>%
-#' @export DashboardEmailSpecific
-DashboardEmailSpecific <- function(emailBCC,
-                                   emailSubject,
-                                   emailText,
-                                   emailFooter = TRUE,
-                                   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  if (length(emailBCC) > 1) emailBCC <- paste0(emailBCC, collapse = ",")
-
-  if (emailFooter) {
-    emailText <- paste0(
-      emailText,
-      "<br><br><br>
-    ------------------------
-    <br>
-    DO NOT REPLY TO THIS EMAIL! This email address is not checked by anyone!
-    <br>
-    To add or remove people to/from this notification list, send their details to richard.white@fhi.no
-    "
-    )
-  }
-
-  gmailr::mime() %>%
-    gmailr::to("dashboards@fhi.no") %>%
-    gmailr::from("Dashboards FHI <dashboardsfhi@gmail.com>") %>%
-    gmailr::bcc(emailBCC) %>%
-    gmailr::subject(emailSubject) %>%
-    gmailr::html_body(emailText) -> text_msg
 
   currentWD <- getwd()
   tmp <- tempdir()
