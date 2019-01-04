@@ -19,3 +19,7 @@ SYSCALLS <- new.env(parent = emptyenv())
 #' @name countyToMunicip
 #' @usage data(countyToMunicip)
 NULL
+
+#' LOG
+#' @export
+LOG <- new.env(parent = emptyenv())
