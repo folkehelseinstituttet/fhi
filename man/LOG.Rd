@@ -2,7 +2,7 @@
 % Please edit documentation in R/log.R
 \name{Log}
 \alias{Log}
-\title{Logs values to LOG$log}
+\title{Logs values to LOGDATA$log}
 \usage{
 Log(name, val = Sys.time(), log = "log1")
 }
@@ -14,5 +14,5 @@ Log(name, val = Sys.time(), log = "log1")
 \item{log}{Name of log}
 }
 \description{
-Logs values to LOG$log
+Logs values to LOGDATA$log
 }
