@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MakeLineThresholdPlot — MakeLineThresholdPlot • fhi</title>
+<title>Logs values to LOGDATA$log — Log • fhi</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="MakeLineThresholdPlot — MakeLineThresholdPlot" />
+<meta property="og:title" content="Logs values to LOGDATA$log — Log" />
 
-<meta property="og:description" content="MakeLineThresholdPlot" />
+<meta property="og:description" content="Logs values to LOGDATA$log" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,87 +117,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MakeLineThresholdPlot</h1>
+    <h1>Logs values to LOGDATA$log</h1>
     
-    <div class="hidden name"><code>MakeLineThresholdPlot.Rd</code></div>
+    <div class="hidden name"><code>LOG.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>MakeLineThresholdPlot</p>
+    <p>Logs values to LOGDATA$log</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>MakeLineThresholdPlot</span>(<span class='no'>pd</span>, <span class='no'>x</span>, <span class='no'>dataVal</span>, <span class='kw'>dataCIL</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dataCIU</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>L1</span>,
-  <span class='no'>L2</span>, <span class='no'>L3</span>, <span class='no'>L4</span>, <span class='kw'>allPoints</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pointShift</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>xShift</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>weekNumbers</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>GetCols</span>)</pre>
+    <pre class="usage"><span class='fu'>Log</span>(<span class='no'>name</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>(), <span class='kw'>log</span> <span class='kw'>=</span> <span class='st'>"log1"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pd</th>
-      <td><p>a</p></td>
+      <th>name</th>
+      <td><p>Name of value being logged</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>a</p></td>
+      <th>val</th>
+      <td><p>Value being logged</p></td>
     </tr>
     <tr>
-      <th>dataVal</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>dataCIL</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>dataCIU</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>L1</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>L2</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>L3</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>L4</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>allPoints</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>title</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>pointShift</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>xShift</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>weekNumbers</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>step</th>
-      <td><p>a</p></td>
-    </tr>
-    <tr>
-      <th>GetCols</th>
-      <td><p>a</p></td>
+      <th>log</th>
+      <td><p>Name of log</p></td>
     </tr>
     </table>
     
