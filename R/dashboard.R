@@ -121,6 +121,7 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) 
 # nolint start
 DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
   # nolint end
+  Log("initialiseBefore")
 
   DashboardInitialise(
     STUB = STUB,
@@ -151,6 +152,7 @@ DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE
       PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails.xlsx") # nolint
     }
   }
+  Log("initialiseAfter")
 }
 
 #' If folders are setup according to the
