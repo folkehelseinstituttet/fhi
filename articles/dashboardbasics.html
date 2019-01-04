@@ -144,7 +144,7 @@
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Create an empty package</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/create_package">create_package</a></span>(pkg)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpA07jjv/ANALYSIS'</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpNgdMJE/ANALYSIS'</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ✔ Creating 'R/'</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; ✔ Creating 'man/'</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; ✔ Writing 'DESCRIPTION'</span></a>
@@ -186,7 +186,7 @@
 <a class="sourceLine" id="cb6-43" data-line-number="43"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
 <a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
 <a class="sourceLine" id="cb6-45" data-line-number="45"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
-<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="co">#&gt; [1] "STUB=/tmp/RtmpA07jjv"</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="co">#&gt; [1] "STUB=/tmp/RtmpNgdMJE"</span></a></code></pre></div>
 <p>We can see that we have a few new extra variables:</p>
 <p><code>fhi::PROJ$SRC</code> is the location of the <code>src</code> directory.</p>
 <p><code>fhi::PROJ$NAME</code> is the name of the automated analysis.</p>
@@ -209,9 +209,9 @@
 <a href="#fhidashboardfolder" class="anchor"></a>fhi::DashboardFolder</h2>
 <p>Now that we have initialised our project, we need to access folder and datafiles. <a href="../reference/DashboardFolder.html">fhi::DashboardFolder</a> is our function for this.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/RtmpA07jjv/data_raw/ANALYSIS/"</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/RtmpNgdMJE/data_raw/ANALYSIS/"</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>,<span class="st">"myfile.txt"</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/RtmpA07jjv/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/RtmpNgdMJE/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
 </div>
 <div id="fhidashboardmsg" class="section level2">
 <h2 class="hasAnchor">
@@ -224,7 +224,7 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">MyThirdFunction</span>()</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;            2/33: MySecondFunction()</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;            1/33: MyFirstFunction(d = 4)</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-01-04 07:46:28/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-01-04 08:11:04/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
 </div>
   </div>
 
