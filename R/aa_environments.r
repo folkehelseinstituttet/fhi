@@ -31,4 +31,3 @@ LOGDATA$x <- 1
 #' @export VARS
 VARS <- new.env(parent = emptyenv())
 VARS$x <- 1
-

@@ -12,8 +12,8 @@ GenNorwayLocations <- function() {
 
 #' Fetches NorwayLocations
 #' @export NorwayLocations
-NorwayLocations <- function(){
-  if(is.null(vars$norwayLocations)){
+NorwayLocations <- function() {
+  if (is.null(vars$norwayLocations)) {
     VARS$norwayLocations <- readRDS(system.file("createddata", "norwayLocations.RDS", package = "fhi"))
   }
   return(VARS$norwayLocations)
@@ -41,7 +41,7 @@ GenNorwayMunicipMerging <- function() {
   # end
 
   masterData <- data.table(readxl::read_excel(system.file("extdata", "norwayLocations.xlsx", package = "fhi")))
-  maxYear <- max(data.table::year(lubridate::today()), max(masterData$yearStart, na.rm = T))+2
+  maxYear <- max(data.table::year(lubridate::today()), max(masterData$yearStart, na.rm = T)) + 2
 
   masterData[yearStart <= 2006, yearStart := 2006]
   setnames(masterData, "yearStart", "year")
@@ -101,8 +101,8 @@ GenNorwayMunicipMerging <- function() {
 
 #' NorwayMunicipMerging
 #' @export NorwayMunicipMerging
-NorwayMunicipMerging <- function(){
-  if(is.null(vars$norwayMunicipMerging)){
+NorwayMunicipMerging <- function() {
+  if (is.null(vars$norwayMunicipMerging)) {
     VARS$norwayMunicipMerging <- readRDS(system.file("createddata", "norwayMunicipMerging.RDS", package = "fhi"))
   }
   return(VARS$norwayLocations)
@@ -134,7 +134,7 @@ GenNorwayPopulation <- function() {
   )
   pop <- vector("list", length = length(popFiles))
   for (i in seq_along(pop)) {
-    pop[[i]] <- fread(system.file("extdata", popFiles[i], package = "fhi"),encoding="UTF-8")
+    pop[[i]] <- fread(system.file("extdata", popFiles[i], package = "fhi"), encoding = "UTF-8")
     pop[[i]] <- melt.data.table(pop[[i]], id.vars = c("region", "age"))
   }
   pop <- rbindlist(pop)
@@ -142,8 +142,8 @@ GenNorwayPopulation <- function() {
   pop[, year := as.numeric(stringr::str_extract(variable, "[0-9][0-9][0-9][0-9]$"))]
   pop[, agenum := as.numeric(stringr::str_extract(age, "^[0-9]*"))]
 
-  pop[, age:=NULL]
-  setnames(pop,"agenum","age")
+  pop[, age := NULL]
+  setnames(pop, "agenum", "age")
 
   pop <- pop[, .(
     pop = sum(value)
@@ -220,7 +220,7 @@ GenNorwayPopulation <- function() {
   pop <- rbind(pop, pop2)
   pop[, imputed := FALSE]
 
-  missingYears <- max(pop$year):lubridate::year(lubridate::today())+2
+  missingYears <- max(pop$year):lubridate::year(lubridate::today()) + 2
   if (length(missingYears) > 1) {
     copiedYears <- vector("list", length = length(missingYears) - 1)
     for (i in seq_along(copiedYears)) {
@@ -233,13 +233,14 @@ GenNorwayPopulation <- function() {
   }
 
   norwayMerging <- GenNorwayMunicipMerging()
-  pop <- merge(pop,norwayMerging[,c("year","municip","municipEnd")],by=c("municip","year"))
-  pop <- pop[,.(pop=sum(pop)),
-             keyby=.(
-               year,
-               municip=municipEnd,
-               age
-             )]
+  pop <- merge(pop, norwayMerging[, c("year", "municip", "municipEnd")], by = c("municip", "year"))
+  pop <- pop[, .(pop = sum(pop)),
+    keyby = .(
+      year,
+      municip = municipEnd,
+      age
+    )
+  ]
 
   if (dir.exists(file.path("inst", "createddata"))) {
     try(saveRDS(pop, file.path("inst", "createddata", "norwayPopulation.RDS")), TRUE)
@@ -251,8 +252,8 @@ GenNorwayPopulation <- function() {
 
 #' NorwayPopulation
 #' @export NorwayPopulation
-NorwayPopulation <- function(){
-  if(is.null(vars$norwayPopulation)){
+NorwayPopulation <- function() {
+  if (is.null(vars$norwayPopulation)) {
     VARS$norwayPopulation <- readRDS(system.file("createddata", "norwayPopulation.RDS", package = "fhi"))
   }
   return(VARS$norwayPopulation)
