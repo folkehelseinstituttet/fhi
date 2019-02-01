@@ -25,3 +25,10 @@ NULL
 #' @export LOGDATA
 LOGDATA <- new.env(parent = emptyenv())
 LOGDATA$x <- 1
+
+#' VARS
+#' test
+#' @export VARS
+VARS <- new.env(parent = emptyenv())
+VARS$x <- 1
+

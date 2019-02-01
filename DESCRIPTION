@@ -27,7 +27,8 @@ Imports:
   uuid,
   processx,
   devtools,
-  RAWmisc
+  RAWmisc,
+  zoo
 Suggests: testthat,
     knitr,
     usethis
