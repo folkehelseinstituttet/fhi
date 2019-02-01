@@ -37,6 +37,15 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/FortifyShapeFile.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayLocations.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayMunicipMerging.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayPopulation.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOG.html</loc>
   </url>
   <url>
@@ -58,6 +67,15 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineThresholdPlot.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayLocations.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayMunicipMerging.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayPopulation.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/PROJ.html</loc>
   </url>
   <url>
@@ -74,6 +92,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/ThemeShiny.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/VARS.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/countyToMunicip.html</loc>
