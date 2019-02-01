@@ -105,7 +105,7 @@ NorwayMunicipMerging <- function() {
   if (is.null(VARS$norwayMunicipMerging)) {
     VARS$norwayMunicipMerging <- readRDS(system.file("createddata", "norwayMunicipMerging.RDS", package = "fhi"))
   }
-  return(VARS$norwayLocations)
+  return(VARS$norwayMunicipMerging)
 }
 
 #' Creates the population dataset
