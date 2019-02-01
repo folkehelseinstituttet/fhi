@@ -13,7 +13,7 @@ GenNorwayLocations <- function() {
 #' Fetches NorwayLocations
 #' @export NorwayLocations
 NorwayLocations <- function() {
-  if (is.null(vars$norwayLocations)) {
+  if (is.null(VARS$norwayLocations)) {
     VARS$norwayLocations <- readRDS(system.file("createddata", "norwayLocations.RDS", package = "fhi"))
   }
   return(VARS$norwayLocations)
@@ -102,7 +102,7 @@ GenNorwayMunicipMerging <- function() {
 #' NorwayMunicipMerging
 #' @export NorwayMunicipMerging
 NorwayMunicipMerging <- function() {
-  if (is.null(vars$norwayMunicipMerging)) {
+  if (is.null(VARS$norwayMunicipMerging)) {
     VARS$norwayMunicipMerging <- readRDS(system.file("createddata", "norwayMunicipMerging.RDS", package = "fhi"))
   }
   return(VARS$norwayLocations)
@@ -253,7 +253,7 @@ GenNorwayPopulation <- function() {
 #' NorwayPopulation
 #' @export NorwayPopulation
 NorwayPopulation <- function() {
-  if (is.null(vars$norwayPopulation)) {
+  if (is.null(VARS$norwayPopulation)) {
     VARS$norwayPopulation <- readRDS(system.file("createddata", "norwayPopulation.RDS", package = "fhi"))
   }
   return(VARS$norwayPopulation)
