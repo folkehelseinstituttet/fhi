@@ -5,7 +5,10 @@
 \title{Creates the population dataset
 https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/}
 \usage{
-GenNorwayPopulation()
+GenNorwayPopulation(saveLoc = file.path("inst", "createddata"))
+}
+\arguments{
+\item{saveLoc}{Location to save file to}
 }
 \description{
 Creates the population dataset

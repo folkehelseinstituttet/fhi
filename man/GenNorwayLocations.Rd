@@ -4,7 +4,10 @@
 \alias{GenNorwayLocations}
 \title{Creates norwayLocations}
 \usage{
-GenNorwayLocations()
+GenNorwayLocations(saveLoc = file.path("inst", "createddata"))
+}
+\arguments{
+\item{saveLoc}{Location to save file to}
 }
 \description{
 Creates norwayLocations

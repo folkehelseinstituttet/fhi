@@ -4,7 +4,10 @@
 \alias{GenNorwayMunicipMerging}
 \title{Creates the Norway Municip Merging (kommunesammenslaping) data.table}
 \usage{
-GenNorwayMunicipMerging()
+GenNorwayMunicipMerging(saveLoc = file.path("inst", "createddata"))
+}
+\arguments{
+\item{saveLoc}{Location to save file to}
 }
 \description{
 Last updated 2017-07-29
