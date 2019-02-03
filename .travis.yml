@@ -5,6 +5,7 @@ r_packages:
 - pkgdown
 - lintr
 - styler
+- devtools
 before_install:
 - bash travis/make.sh
 - bash travis/data.sh
