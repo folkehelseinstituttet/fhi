@@ -1,11 +1,11 @@
 #' Creates norwayLocations
+#' @param saveLoc Location to save file to
 #' @importFrom readxl read_excel
-#' @export GenNorwayLocations
-GenNorwayLocations <- function() {
+GenNorwayLocations <- function(saveLoc=file.path("inst", "createddata")) {
   norwayLocations <- readxl::read_excel(system.file("extdata", "norwayLocations.xlsx", package = "fhi"))
   norwayLocations <- norwayLocations[is.na(norwayLocations$yearEnd), c("municip", "municipName", "county", "countyName")]
-  if (dir.exists(file.path("inst", "createddata"))) {
-    try(saveRDS(norwayLocations, file.path("inst", "createddata", "norwayLocations.RDS")), TRUE)
+  if (dir.exists(saveLoc)) {
+    try(saveRDS(norwayLocations, file.path(saveLoc, "norwayLocations.RDS")), TRUE)
   }
   return(invisible(norwayLocations))
 }
@@ -23,10 +23,10 @@ NorwayLocations <- function() {
 #'
 #' Last updated 2017-07-29
 #'
+#' @param saveLoc Location to save file to
 #' @import data.table
 #' @importFrom zoo na.locf
-#' @export GenNorwayMunicipMerging
-GenNorwayMunicipMerging <- function() {
+GenNorwayMunicipMerging <- function(saveLoc=file.path("inst", "createddata")) {
   # variables used in data.table functions in this function
   yearStart <- NULL
   municip <- NULL
@@ -92,8 +92,8 @@ GenNorwayMunicipMerging <- function() {
   # skeletonFinal[municip %in% c("municip1723","municip1756","municip5053")]
   # skeletonFinal[municip %in% c("municip0301")]
 
-  if (dir.exists(file.path("inst", "createddata"))) {
-    try(saveRDS(skeletonFinal, file.path("inst", "createddata", "norwayMunicipMerging.RDS")), TRUE)
+  if (dir.exists(saveLoc)) {
+    try(saveRDS(skeletonFinal, file.path(saveLoc, "norwayMunicipMerging.RDS")), TRUE)
   }
 
   return(invisible(skeletonFinal))
@@ -110,9 +110,9 @@ NorwayMunicipMerging <- function() {
 
 #' Creates the population dataset
 #' https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
+#' @param saveLoc Location to save file to
 #' @import data.table
-#' @export GenNorwayPopulation
-GenNorwayPopulation <- function() {
+GenNorwayPopulation <- function(saveLoc=file.path("inst", "createddata")) {
   # variables used in data.table functions in this function
   . <- NULL
   value <- NULL
@@ -242,8 +242,8 @@ GenNorwayPopulation <- function() {
     )
   ]
 
-  if (dir.exists(file.path("inst", "createddata"))) {
-    try(saveRDS(pop, file.path("inst", "createddata", "norwayPopulation.RDS")), TRUE)
+  if (dir.exists(saveLoc)) {
+    try(saveRDS(pop, file.path(saveLoc, "norwayPopulation.RDS")), TRUE)
   }
 
   return(invisible(pop))
@@ -258,3 +258,13 @@ NorwayPopulation <- function() {
   }
   return(VARS$norwayPopulation)
 }
+
+#' GenData
+#' @param saveLoc Location of data
+GenData <- function(saveLoc=file.path("inst", "createddata")) {
+  GenNorwayLocations(saveLoc)
+  GenNorwayMunicipMerging(saveLoc)
+  GenNorwayPopulation(saveLoc)
+}
+
+
