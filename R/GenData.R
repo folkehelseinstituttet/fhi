@@ -1,7 +1,7 @@
 #' Creates norwayLocations
 #' @param saveLoc Location to save file to
 #' @importFrom readxl read_excel
-GenNorwayLocations <- function(saveLoc=file.path("inst", "createddata")) {
+GenNorwayLocations <- function(saveLoc = file.path("inst", "createddata")) {
   norwayLocations <- readxl::read_excel(system.file("extdata", "norwayLocations.xlsx", package = "fhi"))
   norwayLocations <- norwayLocations[is.na(norwayLocations$yearEnd), c("municip", "municipName", "county", "countyName")]
   if (dir.exists(saveLoc)) {
@@ -26,7 +26,7 @@ NorwayLocations <- function() {
 #' @param saveLoc Location to save file to
 #' @import data.table
 #' @importFrom zoo na.locf
-GenNorwayMunicipMerging <- function(saveLoc=file.path("inst", "createddata")) {
+GenNorwayMunicipMerging <- function(saveLoc = file.path("inst", "createddata")) {
   # variables used in data.table functions in this function
   yearStart <- NULL
   municip <- NULL
@@ -112,7 +112,7 @@ NorwayMunicipMerging <- function() {
 #' https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
 #' @param saveLoc Location to save file to
 #' @import data.table
-GenNorwayPopulation <- function(saveLoc=file.path("inst", "createddata")) {
+GenNorwayPopulation <- function(saveLoc = file.path("inst", "createddata")) {
   # variables used in data.table functions in this function
   . <- NULL
   value <- NULL
@@ -261,10 +261,8 @@ NorwayPopulation <- function() {
 
 #' GenData
 #' @param saveLoc Location of data
-GenData <- function(saveLoc=file.path("inst", "createddata")) {
+GenData <- function(saveLoc = file.path("inst", "createddata")) {
   GenNorwayLocations(saveLoc)
   GenNorwayMunicipMerging(saveLoc)
   GenNorwayPopulation(saveLoc)
 }
-
-
