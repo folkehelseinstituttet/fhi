@@ -9,7 +9,7 @@ Description: Convenience functions for use at Folkehelseinstituttet.
 URL: https://folkehelseinstituttet.github.io/fhi/
 BugReports: https://github.com/folkehelseinstituttet/fhi/issues/
 Depends:
-  R (>= 3.4.0)
+  R (>= 3.3.0)
 Imports:
   ggplot2,
   grid,
