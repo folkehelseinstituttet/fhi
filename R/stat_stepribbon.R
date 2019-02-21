@@ -27,10 +27,10 @@ stairstepn <- function(data, direction = "hv", yvars = "y") {
 #' @import ggplot2
 StatStepribbon <-
   ggproto("stepribbon", Stat,
-          compute_group = function(., data, scales, direction = "hv", yvars = c("ymin", "ymax"), ...) {
-            stairstepn(data = data, direction = direction, yvars = yvars)
-          },
-          required_aes = c("x", "ymin", "ymax")
+    compute_group = function(., data, scales, direction = "hv", yvars = c("ymin", "ymax"), ...) {
+      stairstepn(data = data, direction = direction, yvars = yvars)
+    },
+    required_aes = c("x", "ymin", "ymax")
   )
 
 #' stat_stepribbon

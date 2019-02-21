@@ -32,10 +32,10 @@ DashboardIsInitialised <- function() {
 #' @param NAME The name of the automated analysis
 #' @param changeWorkingDirToTmp Do you want to change the working directory to a temporary directory?
 DashboardInitialiseComputerName <- function(
-                                STUB = "/",
-                                SRC = "src",
-                                NAME = NULL,
-                                changeWorkingDirToTmp = TRUE) {
+                                            STUB = "/",
+                                            SRC = "src",
+                                            NAME = NULL,
+                                            changeWorkingDirToTmp = TRUE) {
 
   # nolint start
   if (file.exists("/tmp/computer")) {
@@ -149,9 +149,9 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) 
   if (newLine) startOfLine <- "\r\n"
 
   fn <- switch(type,
-               msg = base::message,
-               warn = base::warning,
-               err = base::stop
+    msg = base::message,
+    warn = base::warning,
+    err = base::stop
   )
 
   depth <- sys.nframe() - 1
