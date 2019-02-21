@@ -32,7 +32,8 @@
 
 <meta property="og:title" content="DashboardInitialiseOpinionated — DashboardInitialiseOpinionated" />
 
-<meta property="og:description" content="DashboardInitialiseOpinionated" />
+<meta property="og:description" content="This function relies upon you using the dashboard folder setup: vignette(&quot;dashboardbasics&quot;, package = &quot;fhi&quot;).
+This function specifies all of the location of necessary files for the dashboard setup." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.21</span>
       </span>
     </div>
 
@@ -124,13 +125,18 @@
 
     <div class="ref-description">
     
-    <p>DashboardInitialiseOpinionated</p>
+    <p>This function relies upon you using the dashboard folder setup: <code><a href='../articles/dashboardbasics.html'>vignette("dashboardbasics", package = "fhi")</a></code>.
+This function specifies all of the location of necessary files for the dashboard setup.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>PKG</span> <span class='kw'>=</span> <span class='no'>NAME</span>, <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
   <span class='kw'>PACKAGE_DIR</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>PRODUCTION_NAME</span> <span class='kw'>=</span> <span class='no'>PROJ</span>$<span class='no'>PRODUCTION_NAME</span>,
+  <span class='kw'>EMAILS_XLSX_LOCATION_DEV</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>"emails_test.xlsx"</span>),
+  <span class='kw'>EMAILS_XLSX_LOCATION_PROD</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>"emails.xlsx"</span>),
+  <span class='kw'>EMAILS_OAUTH_LOCATION</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>".httr-oauth"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +168,22 @@
     <tr>
       <th>SILENT</th>
       <td><p>Load all packages silently?</p></td>
+    </tr>
+    <tr>
+      <th>PRODUCTION_NAME</th>
+      <td><p>The name of the production computer</p></td>
+    </tr>
+    <tr>
+      <th>EMAILS_XLSX_LOCATION_DEV</th>
+      <td><p>Location of the excel sheet that holds email lists (used on development computers)</p></td>
+    </tr>
+    <tr>
+      <th>EMAILS_XLSX_LOCATION_PROD</th>
+      <td><p>Location of the excel sheet that holds email lists (used on production computer)</p></td>
+    </tr>
+    <tr>
+      <th>EMAILS_OAUTH_LOCATION</th>
+      <td><p>Location of the `.httr-oauth` file for use in `gmailr`</p></td>
     </tr>
     </table>
     

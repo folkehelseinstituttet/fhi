@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.21</span>
       </span>
     </div>
 
@@ -107,12 +107,7 @@
 /MASTERFOLDER/data_app/
   |-- ANALYSIS/
 /MASTERFOLDER/results/
-  |-- ANALYSIS/
-/MASTERFOLDER/src/
-  |-- ANALYSIS/
-     |-- 0_run.sh
-     |-- RunProcess.R
-     |-- RunTest.R</code></pre>
+  |-- ANALYSIS/</code></pre>
 <p>It is important to note that we generally do not use <code>MASTERFOLDER</code> in production settings.</p>
 </div>
 <div id="fhidashboardinitialiseopinionated" class="section level2">
@@ -123,9 +118,9 @@
 <a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">}</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [1] "DEFAULT_EMAILS_OAUTH_LOCATION=/etc/gmailr/.httr-oauth"</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [1] "DEFAULT_EMAILS_OAUTH_LOCATION=x"</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "IS_INITIALISED=FALSE"</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; [1] "DEFAULT_EMAILS_XLSX_LOCATION=/etc/gmailr/emails_test.xlsx"</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; [1] "DEFAULT_EMAILS_XLSX_LOCATION=x"</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; [1] "COMPUTER_NAME=x"</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [1] "IS_DEV=FALSE"</span></a></code></pre></div>
@@ -143,8 +138,8 @@
 <p>Here we now create the necessary file structure:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Create an empty package</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/create_package">create_package</a></span>(pkg)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpcTejkP/ANALYSIS'</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">usethis<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/usethis/topics/create_package">create_package</a></span>(pkg,<span class="dt">open=</span>F)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Setting active project to '/tmp/Rtmp0aq1ak/ANALYSIS'</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ✔ Creating 'R/'</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; ✔ Creating 'man/'</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; ✔ Writing 'DESCRIPTION'</span></a>
@@ -156,39 +151,36 @@
 <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>))</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>))</a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"results"</span>))</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"src"</span>))</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co"># Create the `ANALYSIS` specific folders inside</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"src"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co"># Initialise</span></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html">DashboardInitialiseOpinionated</a></span>(<span class="st">"ANALYSIS"</span>,</a>
-<a class="sourceLine" id="cb6-27" data-line-number="27">                                    <span class="dt">STUB=</span>tmpdir, </a>
-<a class="sourceLine" id="cb6-28" data-line-number="28">                                    <span class="dt">PACKAGE_DIR=</span>pkg, </a>
-<a class="sourceLine" id="cb6-29" data-line-number="29">                                    <span class="dt">FORCE_DEV_PACKAGE_LOAD=</span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30">                                    )</a>
-<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; Loading ANALYSIS</span></a>
-<a class="sourceLine" id="cb6-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co"># Lets see how `fhi::PROJ` has changed:</span></a>
-<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
-<a class="sourceLine" id="cb6-35" data-line-number="35">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
-<a class="sourceLine" id="cb6-36" data-line-number="36">}</a>
-<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
-<a class="sourceLine" id="cb6-38" data-line-number="38"><span class="co">#&gt; [1] "SRC=src"</span></a>
-<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt; [1] "DEFAULT_EMAILS_OAUTH_LOCATION=/etc/gmailr/.httr-oauth"</span></a>
-<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="co">#&gt; [1] "IS_INITIALISED=TRUE"</span></a>
-<a class="sourceLine" id="cb6-41" data-line-number="41"><span class="co">#&gt; [1] "NAME=ANALYSIS"</span></a>
-<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="co">#&gt; [1] "DEFAULT_EMAILS_XLSX_LOCATION=/etc/gmailr/emails_test.xlsx"</span></a>
-<a class="sourceLine" id="cb6-43" data-line-number="43"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
-<a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
-<a class="sourceLine" id="cb6-45" data-line-number="45"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
-<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="co">#&gt; [1] "STUB=/tmp/RtmpcTejkP"</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co"># Create the `ANALYSIS` specific folders inside</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co"># Initialise</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html">DashboardInitialiseOpinionated</a></span>(<span class="st">"ANALYSIS"</span>,</a>
+<a class="sourceLine" id="cb6-25" data-line-number="25">                                    <span class="dt">STUB=</span>tmpdir, </a>
+<a class="sourceLine" id="cb6-26" data-line-number="26">                                    <span class="dt">PACKAGE_DIR=</span>pkg, </a>
+<a class="sourceLine" id="cb6-27" data-line-number="27">                                    <span class="dt">FORCE_DEV_PACKAGE_LOAD=</span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28">                                    )</a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; Loading ANALYSIS</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co"># Lets see how `fhi::PROJ` has changed:</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
+<a class="sourceLine" id="cb6-33" data-line-number="33">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
+<a class="sourceLine" id="cb6-34" data-line-number="34">}</a>
+<a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
+<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="co">#&gt; [1] "SRC=src"</span></a>
+<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt; [1] "DEFAULT_EMAILS_OAUTH_LOCATION=x"</span></a>
+<a class="sourceLine" id="cb6-38" data-line-number="38"><span class="co">#&gt; [1] "IS_INITIALISED=TRUE"</span></a>
+<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt; [1] "NAME=ANALYSIS"</span></a>
+<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="co">#&gt; [1] "DEFAULT_EMAILS_XLSX_LOCATION=x"</span></a>
+<a class="sourceLine" id="cb6-41" data-line-number="41"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
+<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
+<a class="sourceLine" id="cb6-43" data-line-number="43"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
+<a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; [1] "STUB=/tmp/Rtmp0aq1ak"</span></a></code></pre></div>
 <p>We can see that we have a few new extra variables:</p>
-<p><code>fhi::PROJ$SRC</code> is the location of the <code>src</code> directory.</p>
 <p><code>fhi::PROJ$NAME</code> is the name of the automated analysis.</p>
 <p><code>fhi::PROJ$STUB</code> is the master folder containing all of the data folders.</p>
 <p>We can also see how the getter functions have changed:</p>
@@ -209,9 +201,9 @@
 <a href="#fhidashboardfolder" class="anchor"></a>fhi::DashboardFolder</h2>
 <p>Now that we have initialised our project, we need to access folder and datafiles. <a href="../reference/DashboardFolder.html">fhi::DashboardFolder</a> is our function for this.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/RtmpcTejkP/data_raw/ANALYSIS/"</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/Rtmp0aq1ak/data_raw/ANALYSIS/"</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>,<span class="st">"myfile.txt"</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/RtmpcTejkP/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/Rtmp0aq1ak/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
 </div>
 <div id="fhidashboardmsg" class="section level2">
 <h2 class="hasAnchor">
@@ -224,7 +216,7 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">MyThirdFunction</span>()</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;            2/33: MySecondFunction()</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;            1/33: MyFirstFunction(d = 4)</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-02-03 13:22:41/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-02-21 12:04:08/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
 </div>
   </div>
 

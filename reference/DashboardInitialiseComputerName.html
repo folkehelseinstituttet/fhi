@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>countyToMunicip — countyToMunicip • fhi</title>
+<title>Initialise the computer name — DashboardInitialiseComputerName • fhi</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="countyToMunicip — countyToMunicip" />
+<meta property="og:title" content="Initialise the computer name — DashboardInitialiseComputerName" />
 
-<meta property="og:description" content="countyToMunicip" />
+<meta property="og:description" content="This function relies upon you using the dashboard folder setup: vignette(&quot;dashboardbasics&quot;, package = &quot;fhi&quot;).
+This function locates the computer's name in `/tmp/computer`
+and sets PROJ as appropriate" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.21</span>
       </span>
     </div>
 
@@ -117,24 +119,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>countyToMunicip</h1>
+    <h1>Initialise the computer name</h1>
     
-    <div class="hidden name"><code>countyToMunicip.Rd</code></div>
+    <div class="hidden name"><code>DashboardInitialiseComputerName.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>countyToMunicip</p>
+    <p>This function relies upon you using the dashboard folder setup: <code><a href='../articles/dashboardbasics.html'>vignette("dashboardbasics", package = "fhi")</a></code>.
+This function locates the computer's name in `/tmp/computer`
+and sets PROJ as appropriate</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>countyToMunicip</span>)</pre>
-        
+    <pre class="usage"><span class='fu'>DashboardInitialiseComputerName</span>(<span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>, <span class='kw'>SRC</span> <span class='kw'>=</span> <span class='st'>"src"</span>, <span class='kw'>NAME</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>changeWorkingDirToTmp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>STUB</th>
+      <td><p>The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders</p></td>
+    </tr>
+    <tr>
+      <th>SRC</th>
+      <td><p>The directory inside `STUB` containing `ANALYSIS/RunProcess.R`</p></td>
+    </tr>
+    <tr>
+      <th>NAME</th>
+      <td><p>The name of the automated analysis</p></td>
+    </tr>
+    <tr>
+      <th>changeWorkingDirToTmp</th>
+      <td><p>Do you want to change the working directory to a temporary directory?</p></td>
+    </tr>
+    </table>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
                 </ul>
 
   </div>

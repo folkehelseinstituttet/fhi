@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.2.21</span>
       </span>
     </div>
 
@@ -135,12 +135,6 @@
       <tr>
         
         <td>
-          <p><code><a href="Censor.html">Censor()</a></code> </p>
-        </td>
-        <td><p>Provides censoring of data</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="DashboardEmail.html">DashboardEmail()</a></code> </p>
         </td>
         <td><p>Sends out mass emails</p></td>
@@ -149,15 +143,13 @@
         <td>
           <p><code><a href="DashboardFolder.html">DashboardFolder()</a></code> </p>
         </td>
-        <td><p>If folders are setup according to the
-dashboard philosophy, then this function
-finds folders according to the dashboard</p></td>
+        <td><p>Dashboard folders</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="DashboardInitialise.html">DashboardInitialise()</a></code> </p>
+          <p><code><a href="DashboardInitialiseComputerName.html">DashboardInitialiseComputerName()</a></code> </p>
         </td>
-        <td><p>Initialise the automated analysis</p></td>
+        <td><p>Initialise the computer name</p></td>
       </tr><tr>
         
         <td>
@@ -187,13 +179,13 @@ finds folders according to the dashboard</p></td>
         <td>
           <p><code><a href="DashboardMsg.html">DashboardMsg()</a></code> </p>
         </td>
-        <td><p>Messaging</p></td>
+        <td><p>Enhanced Messaging</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="DateBreaks.html">DateBreaks()</a></code> </p>
         </td>
-        <td><p>DateBreaks</p></td>
+        <td><p>Internal function</p></td>
       </tr><tr>
         
         <td>
@@ -205,19 +197,19 @@ finds folders according to the dashboard</p></td>
         <td>
           <p><code><a href="GenData.html">GenData()</a></code> </p>
         </td>
-        <td><p>GenData</p></td>
+        <td><p>Creates the NorwayLocations, NorwayMunicipMerging, and NorwayPopulation data.table</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="GenNorwayLocations.html">GenNorwayLocations()</a></code> </p>
         </td>
-        <td><p>Creates norwayLocations</p></td>
+        <td><p>Creates the NorwayLocations data.table</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="GenNorwayMunicipMerging.html">GenNorwayMunicipMerging()</a></code> </p>
         </td>
-        <td><p>Creates the Norway Municip Merging (kommunesammenslaping) data.table</p></td>
+        <td><p>Creates the NorwayMunicipMerging (kommunesammenslaping) data.table</p></td>
       </tr><tr>
         
         <td>
@@ -236,7 +228,7 @@ https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/</p></td>
         <td>
           <p><code><a href="LOGDATA.html">LOGDATA</a></code> </p>
         </td>
-        <td><p>LOGDATA
+        <td><p>Environment to store logs
 test</p></td>
       </tr><tr>
         
@@ -267,37 +259,43 @@ test</p></td>
         <td>
           <p><code><a href="MakeLineThresholdPlot.html">MakeLineThresholdPlot()</a></code> </p>
         </td>
-        <td><p>MakeLineThresholdPlot</p></td>
+        <td><p>Creates a line threshold plot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NORCHAR.html">NORCHAR</a></code> </p>
+        </td>
+        <td><p>Norwegian characters in unicode</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="NorwayLocations.html">NorwayLocations()</a></code> </p>
         </td>
-        <td><p>Fetches NorwayLocations</p></td>
+        <td><p>Fetches the NorwayLocations data.table</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="NorwayMunicipMerging.html">NorwayMunicipMerging()</a></code> </p>
         </td>
-        <td><p>NorwayMunicipMerging</p></td>
+        <td><p>Fetches the NorwayMunicipMerging data.table</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="NorwayPopulation.html">NorwayPopulation()</a></code> </p>
         </td>
-        <td><p>NorwayPopulation</p></td>
+        <td><p>Fetches the NorwayPopulation data.table</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="PROJ.html">PROJ</a></code> </p>
         </td>
-        <td><p>PROJ</p></td>
+        <td><p>Flags/values to be used in the 'dashboards' scene</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="RenderExternally.html">RenderExternally()</a></code> </p>
         </td>
-        <td><p>RenderExternally</p></td>
+        <td><p>Render a markdown file in an external R process</p></td>
       </tr><tr>
         
         <td>
@@ -309,7 +307,7 @@ test</p></td>
         <td>
           <p><code><a href="SYSCALLS.html">SYSCALLS</a></code> </p>
         </td>
-        <td><p>SYSCALLS</p></td>
+        <td><p>Storing the last syscalls</p></td>
       </tr><tr>
         
         <td>
@@ -327,122 +325,81 @@ test</p></td>
         <td>
           <p><code><a href="VARS.html">VARS</a></code> </p>
         </td>
-        <td><p>VARS
+        <td><p>Environment to store data.tables
 test</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="countyToMunicip.html">countyToMunicip</a></code> </p>
-        </td>
-        <td><p>countyToMunicip</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="noispiah_document.html">noispiah_document()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>noispiah_document</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="noispiah_resources_copy.html">noispiah_resources_copy()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>Copies all necessary noispiah_document resources</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="noispiah_resources_remove.html">noispiah_resources_remove()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>Removes all necessary noispiah_document resources</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="normomo_document.html">normomo_document()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>normomo_document</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="normomo_resources_copy.html">normomo_resources_copy()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>Copies all necessary normomo_document resources</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="normomo_resources_remove.html">normomo_resources_remove()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="png_a4.html">png_a4()</a></code> </p>
-        </td>
-        <td><p>Creates png with default dimensions of A4</p></td>
+        <td><p>Removes all necessary normomo_document resources</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="stairstepn.html">stairstepn()</a></code> </p>
         </td>
-        <td><p>DateBreaks</p></td>
+        <td><p>Internal function</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="stat_stepribbon.html">stat_stepribbon()</a></code> </p>
         </td>
-        <td><p>stat_stepribbon</p></td>
+        <td><p>stat_stepribbon
+An extension of ggplot2's geom_ribbon</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="sykdompuls_luft_document.html">sykdompuls_luft_document()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>sykdompuls_luft_document</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="sykdompuls_mage_document.html">sykdompuls_mage_document()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>sykdompuls_mage_document</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="sykdompulspdf_resources_copy.html">sykdompulspdf_resources_copy()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
+        <td><p>Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="sykdompulspdf_resources_remove.html">sykdompulspdf_resources_remove()</a></code> </p>
         </td>
-        <td><p>hi</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_SMAO.html">theme_SMAO()</a></code> </p>
-        </td>
-        <td><p>Wrapper for ggplot theme</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_SMAO45.html">theme_SMAO45()</a></code> </p>
-        </td>
-        <td><p>Internal version 1 of a minimalist ggplot theme</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_SMAO_V1.html">theme_SMAO_V1()</a></code> </p>
-        </td>
-        <td><p>Internal version 1 of a minimalist ggplot theme</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_SMAO_V2.html">theme_SMAO_V2()</a></code> </p>
-        </td>
-        <td><p>Internal version 2 of a minimalist ggplot theme</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_SMAO_V3.html">theme_SMAO_V3()</a></code> </p>
-        </td>
-        <td><p>Internal version 2 of a minimalist ggplot theme</p></td>
+        <td><p>Removes all necessary sykdompuls_mage_document and sykdompuls_luft_document resources</p></td>
       </tr>
     </tbody>
     </table>
