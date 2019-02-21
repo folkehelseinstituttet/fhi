@@ -3,12 +3,12 @@
 \docType{data}
 \name{SYSCALLS}
 \alias{SYSCALLS}
-\title{SYSCALLS}
+\title{Storing the last syscalls}
 \format{An object of class \code{environment} of length 0.}
 \usage{
 SYSCALLS
 }
 \description{
-SYSCALLS
+Storing the last syscalls
 }
 \keyword{datasets}

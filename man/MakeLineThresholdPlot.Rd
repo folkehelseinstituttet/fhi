@@ -2,45 +2,45 @@
 % Please edit documentation in R/graphs.R
 \name{MakeLineThresholdPlot}
 \alias{MakeLineThresholdPlot}
-\title{MakeLineThresholdPlot}
+\title{Creates a line threshold plot}
 \usage{
 MakeLineThresholdPlot(pd, x, dataVal, dataCIL = NULL, dataCIU = NULL, L1,
   L2, L3, L4, allPoints = TRUE, title = NULL, pointShift = 0,
   xShift = 0, weekNumbers = FALSE, step = FALSE, GetCols)
 }
 \arguments{
-\item{pd}{a}
+\item{pd}{A data.frame}
 
-\item{x}{a}
+\item{x}{Name of the column in `pd` that is the `x` value}
 
-\item{dataVal}{a}
+\item{dataVal}{Name of the column in `pd` that is the `y` value}
 
-\item{dataCIL}{a}
+\item{dataCIL}{Name of the column in `pd` that is the value of the lower confidence interval of the `y` value}
 
-\item{dataCIU}{a}
+\item{dataCIU}{Name of the column in `pd` that is the value of the upper confidence interval of the `y` value}
 
-\item{L1}{a}
+\item{L1}{Name of the column in `pd` that is the value of the first threshold}
 
-\item{L2}{a}
+\item{L2}{Name of the column in `pd` that is the value of the second threshold}
 
-\item{L3}{a}
+\item{L3}{Name of the column in `pd` that is the value of the third threshold}
 
-\item{L4}{a}
+\item{L4}{Name of the column in `pd` that is the value of the fourth threshold}
 
-\item{allPoints}{a}
+\item{allPoints}{Should all points be displayed on the line?}
 
-\item{title}{a}
+\item{title}{Title of the graph}
 
-\item{pointShift}{a}
+\item{pointShift}{How much will the points be shifted?}
 
-\item{xShift}{a}
+\item{xShift}{How much will the x values be shifted?}
 
-\item{weekNumbers}{a}
+\item{weekNumbers}{Display week numbers?}
 
-\item{step}{a}
+\item{step}{Step graph or normal line graph?}
 
-\item{GetCols}{a}
+\item{GetCols}{Vector of colours}
 }
 \description{
-MakeLineThresholdPlot
+Creates a line threshold plot
 }

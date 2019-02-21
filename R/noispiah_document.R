@@ -1,7 +1,7 @@
-#' hi
-#' @param ... test
+#' noispiah_document
+#' @param ... Arguments
 #' @importFrom rmarkdown pandoc_available pdf_document
-#' @export noispiah_document
+#' @export
 noispiah_document <- function(...) {
   rmarkdown::pandoc_available("1.9", TRUE)
 
@@ -15,8 +15,8 @@ noispiah_document <- function(...) {
   base
 }
 
-#' hi
-#' @param output_dir a
+#' Copies all necessary noispiah_document resources
+#' @param output_dir Folder to copy resources to
 #' @export noispiah_resources_copy
 noispiah_resources_copy <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "noispiah", "skeleton",
@@ -34,8 +34,8 @@ noispiah_resources_copy <- function(output_dir) {
 }
 
 
-#' hi
-#' @param output_dir a
+#' Removes all necessary noispiah_document resources
+#' @param output_dir Folder to remove resources from
 #' @export noispiah_resources_remove
 noispiah_resources_remove <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "noispiah", "skeleton",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/GenData.R
 \name{GenData}
 \alias{GenData}
-\title{GenData}
+\title{Creates the NorwayLocations, NorwayMunicipMerging, and NorwayPopulation data.table}
 \usage{
 GenData(saveLoc = file.path("inst", "createddata"))
 }
@@ -10,5 +10,5 @@ GenData(saveLoc = file.path("inst", "createddata"))
 \item{saveLoc}{Location of data}
 }
 \description{
-GenData
+Creates the NorwayLocations, NorwayMunicipMerging, and NorwayPopulation data.table
 }

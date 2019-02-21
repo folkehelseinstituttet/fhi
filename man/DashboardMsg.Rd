@@ -2,7 +2,7 @@
 % Please edit documentation in R/dashboard.R
 \name{DashboardMsg}
 \alias{DashboardMsg}
-\title{Messaging}
+\title{Enhanced Messaging}
 \usage{
 DashboardMsg(txt, type = "msg", syscallsDepth = 2, newLine = FALSE)
 }
@@ -16,5 +16,5 @@ DashboardMsg(txt, type = "msg", syscallsDepth = 2, newLine = FALSE)
 \item{newLine}{Should there be a new line at the start of the message?}
 }
 \description{
-Messaging
+Enhanced Messaging
 }

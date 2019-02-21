@@ -2,10 +2,10 @@
 % Please edit documentation in R/GenData.R
 \name{NorwayLocations}
 \alias{NorwayLocations}
-\title{Fetches NorwayLocations}
+\title{Fetches the NorwayLocations data.table}
 \usage{
 NorwayLocations()
 }
 \description{
-Fetches NorwayLocations
+Fetches the NorwayLocations data.table
 }

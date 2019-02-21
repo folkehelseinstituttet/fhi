@@ -1,6 +1,6 @@
 #' Reads in shapefile and fortifies it
-#' @param file a
-#' @param region a
+#' @param file Shapefile location
+#' @param region Name of the variable to fortify on
 #' @export FortifyShapeFile
 FortifyShapeFile <- function(file, region) {
   map <- maptools::readShapeSpatial(file)

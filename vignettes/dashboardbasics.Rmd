@@ -33,11 +33,6 @@ As mentioned in the [umbrella documentation](https://folkehelseinstituttet.githu
   |-- ANALYSIS/
 /MASTERFOLDER/results/
   |-- ANALYSIS/
-/MASTERFOLDER/src/
-  |-- ANALYSIS/
-     |-- 0_run.sh
-     |-- RunProcess.R
-     |-- RunTest.R
 ```
 
 It is important to note that we generally do not use `MASTERFOLDER` in production settings.
@@ -78,7 +73,7 @@ Here we now create the necessary file structure:
 ```{r}
 # Create an empty package
 pkg <- file.path(tempdir(check=TRUE),"ANALYSIS")
-usethis::create_package(pkg)
+usethis::create_package(pkg,open=F)
 
 # Create the data/results/src folders
 tmpdir <- tempdir(check=TRUE)
@@ -86,14 +81,12 @@ dir.create(file.path(tmpdir,"data_raw"))
 dir.create(file.path(tmpdir,"data_clean"))
 dir.create(file.path(tmpdir,"data_app"))
 dir.create(file.path(tmpdir,"results"))
-dir.create(file.path(tmpdir,"src"))
 
 # Create the `ANALYSIS` specific folders inside
 dir.create(file.path(tmpdir,"data_raw","ANALYSIS"))
 dir.create(file.path(tmpdir,"data_clean","ANALYSIS"))
 dir.create(file.path(tmpdir,"data_app","ANALYSIS"))
 dir.create(file.path(tmpdir,"results","ANALYSIS"))
-dir.create(file.path(tmpdir,"src","ANALYSIS"))
 
 # Initialise
 fhi::DashboardInitialiseOpinionated("ANALYSIS",
@@ -109,8 +102,6 @@ for(i in names(fhi::PROJ)){
 ```
 
 We can see that we have a few new extra variables:
-
-`fhi::PROJ$SRC` is the location of the `src` directory.
 
 `fhi::PROJ$NAME` is the name of the automated analysis.
 

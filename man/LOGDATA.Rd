@@ -3,14 +3,14 @@
 \docType{data}
 \name{LOGDATA}
 \alias{LOGDATA}
-\title{LOGDATA
+\title{Environment to store logs
 test}
 \format{An object of class \code{environment} of length 1.}
 \usage{
 LOGDATA
 }
 \description{
-LOGDATA
+Environment to store logs
 test
 }
 \keyword{datasets}

@@ -2,13 +2,13 @@
 % Please edit documentation in R/sykdompulsepdf_document.R
 \name{sykdompuls_mage_document}
 \alias{sykdompuls_mage_document}
-\title{hi}
+\title{sykdompuls_mage_document}
 \usage{
 sykdompuls_mage_document(...)
 }
 \arguments{
-\item{...}{test}
+\item{...}{Arguments}
 }
 \description{
-hi
+sykdompuls_mage_document
 }

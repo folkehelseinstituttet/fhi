@@ -2,13 +2,13 @@
 % Please edit documentation in R/normomo_document.R
 \name{normomo_resources_remove}
 \alias{normomo_resources_remove}
-\title{hi}
+\title{Removes all necessary normomo_document resources}
 \usage{
 normomo_resources_remove(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to remove resources from}
 }
 \description{
-hi
+Removes all necessary normomo_document resources
 }
