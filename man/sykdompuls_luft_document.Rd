@@ -2,13 +2,13 @@
 % Please edit documentation in R/sykdompulsepdf_document.R
 \name{sykdompuls_luft_document}
 \alias{sykdompuls_luft_document}
-\title{hi}
+\title{sykdompuls_luft_document}
 \usage{
 sykdompuls_luft_document(...)
 }
 \arguments{
-\item{...}{test}
+\item{...}{Arguments}
 }
 \description{
-hi
+sykdompuls_luft_document
 }

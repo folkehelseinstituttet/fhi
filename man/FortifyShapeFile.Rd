@@ -7,9 +7,9 @@
 FortifyShapeFile(file, region)
 }
 \arguments{
-\item{file}{a}
+\item{file}{Shapefile location}
 
-\item{region}{a}
+\item{region}{Name of the variable to fortify on}
 }
 \description{
 Reads in shapefile and fortifies it

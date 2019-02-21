@@ -10,23 +10,23 @@ DashboardEmail(emailsFromExcel = NULL, emailSubject, emailText,
   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION)
 }
 \arguments{
-\item{emailsFromExcel}{a}
+\item{emailsFromExcel}{A column of the excel file that holds emails}
 
-\item{emailSubject}{a}
+\item{emailSubject}{Subject of the email}
 
-\item{emailText}{a}
+\item{emailText}{Text of the email}
 
-\item{emailAttachFiles}{a}
+\item{emailAttachFiles}{Files to be attached}
 
-\item{emailFooter}{a}
+\item{emailFooter}{Footer of the email}
 
-\item{BCC}{a}
+\item{BCC}{T/F if the recipiends should be BCC'd or not}
 
-\item{emailsDirect}{a}
+\item{emailsDirect}{Location of the excel sheet that holds email lists}
 
-\item{XLSXLocation}{a}
+\item{XLSXLocation}{Location of xlsx file containing email lists}
 
-\item{OAUTHLocation}{a}
+\item{OAUTHLocation}{Location of the `.httr-oauth` file for use in `gmailr`}
 }
 \description{
 Sends out mass emails

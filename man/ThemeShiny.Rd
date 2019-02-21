@@ -7,9 +7,9 @@
 ThemeShiny(base_size = 12, base_family = "")
 }
 \arguments{
-\item{base_size}{a}
+\item{base_size}{Base size for the theme}
 
-\item{base_family}{a}
+\item{base_family}{Base family for the theme}
 }
 \description{
 ThemeShiny

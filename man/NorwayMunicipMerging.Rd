@@ -2,10 +2,10 @@
 % Please edit documentation in R/GenData.R
 \name{NorwayMunicipMerging}
 \alias{NorwayMunicipMerging}
-\title{NorwayMunicipMerging}
+\title{Fetches the NorwayMunicipMerging data.table}
 \usage{
 NorwayMunicipMerging()
 }
 \description{
-NorwayMunicipMerging
+Fetches the NorwayMunicipMerging data.table
 }

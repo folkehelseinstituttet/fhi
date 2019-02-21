@@ -3,14 +3,14 @@
 \docType{data}
 \name{VARS}
 \alias{VARS}
-\title{VARS
+\title{Environment to store data.tables
 test}
 \format{An object of class \code{environment} of length 1.}
 \usage{
 VARS
 }
 \description{
-VARS
+Environment to store data.tables
 test
 }
 \keyword{datasets}

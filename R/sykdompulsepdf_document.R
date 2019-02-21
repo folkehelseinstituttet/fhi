@@ -1,5 +1,5 @@
-#' hi
-#' @param ... test
+#' sykdompuls_mage_document
+#' @param ... Arguments
 #' @importFrom rmarkdown pandoc_available pdf_document
 #' @export sykdompuls_mage_document
 sykdompuls_mage_document <- function(...) {
@@ -14,8 +14,8 @@ sykdompuls_mage_document <- function(...) {
 }
 
 
-#' hi
-#' @param ... test
+#' sykdompuls_luft_document
+#' @param ... Arguments
 #' @importFrom rmarkdown pandoc_available pdf_document
 #' @export sykdompuls_luft_document
 sykdompuls_luft_document <- function(...) {
@@ -32,8 +32,8 @@ sykdompuls_luft_document <- function(...) {
 }
 
 
-#' hi
-#' @param output_dir a
+#' Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources
+#' @param output_dir Folder to copy resources to
 #' @export sykdompulspdf_resources_copy
 sykdompulspdf_resources_copy <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "sykdompuls_luft_document", "skeleton",
@@ -49,8 +49,8 @@ sykdompulspdf_resources_copy <- function(output_dir) {
 }
 
 
-#' hi
-#' @param output_dir a
+#' Removes all necessary sykdompuls_mage_document and sykdompuls_luft_document resources
+#' @param output_dir Folder to remove resources from
 #' @export sykdompulspdf_resources_remove
 sykdompulspdf_resources_remove <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "sykdompuls_luft_document", "skeleton",

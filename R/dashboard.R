@@ -1,37 +1,42 @@
 #' Is the dashboard in production?
-#' @export DashboardIsProduction
+#'
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
+#' @export
 DashboardIsProduction <- function() {
   return(PROJ$IS_PRODUCTION)
 }
 
 #' Is the dashboard in development?
-#' @export DashboardIsDev
+#'
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
+#' @export
 DashboardIsDev <- function() {
   return(PROJ$IS_DEV)
 }
 
 #' Is the dashboard initialised?
-#' @export DashboardIsInitialised
+#'
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
+#' @export
 DashboardIsInitialised <- function() {
   return(PROJ$IS_INITIALISED)
 }
 
-#' Initialise the automated analysis
+#' Initialise the computer name
 #'
-#' If folders are setup according to the
-#' dashboard philosophy, then this function
-#' locates the computer's name in `/tmp/computer`
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}.
+#' This function locates the computer's name in `/tmp/computer`
 #' and sets PROJ as appropriate
 #' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
 #' @param SRC The directory inside `STUB` containing `ANALYSIS/RunProcess.R`
 #' @param NAME The name of the automated analysis
 #' @param changeWorkingDirToTmp Do you want to change the working directory to a temporary directory?
-#' @export DashboardInitialise
-DashboardInitialise <- function(
+DashboardInitialiseComputerName <- function(
                                 STUB = "/",
                                 SRC = "src",
                                 NAME = NULL,
                                 changeWorkingDirToTmp = TRUE) {
+
   # nolint start
   if (file.exists("/tmp/computer")) {
     con <- file("/tmp/computer", "r")
@@ -55,7 +60,75 @@ DashboardInitialise <- function(
   PROJ$IS_INITIALISED <- TRUE
 }
 
-#' Messaging
+
+#' DashboardInitialiseOpinionated
+#'
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}.
+#' This function specifies all of the location of necessary files for the dashboard setup.
+#' @param NAME The name of the automated analysis folders
+#' @param PKG The name of the R package (generally the same as `NAME`)
+#' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
+#' @param PACKAGE_DIR The directory containing the package source code
+#' @param FORCE_DEV_PACKAGE_LOAD a
+#' @param DEV_IF_RSTUDIO If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`
+#' @param SILENT Load all packages silently?
+#' @param PRODUCTION_NAME The name of the production computer
+#' @param EMAILS_XLSX_LOCATION_DEV Location of the excel sheet that holds email lists (used on development computers)
+#' @param EMAILS_XLSX_LOCATION_PROD Location of the excel sheet that holds email lists (used on production computer)
+#' @param EMAILS_OAUTH_LOCATION Location of the `.httr-oauth` file for use in `gmailr`
+#' @importFrom devtools load_all
+#' @export DashboardInitialiseOpinionated
+
+# nolint start
+DashboardInitialiseOpinionated <- function(NAME,
+                                           PKG = NAME,
+                                           STUB = "/",
+                                           PACKAGE_DIR = ".",
+                                           FORCE_DEV_PACKAGE_LOAD = FALSE,
+                                           DEV_IF_RSTUDIO = TRUE,
+                                           SILENT = FALSE,
+                                           PRODUCTION_NAME = PROJ$PRODUCTION_NAME,
+                                           EMAILS_XLSX_LOCATION_DEV = file.path("/etc", "gmailr", "emails_test.xlsx"),
+                                           EMAILS_XLSX_LOCATION_PROD = file.path("/etc", "gmailr", "emails.xlsx"),
+                                           EMAILS_OAUTH_LOCATION = file.path("/etc", "gmailr", ".httr-oauth")) {
+  # nolint end
+  Log("initialiseBefore")
+
+  DashboardInitialiseComputerName(
+    STUB = STUB,
+    SRC = "src",
+    NAME = NAME,
+    changeWorkingDirToTmp = (Sys.getenv("RSTUDIO") != "1")
+  )
+
+  if (Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD) {
+    if (SILENT) {
+      suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all = FALSE, quiet = TRUE))
+    } else {
+      devtools::load_all(PACKAGE_DIR, export_all = FALSE)
+    }
+
+    if (DEV_IF_RSTUDIO) {
+      PROJ$IS_DEV <- TRUE
+    }
+  } else {
+    if (SILENT) {
+      suppressPackageStartupMessages(library(PKG, character.only = TRUE))
+    } else {
+      library(PKG, character.only = TRUE)
+    }
+
+    if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
+      PROJ$IS_PRODUCTION <- TRUE
+      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- EMAILS_XLSX_LOCATION_PROD
+    } else {
+      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- EMAILS_XLSX_LOCATION_DEV
+    }
+  }
+  Log("initialiseAfter")
+}
+
+#' Enhanced Messaging
 #' @param txt Text
 #' @param type msg, warn, err
 #' @param syscallsDepth The number of syscalls included in the message. Set to 0 to disable.
@@ -76,9 +149,9 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) 
   if (newLine) startOfLine <- "\r\n"
 
   fn <- switch(type,
-    msg = base::message,
-    warn = base::warning,
-    err = base::stop
+               msg = base::message,
+               warn = base::warning,
+               err = base::stop
   )
 
   depth <- sys.nframe() - 1
@@ -107,57 +180,10 @@ DashboardMsg <- function(txt, type = "msg", syscallsDepth = 2, newLine = FALSE) 
   }
 }
 
-#' DashboardInitialiseOpinionated
-#' @param NAME The name of the automated analysis folders
-#' @param PKG The name of the R package (generally the same as `NAME`)
-#' @param STUB The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders
-#' @param PACKAGE_DIR The directory containing the package source code
-#' @param FORCE_DEV_PACKAGE_LOAD a
-#' @param DEV_IF_RSTUDIO If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`
-#' @param SILENT Load all packages silently?
-#' @importFrom devtools load_all
-#' @export DashboardInitialiseOpinionated
-
-# nolint start
-DashboardInitialiseOpinionated <- function(NAME, PKG = NAME, STUB = "/", PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE, DEV_IF_RSTUDIO = TRUE, SILENT = FALSE) {
-  # nolint end
-  Log("initialiseBefore")
-
-  DashboardInitialise(
-    STUB = STUB,
-    SRC = "src",
-    NAME = NAME,
-    changeWorkingDirToTmp = (Sys.getenv("RSTUDIO") != "1")
-  )
-
-  if (Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD) {
-    if (SILENT) {
-      suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all = FALSE, quiet = TRUE))
-    } else {
-      devtools::load_all(PACKAGE_DIR, export_all = FALSE)
-    }
-
-    if (DEV_IF_RSTUDIO) {
-      PROJ$IS_DEV <- TRUE
-    }
-  } else {
-    if (SILENT) {
-      suppressPackageStartupMessages(library(PKG, character.only = TRUE))
-    } else {
-      library(PKG, character.only = TRUE)
-    }
-
-    if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
-      PROJ$IS_PRODUCTION <- TRUE
-      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- file.path("/etc", "gmailr", "emails.xlsx") # nolint
-    }
-  }
-  Log("initialiseAfter")
-}
-
-#' If folders are setup according to the
-#' dashboard philosophy, then this function
-#' finds folders according to the dashboard
+#' Dashboard folders
+#'
+#' This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}.
+#' This function finds folders according to the dashboard philosophy
 #' @param inside where it is inside
 #' @param f an optional file
 #' @export DashboardFolder
@@ -171,15 +197,15 @@ DashboardFolder <- function(inside = "data_raw", f = NULL) {
 }
 
 #' Sends out mass emails
-#' @param emailsFromExcel a
-#' @param emailSubject a
-#' @param emailText a
-#' @param emailAttachFiles a
-#' @param emailFooter a
-#' @param BCC a
-#' @param emailsDirect a
-#' @param XLSXLocation a
-#' @param OAUTHLocation a
+#' @param emailsFromExcel A column of the excel file that holds emails
+#' @param emailSubject Subject of the email
+#' @param emailText Text of the email
+#' @param emailAttachFiles Files to be attached
+#' @param emailFooter Footer of the email
+#' @param BCC T/F if the recipiends should be BCC'd or not
+#' @param emailsDirect Location of the excel sheet that holds email lists
+#' @param XLSXLocation Location of xlsx file containing email lists
+#' @param OAUTHLocation Location of the `.httr-oauth` file for use in `gmailr`
 #' @import gmailr
 #' @importFrom magrittr %>%
 #' @export DashboardEmail

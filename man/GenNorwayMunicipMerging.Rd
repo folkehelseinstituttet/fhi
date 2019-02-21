@@ -2,7 +2,7 @@
 % Please edit documentation in R/GenData.R
 \name{GenNorwayMunicipMerging}
 \alias{GenNorwayMunicipMerging}
-\title{Creates the Norway Municip Merging (kommunesammenslaping) data.table}
+\title{Creates the NorwayMunicipMerging (kommunesammenslaping) data.table}
 \usage{
 GenNorwayMunicipMerging(saveLoc = file.path("inst", "createddata"))
 }

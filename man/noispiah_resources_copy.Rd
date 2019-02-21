@@ -2,13 +2,13 @@
 % Please edit documentation in R/noispiah_document.R
 \name{noispiah_resources_copy}
 \alias{noispiah_resources_copy}
-\title{hi}
+\title{Copies all necessary noispiah_document resources}
 \usage{
 noispiah_resources_copy(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to copy resources to}
 }
 \description{
-hi
+Copies all necessary noispiah_document resources
 }

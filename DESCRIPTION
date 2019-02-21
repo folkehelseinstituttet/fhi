@@ -1,5 +1,5 @@
 Package: fhi
-Title: FHI Convenience functions
+Title: FHI Convenience Functions
 Version: 2019.02.03
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
@@ -27,14 +27,11 @@ Imports:
   uuid,
   processx,
   devtools,
-  RAWmisc,
   zoo
 Suggests: testthat,
     knitr,
     usethis
-Remotes: raubreywhite/RAWmisc
 License: GPL-3
 LazyData: true
 RoxygenNote: 6.0.1
-Additional_repositories: https://folkehelseinstituttet.github.io/drat/, https://raubreywhite.github.io/drat/
 VignetteBuilder: knitr

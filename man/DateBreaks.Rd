@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphs.R
 \name{DateBreaks}
 \alias{DateBreaks}
-\title{DateBreaks}
+\title{Internal function}
 \usage{
 DateBreaks(breaksDF, limits, weekNumbers)
 }
@@ -14,5 +14,5 @@ DateBreaks(breaksDF, limits, weekNumbers)
 \item{weekNumbers}{a}
 }
 \description{
-DateBreaks
+Internal function
 }

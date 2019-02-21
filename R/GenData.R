@@ -1,6 +1,5 @@
-#' Creates norwayLocations
+#' Creates the NorwayLocations data.table
 #' @param saveLoc Location to save file to
-#' @importFrom readxl read_excel
 GenNorwayLocations <- function(saveLoc = file.path("inst", "createddata")) {
   norwayLocations <- readxl::read_excel(system.file("extdata", "norwayLocations.xlsx", package = "fhi"))
   norwayLocations <- norwayLocations[is.na(norwayLocations$yearEnd), c("municip", "municipName", "county", "countyName")]
@@ -10,7 +9,7 @@ GenNorwayLocations <- function(saveLoc = file.path("inst", "createddata")) {
   return(invisible(norwayLocations))
 }
 
-#' Fetches NorwayLocations
+#' Fetches the NorwayLocations data.table
 #' @export NorwayLocations
 NorwayLocations <- function() {
   if (is.null(VARS$norwayLocations)) {
@@ -19,13 +18,12 @@ NorwayLocations <- function() {
   return(VARS$norwayLocations)
 }
 
-#' Creates the Norway Municip Merging (kommunesammenslaping) data.table
+#' Creates the NorwayMunicipMerging (kommunesammenslaping) data.table
 #'
 #' Last updated 2017-07-29
 #'
 #' @param saveLoc Location to save file to
 #' @import data.table
-#' @importFrom zoo na.locf
 GenNorwayMunicipMerging <- function(saveLoc = file.path("inst", "createddata")) {
   # variables used in data.table functions in this function
   yearStart <- NULL
@@ -99,7 +97,7 @@ GenNorwayMunicipMerging <- function(saveLoc = file.path("inst", "createddata")) 
   return(invisible(skeletonFinal))
 }
 
-#' NorwayMunicipMerging
+#' Fetches the NorwayMunicipMerging data.table
 #' @export NorwayMunicipMerging
 NorwayMunicipMerging <- function() {
   if (is.null(VARS$norwayMunicipMerging)) {
@@ -124,6 +122,8 @@ GenNorwayPopulation <- function(saveLoc = file.path("inst", "createddata")) {
   region <- NULL
   variable <- NULL
   agenum <- NULL
+  imputed <- NULL
+  municipEnd <- NULL
   # end
 
   popFiles <- c(
@@ -250,7 +250,7 @@ GenNorwayPopulation <- function(saveLoc = file.path("inst", "createddata")) {
 }
 
 
-#' NorwayPopulation
+#' Fetches the NorwayPopulation data.table
 #' @export NorwayPopulation
 NorwayPopulation <- function() {
   if (is.null(VARS$norwayPopulation)) {
@@ -259,7 +259,7 @@ NorwayPopulation <- function() {
   return(VARS$norwayPopulation)
 }
 
-#' GenData
+#' Creates the NorwayLocations, NorwayMunicipMerging, and NorwayPopulation data.table
 #' @param saveLoc Location of data
 GenData <- function(saveLoc = file.path("inst", "createddata")) {
   GenNorwayLocations(saveLoc)

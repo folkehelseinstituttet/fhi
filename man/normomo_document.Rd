@@ -2,13 +2,13 @@
 % Please edit documentation in R/normomo_document.R
 \name{normomo_document}
 \alias{normomo_document}
-\title{hi}
+\title{normomo_document}
 \usage{
 normomo_document(...)
 }
 \arguments{
-\item{...}{test}
+\item{...}{Arguments}
 }
 \description{
-hi
+normomo_document
 }

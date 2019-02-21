@@ -7,5 +7,5 @@
 DashboardIsInitialised()
 }
 \description{
-Is the dashboard initialised?
+This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
 }
