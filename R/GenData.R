@@ -20,7 +20,7 @@ NorwayLocations <- function() {
 
 #' Fetches the NorwayLocationsLong data.table
 #' @export
-NorwayLocationsLong <- function(){
+NorwayLocationsLong <- function() {
   if (is.null(VARS$norwayLocations)) {
     a <- data.table(location = "Norge", locationName = "Norge")
     b <- NorwayLocations()[, c("municip", "municipName")]
@@ -33,7 +33,6 @@ NorwayLocationsLong <- function(){
     VARS$norwayLocationsLong <- norwayLocationsLong
   }
   return(VARS$norwayLocationsLong)
-
 }
 
 #' Creates the NorwayMunicipMerging (kommunesammenslaping) data.table
@@ -284,4 +283,3 @@ GenData <- function(saveLoc = file.path("inst", "createddata")) {
   GenNorwayMunicipMerging(saveLoc)
   GenNorwayPopulation(saveLoc)
 }
-
