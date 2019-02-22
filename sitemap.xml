@@ -73,6 +73,9 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayLocations.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayLocationsLong.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayMunicipMerging.html</loc>
   </url>
   <url>
@@ -137,8 +140,5 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//articles/dashboardbasics.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//articles/pdfdocuments.html</loc>
   </url>
 </urlset>
