@@ -18,6 +18,24 @@ NorwayLocations <- function() {
   return(VARS$norwayLocations)
 }
 
+#' Fetches the NorwayLocationsLong data.table
+#' @export
+NorwayLocationsLong <- function(){
+  if (is.null(VARS$norwayLocations)) {
+    a <- data.table(location = "Norge", locationName = "Norge")
+    b <- NorwayLocations()[, c("municip", "municipName")]
+    c <- NorwayLocations()[, c("county", "countyName")]
+    setnames(b, c("location", "locationName"))
+    setnames(c, c("location", "locationName"))
+
+    norwayLocationsLong <- unique(rbind(a, b, c))
+
+    VARS$norwayLocationsLong <- norwayLocationsLong
+  }
+  return(VARS$norwayLocationsLong)
+
+}
+
 #' Creates the NorwayMunicipMerging (kommunesammenslaping) data.table
 #'
 #' Last updated 2017-07-29
@@ -266,3 +284,4 @@ GenData <- function(saveLoc = file.path("inst", "createddata")) {
   GenNorwayMunicipMerging(saveLoc)
   GenNorwayPopulation(saveLoc)
 }
+
