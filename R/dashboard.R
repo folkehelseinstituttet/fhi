@@ -101,6 +101,9 @@ DashboardInitialiseOpinionated <- function(NAME,
     changeWorkingDirToTmp = (Sys.getenv("RSTUDIO") != "1")
   )
 
+  PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- EMAILS_XLSX_LOCATION_DEV
+  PROJ$DEFAULT_EMAILS_OAUTH_LOCATION <- EMAILS_OAUTH_LOCATION
+
   if (Sys.getenv("RSTUDIO") == "1" | FORCE_DEV_PACKAGE_LOAD) {
     if (SILENT) {
       suppressPackageStartupMessages(devtools::load_all(PACKAGE_DIR, export_all = FALSE, quiet = TRUE))
@@ -121,8 +124,6 @@ DashboardInitialiseOpinionated <- function(NAME,
     if (PROJ$COMPUTER_NAME == PROJ$PRODUCTION_NAME) {
       PROJ$IS_PRODUCTION <- TRUE
       PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- EMAILS_XLSX_LOCATION_PROD
-    } else {
-      PROJ$DEFAULT_EMAILS_XLSX_LOCATION <- EMAILS_XLSX_LOCATION_DEV
     }
   }
   Log("initialiseAfter")
