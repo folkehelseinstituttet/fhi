@@ -1,6 +1,6 @@
 Package: fhi
 Title: FHI Convenience Functions
-Version: 2019.2.27
+Version: 2019.3.5
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
   person("B", "V", email = "beva@fhi.no", role = c("aut"))
