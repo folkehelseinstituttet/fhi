@@ -1,4 +1,9 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt,norsk]{article}
+
+\usepackage[norsk]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
 
 \usepackage[top=3cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
 
