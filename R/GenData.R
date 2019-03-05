@@ -237,7 +237,7 @@ GenNorwayPopulation <- function(saveLoc = file.path("inst", "createddata")) {
   pop <- rbind(pop, pop2)
   pop[, imputed := FALSE]
 
-  missingYears <- max(pop$year):lubridate::year(lubridate::today()) + 2
+  missingYears <- max(pop$year):(lubridate::year(lubridate::today()) + 2)
   if (length(missingYears) > 1) {
     copiedYears <- vector("list", length = length(missingYears) - 1)
     for (i in seq_along(copiedYears)) {
