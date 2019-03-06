@@ -21,7 +21,7 @@ NorwayLocations <- function() {
 #' Fetches the NorwayLocationsLong data.table
 #' @export
 NorwayLocationsLong <- function() {
-  if (is.null(VARS$norwayLocations)) {
+  if (is.null(VARS$norwayLocationsLong)) {
     a <- data.table(location = "Norge", locationName = "Norge")
     b <- NorwayLocations()[, c("municip", "municipName")]
     c <- NorwayLocations()[, c("county", "countyName")]
