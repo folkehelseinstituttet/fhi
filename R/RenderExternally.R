@@ -7,7 +7,7 @@
 RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   file.remove(file.path(output_dir, output_file))
 
-  tmp_dir <- file.path(output_dir, uuid::UUIDgenerate())
+  tmp_dir <- file.path(tempdir(),uuid::UUIDgenerate())
   dir.create(tmp_dir)
   tmp_name <- sprintf("%s.pdf", uuid::UUIDgenerate())
 
