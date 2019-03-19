@@ -7,7 +7,8 @@
 RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   file.remove(file.path(output_dir, output_file))
 
-  tmp_dir <- tempdir()
+  tmp_dir <- file.path(output_dir,uuid::UUIDgenerate())
+  dir.create(tmp_dir)
   tmp_name <- sprintf("%s.pdf", uuid::UUIDgenerate())
 
   numberFails <- 0
@@ -18,9 +19,10 @@ RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
       args = c(
         "-e",
         sprintf(
-          'rmarkdown::render(\"%s\",output_file=\"%s\",output_dir=\"%s\",params=list(%s))',
+          'rmarkdown::render(\"%s\",output_file=\"%s\",output_dir=\"%s\",intermediates_dir=\"%s\",params=list(%s))',
           input,
           tmp_name,
+          tmp_dir,
           tmp_dir,
           params
         )
@@ -39,6 +41,7 @@ RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   }
   if (succeed) {
     file.copy(file.path(tmp_dir, tmp_name), file.path(output_dir, output_file))
+    unlink(tmp_dir, recursive = TRUE)
   } else {
     stop("ERROR!!!")
   }
