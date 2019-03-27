@@ -2,13 +2,13 @@
 % Please edit documentation in R/sykdompulsepdf_document.R
 \name{sykdompulspdf_resources_remove}
 \alias{sykdompulspdf_resources_remove}
-\title{hi}
+\title{Removes all necessary sykdompuls_mage_document and sykdompuls_luft_document resources}
 \usage{
 sykdompulspdf_resources_remove(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to remove resources from}
 }
 \description{
-hi
+Removes all necessary sykdompuls_mage_document and sykdompuls_luft_document resources
 }

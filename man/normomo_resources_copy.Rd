@@ -2,13 +2,13 @@
 % Please edit documentation in R/normomo_document.R
 \name{normomo_resources_copy}
 \alias{normomo_resources_copy}
-\title{hi}
+\title{Copies all necessary normomo_document resources}
 \usage{
 normomo_resources_copy(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to copy resources to}
 }
 \description{
-hi
+Copies all necessary normomo_document resources
 }

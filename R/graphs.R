@@ -1,8 +1,7 @@
-#' DateBreaks
+#' Internal function
 #' @param breaksDF a
 #' @param limits a
 #' @param weekNumbers a
-#' @export DateBreaks
 DateBreaks <- function(breaksDF, limits, weekNumbers) {
   if (weekNumbers) {
     if (as.numeric(difftime(limits[2], limits[1], "days")) / 7 < 52 * 0.5) {
@@ -44,62 +43,9 @@ DateBreaks <- function(breaksDF, limits, weekNumbers) {
   return(breaksDF)
 }
 
-#' DateBreaks
-#' @param data a
-#' @param direction a
-#' @param yvars a
-#' @export stairstepn
-stairstepn <- function(data, direction = "hv", yvars = "y") {
-  direction <- match.arg(direction, c("hv", "vh"))
-  data <- as.data.frame(data)[ order(data$x), ]
-  n <- nrow(data)
-
-  if (direction == "vh") {
-    xs <- rep(1:n, each = 2)[ -2 * n ]
-    ys <- c(1, rep(2:n, each = 2))
-  } else {
-    ys <- rep(1:n, each = 2)[ -2 * n ]
-    xs <- c(1, rep(2:n, each = 2))
-  }
-
-  data.frame(
-    x =
-      data$x[ xs ],
-    data[ ys, yvars, drop = FALSE ], data[ xs, setdiff(names(data), c("x", yvars)), drop = FALSE ]
-  )
-}
-
-#' StatStepribbon
-#' @import ggplot2
-#' @export StatStepribbon
-StatStepribbon <-
-  ggproto("stepribbon", Stat,
-    compute_group = function(., data, scales, direction = "hv", yvars = c("ymin", "ymax"), ...) {
-      stairstepn(data = data, direction = direction, yvars = yvars)
-    },
-    required_aes = c("x", "ymin", "ymax")
-  )
-
-#' stat_stepribbon
-#' @param mapping a
-#' @param data a
-#' @param geom a
-#' @param position a
-#' @param inherit.aes a
-#' @param ... a
-#' @import ggplot2
-#' @export stat_stepribbon
-stat_stepribbon <-
-  function(mapping = NULL, data = NULL, geom = "ribbon", position = "identity", inherit.aes = TRUE, ...) {
-    ggplot2::layer(
-      stat = StatStepribbon, mapping = mapping, data = data, geom = geom,
-      position = position, inherit.aes = inherit.aes, params = list(...)
-    )
-  }
-
 #' ThemeShiny
-#' @param base_size a
-#' @param base_family a
+#' @param base_size Base size for the theme
+#' @param base_family Base family for the theme
 #' @import ggplot2
 #' @export ThemeShiny
 ThemeShiny <- function(base_size = 12, base_family = "") {
@@ -169,25 +115,24 @@ ThemeShiny <- function(base_size = 12, base_family = "") {
   )
 }
 
-#' MakeLineThresholdPlot
-#' @param pd a
-#' @param x a
-#' @param dataVal a
-#' @param dataCIL a
-#' @param dataCIU a
-#' @param L1 a
-#' @param L2 a
-#' @param L3 a
-#' @param L4 a
-#' @param allPoints a
-#' @param title a
-#' @param pointShift a
-#' @param xShift a
-#' @param weekNumbers a
-#' @param step a
-#' @param GetCols a
+#' Creates a line threshold plot
+#' @param pd A data.frame
+#' @param x Name of the column in `pd` that is the `x` value
+#' @param dataVal Name of the column in `pd` that is the `y` value
+#' @param dataCIL Name of the column in `pd` that is the value of the lower confidence interval of the `y` value
+#' @param dataCIU Name of the column in `pd` that is the value of the upper confidence interval of the `y` value
+#' @param L1 Name of the column in `pd` that is the value of the first threshold
+#' @param L2 Name of the column in `pd` that is the value of the second threshold
+#' @param L3 Name of the column in `pd` that is the value of the third threshold
+#' @param L4 Name of the column in `pd` that is the value of the fourth threshold
+#' @param allPoints Should all points be displayed on the line?
+#' @param title Title of the graph
+#' @param pointShift How much will the points be shifted?
+#' @param xShift How much will the x values be shifted?
+#' @param weekNumbers Display week numbers?
+#' @param step Step graph or normal line graph?
+#' @param GetCols Vector of colours
 #' @import ggplot2
-#' @importFrom RAWmisc NORCHAR
 #' @export MakeLineThresholdPlot
 MakeLineThresholdPlot <- function(pd,
                                   x,
@@ -263,8 +208,8 @@ MakeLineThresholdPlot <- function(pd,
 
   q <- q + scale_y_continuous("")
   q <- q + scale_fill_manual(values = GetCols(), labels = c(
-    sprintf("Betydelig h%syere enn forventet", RAWmisc::NORCHAR$oe),
-    sprintf("H%syere enn forventet", RAWmisc::NORCHAR$oe),
+    sprintf("Betydelig h%syere enn forventet", NORCHAR$oe),
+    sprintf("H%syere enn forventet", NORCHAR$oe),
     "Forventet"
   ))
   if (!is.null(colours)) q <- q + scale_colour_manual(values = colours)
@@ -481,4 +426,23 @@ MakeLineExcessPlot <- function(pd, x, dataVal, dataZ, dataCIL = NULL, dataCIU = 
   q <- q + coord_cartesian(xlim = limits, expand = FALSE)
   if (!is.null(title)) q <- q + labs(title = title)
   return(q)
+}
+
+#' Creates png with default dimensions of half A4
+#' @param file a
+#' @param w a
+#' @param h a
+#' @param landscape a
+#' @export SMAOpng
+SMAOpng <- function(file = "Figure.png", w = 1, h = 1, landscape = TRUE) {
+  width <- 2480 / 2
+  height <- 3508 / 2
+  if (landscape) {
+    width <- 3508 / 2
+    height <- 2480 / 2
+  }
+  width <- width * w
+  height <- height * h
+
+  grDevices::png(file, width = width, height = height)
 }

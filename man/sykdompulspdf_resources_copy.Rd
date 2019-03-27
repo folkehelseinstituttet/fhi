@@ -2,13 +2,13 @@
 % Please edit documentation in R/sykdompulsepdf_document.R
 \name{sykdompulspdf_resources_copy}
 \alias{sykdompulspdf_resources_copy}
-\title{hi}
+\title{Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources}
 \usage{
 sykdompulspdf_resources_copy(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to copy resources to}
 }
 \description{
-hi
+Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources
 }

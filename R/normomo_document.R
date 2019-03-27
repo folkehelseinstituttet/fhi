@@ -1,5 +1,5 @@
-#' hi
-#' @param ... test
+#' normomo_document
+#' @param ... Arguments
 #' @importFrom rmarkdown pandoc_available pdf_document
 #' @export normomo_document
 normomo_document <- function(...) {
@@ -15,8 +15,8 @@ normomo_document <- function(...) {
   base
 }
 
-#' hi
-#' @param output_dir a
+#' Copies all necessary normomo_document resources
+#' @param output_dir Folder to copy resources to
 #' @export normomo_resources_copy
 normomo_resources_copy <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "normomo", "skeleton",
@@ -34,8 +34,8 @@ normomo_resources_copy <- function(output_dir) {
 }
 
 
-#' hi
-#' @param output_dir a
+#' Removes all necessary normomo_document resources
+#' @param output_dir Folder to remove resources from
 #' @export normomo_resources_remove
 normomo_resources_remove <- function(output_dir) {
   dir <- system.file("rmarkdown", "templates", "normomo", "skeleton",

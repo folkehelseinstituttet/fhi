@@ -7,5 +7,5 @@
 DashboardIsProduction()
 }
 \description{
-Is the dashboard in production?
+This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
 }

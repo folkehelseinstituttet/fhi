@@ -1,16 +1,14 @@
-#' RenderExternally
-#' @param input a
-#' @param output_file a
-#' @param output_dir a
-#' @param params a
-#' @importFrom processx run
-#' @importFrom uuid UUIDgenerate
-#' @importFrom rmarkdown render
+#' Render a markdown file in an external R process
+#' @param input Rmd file to be rendered
+#' @param output_file Output file
+#' @param output_dir Output directory
+#' @param params Any params that need to be passed to the Rmd file
 #' @export RenderExternally
 RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   file.remove(file.path(output_dir, output_file))
 
-  tmp_dir <- tempdir()
+  tmp_dir <- file.path(tempdir(), uuid::UUIDgenerate())
+  dir.create(tmp_dir)
   tmp_name <- sprintf("%s.pdf", uuid::UUIDgenerate())
 
   numberFails <- 0
@@ -21,9 +19,10 @@ RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
       args = c(
         "-e",
         sprintf(
-          'rmarkdown::render(\"%s\",output_file=\"%s\",output_dir=\"%s\",params=list(%s))',
+          'rmarkdown::render(\"%s\",output_file=\"%s\",output_dir=\"%s\",intermediates_dir=\"%s\",params=list(%s))',
           input,
           tmp_name,
+          tmp_dir,
           tmp_dir,
           params
         )
@@ -42,6 +41,7 @@ RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   }
   if (succeed) {
     file.copy(file.path(tmp_dir, tmp_name), file.path(output_dir, output_file))
+    unlink(tmp_dir, recursive = TRUE)
   } else {
     stop("ERROR!!!")
   }

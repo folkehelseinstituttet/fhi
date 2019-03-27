@@ -2,13 +2,13 @@
 % Please edit documentation in R/noispiah_document.R
 \name{noispiah_document}
 \alias{noispiah_document}
-\title{hi}
+\title{noispiah_document}
 \usage{
 noispiah_document(...)
 }
 \arguments{
-\item{...}{test}
+\item{...}{Arguments}
 }
 \description{
-hi
+noispiah_document
 }

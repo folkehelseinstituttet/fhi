@@ -1,6 +1,6 @@
 Package: fhi
-Title: FHI Convenience functions
-Version: 2018.12.07
+Title: FHI Convenience Functions
+Version: 2019.3.19
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
   person("B", "V", email = "beva@fhi.no", role = c("aut"))
@@ -9,7 +9,7 @@ Description: Convenience functions for use at Folkehelseinstituttet.
 URL: https://folkehelseinstituttet.github.io/fhi/
 BugReports: https://github.com/folkehelseinstituttet/fhi/issues/
 Depends:
-  R (>= 3.4.0)
+  R (>= 3.3.0)
 Imports:
   ggplot2,
   grid,
@@ -27,13 +27,11 @@ Imports:
   uuid,
   processx,
   devtools,
-  RAWmisc
+  zoo
 Suggests: testthat,
     knitr,
     usethis
-Remotes: raubreywhite/RAWmisc
 License: GPL-3
 LazyData: true
 RoxygenNote: 6.0.1
-Additional_repositories: https://folkehelseinstituttet.github.io/drat/, https://raubreywhite.github.io/drat/
 VignetteBuilder: knitr

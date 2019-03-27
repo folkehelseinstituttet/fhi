@@ -2,9 +2,7 @@
 % Please edit documentation in R/dashboard.R
 \name{DashboardFolder}
 \alias{DashboardFolder}
-\title{If folders are setup according to the
-dashboard philosophy, then this function
-finds folders according to the dashboard}
+\title{Dashboard folders}
 \usage{
 DashboardFolder(inside = "data_raw", f = NULL)
 }
@@ -14,7 +12,6 @@ DashboardFolder(inside = "data_raw", f = NULL)
 \item{f}{an optional file}
 }
 \description{
-If folders are setup according to the
-dashboard philosophy, then this function
-finds folders according to the dashboard
+This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}.
+This function finds folders according to the dashboard philosophy
 }

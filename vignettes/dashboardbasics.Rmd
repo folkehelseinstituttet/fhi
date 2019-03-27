@@ -4,7 +4,7 @@ author: "Richard White"
 date: "2018-10-26"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Initializing a dashboard}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 The `fhi` package contains a number of functions that span the [dashboards](https://folkehelseinstituttet.github.io/dashboards/) project.
 
-As mentioned in the [umbrella documentation](https://folkehelseinstituttet.github.io/dashboards/integrating-the-r-package-into-the-physical-system.html#bounded-context), we expect that for the automated analysis `ANALYSIS`, there is an R package called `ANALYSIS` and the following folder structure exists on the system:
+As mentioned in the [umbrella documentation](https://folkehelseinstituttet.github.io/dashboards/umbrella.html#internalfilestructure), we expect that for the automated analysis `ANALYSIS`, there is an R package called `ANALYSIS` and the following folder structure exists on the system:
 
 ```{}
 /MASTERFOLDER/data_raw/
@@ -33,18 +33,13 @@ As mentioned in the [umbrella documentation](https://folkehelseinstituttet.githu
   |-- ANALYSIS/
 /MASTERFOLDER/results/
   |-- ANALYSIS/
-/MASTERFOLDER/src/
-  |-- ANALYSIS/
-     |-- 0_run.sh
-     |-- RunProcess.R
-     |-- RunTest.R
 ```
 
 It is important to note that we generally do not use `MASTERFOLDER` in production settings.
 
 ## fhi::DashboardInitialiseOpinionated
 
-[fhi::DashboardInitialiseOpinionated](../reference/DashboardInitialiseOpinionated.html) is always the first function called in a [RunProcess.R](https://folkehelseinstituttet.github.io/dashboards/integrating-the-r-package-into-the-physical-system.html#runprocess.r) file. Its main purpose is to properly initialise the environment `fhi::PROJ`.
+[fhi::DashboardInitialiseOpinionated](../reference/DashboardInitialiseOpinionated.html) is always the first function called in a [RunProcess.R](https://folkehelseinstituttet.github.io/dashboards/rpackages.html#RunProcess) file. Its main purpose is to properly initialise the environment `fhi::PROJ`.
 
 ```{r}
 for(i in names(fhi::PROJ)){
@@ -78,7 +73,7 @@ Here we now create the necessary file structure:
 ```{r}
 # Create an empty package
 pkg <- file.path(tempdir(check=TRUE),"ANALYSIS")
-usethis::create_package(pkg)
+usethis::create_package(pkg,open=F)
 
 # Create the data/results/src folders
 tmpdir <- tempdir(check=TRUE)
@@ -86,14 +81,12 @@ dir.create(file.path(tmpdir,"data_raw"))
 dir.create(file.path(tmpdir,"data_clean"))
 dir.create(file.path(tmpdir,"data_app"))
 dir.create(file.path(tmpdir,"results"))
-dir.create(file.path(tmpdir,"src"))
 
 # Create the `ANALYSIS` specific folders inside
 dir.create(file.path(tmpdir,"data_raw","ANALYSIS"))
 dir.create(file.path(tmpdir,"data_clean","ANALYSIS"))
 dir.create(file.path(tmpdir,"data_app","ANALYSIS"))
 dir.create(file.path(tmpdir,"results","ANALYSIS"))
-dir.create(file.path(tmpdir,"src","ANALYSIS"))
 
 # Initialise
 fhi::DashboardInitialiseOpinionated("ANALYSIS",
@@ -109,8 +102,6 @@ for(i in names(fhi::PROJ)){
 ```
 
 We can see that we have a few new extra variables:
-
-`fhi::PROJ$SRC` is the location of the `src` directory.
 
 `fhi::PROJ$NAME` is the name of the automated analysis.
 
@@ -140,7 +131,7 @@ fhi::DashboardFolder("data_raw","myfile.txt")
 
 ## fhi::DashboardMsg
 
-According to the [code style guidelines](https://folkehelseinstituttet.github.io/dashboards/contributing.html#code-style) we do not use `print`. We instead use `message`, `warning`, and `stop`. 
+According to the [code style guidelines](https://folkehelseinstituttet.github.io/dashboards/contributingquickstart.html#code-style) we do not use `print`. We instead use `message`, `warning`, and `stop`. 
 
 [fhi::DashboardMsg](../reference/DashboardMsg.html) is a stylised version of `message`, `warning`, and `stop`. It prints the requested message with a timestamp, computer name, analysis name, and a traceback of system calls. This is useful in log files.
 

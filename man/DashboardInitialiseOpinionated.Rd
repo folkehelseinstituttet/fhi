@@ -6,7 +6,11 @@
 \usage{
 DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
   PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE,
-  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE)
+  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE,
+  PRODUCTION_NAME = PROJ$PRODUCTION_NAME,
+  EMAILS_XLSX_LOCATION_DEV = file.path("/etc", "gmailr", "emails_test.xlsx"),
+  EMAILS_XLSX_LOCATION_PROD = file.path("/etc", "gmailr", "emails.xlsx"),
+  EMAILS_OAUTH_LOCATION = file.path("/etc", "gmailr", ".httr-oauth"))
 }
 \arguments{
 \item{NAME}{The name of the automated analysis folders}
@@ -22,7 +26,16 @@ DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
 \item{DEV_IF_RSTUDIO}{If function is called from RStudio, flag `PROJ$IS_DEV` as `TRUE`}
 
 \item{SILENT}{Load all packages silently?}
+
+\item{PRODUCTION_NAME}{The name of the production computer}
+
+\item{EMAILS_XLSX_LOCATION_DEV}{Location of the excel sheet that holds email lists (used on development computers)}
+
+\item{EMAILS_XLSX_LOCATION_PROD}{Location of the excel sheet that holds email lists (used on production computer)}
+
+\item{EMAILS_OAUTH_LOCATION}{Location of the `.httr-oauth` file for use in `gmailr`}
 }
 \description{
-DashboardInitialiseOpinionated
+This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}.
+This function specifies all of the location of necessary files for the dashboard setup.
 }

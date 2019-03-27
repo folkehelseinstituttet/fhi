@@ -1,3 +1,4 @@
+inst/extdata/Personer*
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^.*\.git$
@@ -21,3 +22,5 @@ tests/testthat/results/.DS_Store
 CONTRIBUTING.md
 pkgdown/*
 LICENSE
+cran-comments.md
+^.*\.Rcheck

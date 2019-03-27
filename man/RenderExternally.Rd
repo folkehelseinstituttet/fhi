@@ -2,19 +2,19 @@
 % Please edit documentation in R/RenderExternally.R
 \name{RenderExternally}
 \alias{RenderExternally}
-\title{RenderExternally}
+\title{Render a markdown file in an external R process}
 \usage{
 RenderExternally(input, output_file, output_dir, params = "x=1")
 }
 \arguments{
-\item{input}{a}
+\item{input}{Rmd file to be rendered}
 
-\item{output_file}{a}
+\item{output_file}{Output file}
 
-\item{output_dir}{a}
+\item{output_dir}{Output directory}
 
-\item{params}{a}
+\item{params}{Any params that need to be passed to the Rmd file}
 }
 \description{
-RenderExternally
+Render a markdown file in an external R process
 }

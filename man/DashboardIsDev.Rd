@@ -7,5 +7,5 @@
 DashboardIsDev()
 }
 \description{
-Is the dashboard in development?
+This function relies upon you using the dashboard folder setup: \code{vignette("dashboardbasics", package = "fhi")}
 }

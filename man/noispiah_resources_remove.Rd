@@ -2,13 +2,13 @@
 % Please edit documentation in R/noispiah_document.R
 \name{noispiah_resources_remove}
 \alias{noispiah_resources_remove}
-\title{hi}
+\title{Removes all necessary noispiah_document resources}
 \usage{
 noispiah_resources_remove(output_dir)
 }
 \arguments{
-\item{output_dir}{a}
+\item{output_dir}{Folder to remove resources from}
 }
 \description{
-hi
+Removes all necessary noispiah_document resources
 }
