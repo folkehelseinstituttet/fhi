@@ -219,6 +219,9 @@ DashboardEmail <- function(emailsFromExcel = NULL,
                            emailsDirect = NULL,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
+  if (Sys.getenv("EMAILS_SILENT") == "1"){
+    return()
+  }
   if (!is.null(emailsFromExcel)) {
     emails <- readxl::read_excel(XLSXLocation)
     emails <- stats::na.omit(emails[[emailsFromExcel]])

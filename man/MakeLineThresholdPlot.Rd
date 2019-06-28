@@ -4,8 +4,8 @@
 \alias{MakeLineThresholdPlot}
 \title{Creates a line threshold plot}
 \usage{
-MakeLineThresholdPlot(pd, x, dataVal, dataCIL = NULL, dataCIU = NULL, L1,
-  L2, L3, L4, allPoints = TRUE, title = NULL, pointShift = 0,
+MakeLineThresholdPlot(pd, x, dataVal, dataCIL = NULL, dataCIU = NULL,
+  L1, L2, L3, L4, allPoints = TRUE, title = NULL, pointShift = 0,
   xShift = 0, weekNumbers = FALSE, step = FALSE, GetCols)
 }
 \arguments{
