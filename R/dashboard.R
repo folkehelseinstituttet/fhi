@@ -219,7 +219,7 @@ DashboardEmail <- function(emailsFromExcel = NULL,
                            emailsDirect = NULL,
                            XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
                            OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION) {
-  if (Sys.getenv("EMAILS_SILENT") == "1"){
+  if (Sys.getenv("EMAILS_SILENT") == "1") {
     return()
   }
   if (!is.null(emailsFromExcel)) {
