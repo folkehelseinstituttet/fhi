@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Logs values to LOGDATA$log — Log • fhi</title>
+<title>location utilities — get_location_name • fhi</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Logs values to LOGDATA$log — Log" />
+<meta property="og:title" content="location utilities — get_location_name" />
 
-<meta property="og:description" content="Logs values to LOGDATA$log" />
+<meta property="og:description" content="location utilities" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.3.27</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.7.2</span>
       </span>
     </div>
 
@@ -117,33 +117,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Logs values to LOGDATA$log</h1>
+    <h1>location utilities</h1>
     
-    <div class="hidden name"><code>LOG.Rd</code></div>
+    <div class="hidden name"><code>get_location_name.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Logs values to LOGDATA$log</p>
+    <p>location utilities</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>Log</span>(<span class='no'>name</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>(), <span class='kw'>log</span> <span class='kw'>=</span> <span class='st'>"log1"</span>)</pre>
+    <pre class="usage"><span class='fu'>get_location_name</span>(<span class='no'>location_code</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Name of value being logged</p></td>
-    </tr>
-    <tr>
-      <th>val</th>
-      <td><p>Value being logged</p></td>
-    </tr>
-    <tr>
-      <th>log</th>
-      <td><p>Name of log</p></td>
+      <th>location_code</th>
+      <td><p>a location code</p></td>
     </tr>
     </table>
     

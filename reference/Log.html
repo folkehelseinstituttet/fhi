@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates the NorwayMunicipMerging (kommunesammenslaping) data.table — GenNorwayMunicipMerging • fhi</title>
+<title>Logs values to LOGDATA$log — Log • fhi</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Creates the NorwayMunicipMerging (kommunesammenslaping) data.table — GenNorwayMunicipMerging" />
+<meta property="og:title" content="Logs values to LOGDATA$log — Log" />
 
-<meta property="og:description" content="Last updated 2017-07-29" />
+<meta property="og:description" content="Logs values to LOGDATA$log" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,25 +117,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates the NorwayMunicipMerging (kommunesammenslaping) data.table</h1>
+    <h1>Logs values to LOGDATA$log</h1>
     
-    <div class="hidden name"><code>GenNorwayMunicipMerging.Rd</code></div>
+    <div class="hidden name"><code>Log.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Last updated 2017-07-29</p>
+    <p>Logs values to LOGDATA$log</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>GenNorwayMunicipMerging</span>(<span class='kw'>saveLoc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='st'>"inst"</span>, <span class='st'>"createddata"</span>))</pre>
+    <pre class="usage"><span class='fu'>Log</span>(<span class='no'>name</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>(), <span class='kw'>log</span> <span class='kw'>=</span> <span class='st'>"log1"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>saveLoc</th>
-      <td><p>Location to save file to</p></td>
+      <th>name</th>
+      <td><p>Name of value being logged</p></td>
+    </tr>
+    <tr>
+      <th>val</th>
+      <td><p>Value being logged</p></td>
+    </tr>
+    <tr>
+      <th>log</th>
+      <td><p>Name of log</p></td>
     </tr>
     </table>
     

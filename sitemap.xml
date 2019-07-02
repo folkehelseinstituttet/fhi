@@ -46,10 +46,10 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayPopulation.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOG.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOGDATA.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOGDATA.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/Log.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/LogGet.html</loc>
@@ -101,6 +101,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/VARS.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/get_location_name.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/noispiah_document.html</loc>
