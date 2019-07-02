@@ -27,7 +27,8 @@ Imports:
   uuid,
   processx,
   devtools,
-  zoo
+  zoo,
+  fhidata
 Suggests: testthat,
     knitr,
     usethis
