@@ -6,7 +6,8 @@
 \usage{
 DashboardEmail(emailsFromExcel = NULL, emailSubject, emailText,
   emailAttachFiles = NULL, emailFooter = TRUE, BCC = TRUE,
-  emailsDirect = NULL, XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
+  emailsDirect = NULL,
+  XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
   OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION)
 }
 \arguments{

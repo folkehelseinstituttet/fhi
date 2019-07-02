@@ -4,9 +4,9 @@
 \alias{MakeLineExcessPlot}
 \title{MakeLineComparisonPlot}
 \usage{
-MakeLineExcessPlot(pd, x, dataVal, dataZ, dataCIL = NULL, dataCIU = NULL,
-  allPoints = TRUE, title = NULL, pointShift = 0, xShift = 0,
-  weekNumbers = FALSE, step = FALSE, GetCols)
+MakeLineExcessPlot(pd, x, dataVal, dataZ, dataCIL = NULL,
+  dataCIU = NULL, allPoints = TRUE, title = NULL, pointShift = 0,
+  xShift = 0, weekNumbers = FALSE, step = FALSE, GetCols)
 }
 \arguments{
 \item{pd}{a}

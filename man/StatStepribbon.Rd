@@ -4,7 +4,7 @@
 \name{StatStepribbon}
 \alias{StatStepribbon}
 \title{StatStepribbon}
-\format{An object of class \code{stepribbon} (inherits from \code{Stat}, \code{ggproto}) of length 3.}
+\format{An object of class \code{stepribbon} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 3.}
 \usage{
 StatStepribbon
 }
