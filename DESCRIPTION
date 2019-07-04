@@ -1,8 +1,9 @@
 Package: fhi
 Title: FHI Convenience Functions
-Version: 2019.3.27
+Version: 2019.7.2
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
+  person("Gunnar", "Rø", email = "GunnarOyvindIsaksson.Ro@fhi.no", role = c("aut")), 
   person("B", "V", email = "beva@fhi.no", role = c("aut"))
   )
 Description: Convenience functions for use at Folkehelseinstituttet.
@@ -28,7 +29,8 @@ Imports:
   processx,
   devtools,
   zoo,
-  utils
+  utils,
+  fhidata
 Suggests: testthat,
     knitr,
     usethis
