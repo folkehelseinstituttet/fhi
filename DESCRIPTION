@@ -27,11 +27,12 @@ Imports:
   uuid,
   processx,
   devtools,
-  zoo
+  zoo,
+  utils
 Suggests: testthat,
     knitr,
     usethis
 License: GPL-3
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr
