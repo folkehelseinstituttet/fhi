@@ -103,7 +103,25 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/VARS.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/file_stable.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/get_location_name.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoweek_c.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoweek_n.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoyear_c.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoyear_n.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoyearweek.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/noispiah_document.html</loc>
@@ -140,6 +158,12 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_resources_remove.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/temp_dir.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/txt_progress_bar.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//articles/dashboardbasics.html</loc>
