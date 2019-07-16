@@ -1,4 +1,4 @@
-file_open <- function(file = tempfile()){
+file_open <- function(file = tempfile()) {
   suppressWarnings(
     "try-error" %in% class(
       try(file(file, open = "w"), silent = TRUE)
@@ -16,8 +16,8 @@ file_stable <- function(file = tempfile(), delay = 10) {
     size1 <- file.info(file)$size[1]
     Sys.sleep(delay)
     size2 <- file.info(file)$size[1]
-    if(size1 == size2){
-      if(!file_open(file)){
+    if (size1 == size2) {
+      if (!file_open(file)) {
         return(TRUE)
       }
     }
