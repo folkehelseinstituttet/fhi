@@ -1,9 +1,17 @@
 file_open <- function(file = tempfile()) {
-  suppressWarnings(
-    "try-error" %in% class(
-      try(file(file, open = "w"), silent = TRUE)
+  retval <- TRUE
+  if(fs::path_ext(file) %in% c("csv")){
+    retval <- tryCatch(
+      {
+        a <- data.table::fread(file, nrows = 1)
+        return(TRUE)
+      },
+      error=function(cond) {
+        return(FALSE)
+      }
     )
-  )
+  }
+  return(retval)
 }
 
 #' Is the file stable (size not increasing/decreasing)?
