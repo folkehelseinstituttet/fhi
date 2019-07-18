@@ -30,7 +30,8 @@ Imports:
   devtools,
   zoo,
   utils,
-  fhidata
+  fhidata,
+  fs
 Suggests: testthat,
     knitr,
     usethis
