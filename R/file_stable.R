@@ -1,14 +1,13 @@
 file_open <- function(file = tempfile()) {
   retval <- TRUE
-  if(fs::path_ext(file) %in% c("csv")){
-    retval <- tryCatch(
-      {
-        a <- data.table::fread(file, nrows = 1)
-        return(TRUE)
-      },
-      error=function(cond) {
-        return(FALSE)
-      }
+  if (fs::path_ext(file) %in% c("csv")) {
+    retval <- tryCatch({
+      a <- data.table::fread(file, nrows = 1)
+      return(TRUE)
+    },
+    error = function(cond) {
+      return(FALSE)
+    }
     )
   }
   return(retval)
