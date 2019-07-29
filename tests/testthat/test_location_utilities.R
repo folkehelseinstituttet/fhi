@@ -3,7 +3,7 @@ context("Location Utilities")
 library(fhi)
 
 test_that("get_location_name", {
-  expect_equal(get_location_name("county01"), "Østfold")
+  testthat::expect_equal(get_location_name("county01"), "Østfold")
   expect_equal(get_location_name("municip0213"), "Ski")
   expect_equal(get_location_name("municip1805"), "Narvik")
   expect_equal(get_location_name("norway"), "Norway")

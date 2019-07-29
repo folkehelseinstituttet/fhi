@@ -31,7 +31,8 @@ Imports:
   zoo,
   utils,
   fhidata,
-  fs
+  fs,
+  glue
 Suggests: testthat,
     knitr,
     usethis

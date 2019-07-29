@@ -1,4 +1,5 @@
 #' get_location_name
+#' @import data.table
 #' @param location_code a location code
 #' @export get_location_name
 get_location_name <- function(location_code) {
