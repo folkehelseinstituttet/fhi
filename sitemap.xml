@@ -28,22 +28,7 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardMsg.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DateBreaks.html</loc>
-  </url>
-  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/FortifyShapeFile.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenData.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayLocations.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayMunicipMerging.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/GenNorwayPopulation.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOGDATA.html</loc>
@@ -55,31 +40,7 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/LogGet.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineBrushPlot.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineComparisonPlot.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineExcessPlot.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/MakeLineThresholdPlot.html</loc>
-  </url>
-  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/NORCHAR.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayLocations.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayLocationsLong.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayMunicipMerging.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NorwayPopulation.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/PROJ.html</loc>
@@ -88,19 +49,10 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/RenderExternally.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/SMAOpng.html</loc>
-  </url>
-  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/SYSCALLS.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/StatStepribbon.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/ThemeShiny.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/VARS.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/config.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/file_stable.html</loc>
@@ -142,10 +94,19 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/normomo_resources_remove.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/stairstepn.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/reexports.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/stat_stepribbon.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/season.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/split_equal.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/start_of_season.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/start_of_year.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompuls_luft_document.html</loc>
