@@ -23,7 +23,6 @@ LOGDATA$x <- 1
 #' test
 #' @export config
 config <- new.env()
-config$frost_client_id <- Sys.getenv("FROST_CLIENT_ID","c6d9bf2d-104c-4b5f-accf-d367b2220d62")
 
 #' Norwegian characters in unicode
 #' @export NORCHAR
