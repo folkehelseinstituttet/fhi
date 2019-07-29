@@ -37,3 +37,49 @@ isoweek_n <- function(date = lubridate::today()) {
 isoyearweek <- function(date = lubridate::today()) {
   return(sprintf("%s-%s", isoyear_n(date), isoweek_c(date)))
 }
+
+#' start_of_season
+#' @param yrwk a
+#' @export
+start_of_season <- function(yrwk){
+  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+  yr <- retval[1]
+  wk <- retval[2]
+
+  if(wk>30){
+    start <- glue::glue("{yr}-30")
+  } else {
+    start <- glue::glue("{yr-1}-30")
+  }
+  return(start)
+}
+
+#' start_of_year
+#' @param yrwk a
+#' @export
+start_of_year <- function(yrwk){
+  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+  yr <- retval[1]
+  wk <- retval[2]
+
+  start <- glue::glue("{yr}-01")
+
+  return(start)
+}
+
+
+#' season
+#' @param yrwk a
+#' @export
+season <- function(yrwk){
+  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+  yr <- retval[1]
+  wk <- retval[2]
+
+  if(wk>30){
+    start <- glue::glue("{yr}/{yr+1}")
+  } else {
+    start <- glue::glue("{yr-1}/{yr}")
+  }
+  return(start)
+}
