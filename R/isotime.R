@@ -41,12 +41,12 @@ isoyearweek <- function(date = lubridate::today()) {
 #' start_of_season
 #' @param yrwk a
 #' @export
-start_of_season <- function(yrwk){
-  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+start_of_season <- function(yrwk) {
+  retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
 
-  if(wk>30){
+  if (wk > 30) {
     start <- glue::glue("{yr}-30")
   } else {
     start <- glue::glue("{yr-1}-30")
@@ -57,8 +57,8 @@ start_of_season <- function(yrwk){
 #' start_of_year
 #' @param yrwk a
 #' @export
-start_of_year <- function(yrwk){
-  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+start_of_year <- function(yrwk) {
+  retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
 
@@ -71,12 +71,12 @@ start_of_year <- function(yrwk){
 #' season
 #' @param yrwk a
 #' @export
-season <- function(yrwk){
-  retval <- as.numeric(stringr::str_split(yrwk,"-")[[1]])
+season <- function(yrwk) {
+  retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
 
-  if(wk>30){
+  if (wk > 30) {
     start <- glue::glue("{yr}/{yr+1}")
   } else {
     start <- glue::glue("{yr-1}/{yr}")

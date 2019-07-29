@@ -33,4 +33,3 @@ NORCHAR$OE <- "\u00D8"
 NORCHAR$oe <- "\u00F8"
 NORCHAR$AE <- "\u00C6"
 NORCHAR$ae <- "\u00E6"
-
