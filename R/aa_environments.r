@@ -19,11 +19,11 @@ SYSCALLS <- new.env(parent = emptyenv())
 LOGDATA <- new.env(parent = emptyenv())
 LOGDATA$x <- 1
 
-#' Environment to store data.tables
+#' Environment to store config
 #' test
-#' @export VARS
-VARS <- new.env(parent = emptyenv())
-VARS$x <- 1
+#' @export config
+config <- new.env()
+config$frost_client_id <- Sys.getenv("FROST_CLIENT_ID","c6d9bf2d-104c-4b5f-accf-d367b2220d62")
 
 #' Norwegian characters in unicode
 #' @export NORCHAR
@@ -34,3 +34,4 @@ NORCHAR$OE <- "\u00D8"
 NORCHAR$oe <- "\u00F8"
 NORCHAR$AE <- "\u00C6"
 NORCHAR$ae <- "\u00E6"
+
