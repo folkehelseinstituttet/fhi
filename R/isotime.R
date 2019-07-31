@@ -46,7 +46,7 @@ start_of_season <- function(yrwk) {
   yr <- retval[1]
   wk <- retval[2]
 
-  if (wk > 30) {
+  if (wk >= 30) {
     start <- glue::glue("{yr}-30")
   } else {
     start <- glue::glue("{yr-1}-30")
@@ -72,7 +72,7 @@ season.int <- function(yrwk) {
   yr <- retval[1]
   wk <- retval[2]
 
-  if (wk > 30) {
+  if (wk >= 30) {
     start <- glue::glue("{yr}/{yr+1}")
   } else {
     start <- glue::glue("{yr-1}/{yr}")
@@ -85,3 +85,16 @@ season.int <- function(yrwk) {
 #' @param yrwk a
 #' @export
 season <- Vectorize(season.int)
+
+#' x from week
+#' @param week week
+#' @export
+x <- function(week) {
+
+  retval <- week
+  retval[week >= 30] <- week[week >= 30] - 29
+  retval[week < 30] <- week[week < 30] + 23
+  retval[week == 53] <- 23.5
+
+  return(retval)
+}
