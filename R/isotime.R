@@ -67,11 +67,7 @@ start_of_year <- function(yrwk) {
   return(start)
 }
 
-
-#' season
-#' @param yrwk a
-#' @export
-season <- function(yrwk) {
+season.int <- function(yrwk) {
   retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
@@ -83,3 +79,9 @@ season <- function(yrwk) {
   }
   return(start)
 }
+
+
+#' season
+#' @param yrwk a
+#' @export
+season <- Vectorize(season.int)
