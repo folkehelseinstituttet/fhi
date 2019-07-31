@@ -90,7 +90,6 @@ season <- Vectorize(season.int)
 #' @param week week
 #' @export
 x <- function(week) {
-
   retval <- week
   retval[week >= 30] <- week[week >= 30] - 29
   retval[week < 30] <- week[week < 30] + 23
