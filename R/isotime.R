@@ -40,16 +40,17 @@ isoyearweek <- function(date = lubridate::today()) {
 
 #' start_of_season
 #' @param yrwk a
+#' @param start_week the start week of the season
 #' @export
-start_of_season <- function(yrwk) {
+start_of_season <- function(yrwk, start_week=30) {
   retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
 
-  if (wk >= 30) {
-    start <- glue::glue("{yr}-30")
+  if (wk >= start_week) {
+    start <- glue::glue("{yr}-{start_week}")
   } else {
-    start <- glue::glue("{yr-1}-30")
+    start <- glue::glue("{yr-1}-{start_week}")
   }
   return(start)
 }
@@ -67,12 +68,12 @@ start_of_year <- function(yrwk) {
   return(start)
 }
 
-season.int <- function(yrwk) {
+season.int <- function(yrwk, start_week=30) {
   retval <- as.numeric(stringr::str_split(yrwk, "-")[[1]])
   yr <- retval[1]
   wk <- retval[2]
 
-  if (wk >= 30) {
+  if (wk >= start_week) {
     start <- glue::glue("{yr}/{yr+1}")
   } else {
     start <- glue::glue("{yr-1}/{yr}")
@@ -83,8 +84,9 @@ season.int <- function(yrwk) {
 
 #' season
 #' @param yrwk a
+#' @param start_week the start week of the season
 #' @export
-season <- Vectorize(season.int)
+season <- Vectorize(season.int, vectorize.args=c("yrwk"))
 
 #' x from week
 #' @param week week
