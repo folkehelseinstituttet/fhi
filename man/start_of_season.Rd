@@ -4,10 +4,12 @@
 \alias{start_of_season}
 \title{start_of_season}
 \usage{
-start_of_season(yrwk)
+start_of_season(yrwk, start_week = 30)
 }
 \arguments{
 \item{yrwk}{a}
+
+\item{start_week}{the start week of the season}
 }
 \description{
 start_of_season
