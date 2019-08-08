@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt,norsk]{article}
+
+\usepackage[norsk]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+
+\usepackage[top=3cm, bottom=2.5cm, left=1.25cm, right=1.25cm, headsep=1cm]{geometry}
+
+\renewcommand{\baselinestretch}{2}
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\tiny\oldtabular}
+\renewcommand\familydefault{\sfdefault}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{caption}
+\captionsetup[table]{name=Tabell}
+\captionsetup[figure]{name=Figur}
+
+\usepackage{svg}
+\usepackage{pdflscape}
+\usepackage{blindtext}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+
+\usepackage{fontspec}
+%\IfFontExistsTF{Arial}{%
+%  \setmainfont{Arial}
+%}
+
+\fancyhf{}
+\fancyfoot[R]{\sffamily\nouppercase{\thepage}}
+\fancyfoot[L]{\sffamily\nouppercase{$footer$}}
+\fancyhead[L]{\sffamily\nouppercase{$header$}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\begin{titlepage}
+
+  \vspace*{9em}{\raggedright\Huge
+    \textbf{$title$}\par
+  }
+  \vspace{2em}{\raggedright
+    $sub_title$
+  }
+
+  \vspace*{\fill}{\raggedleft\vfill{
+    $for(authors)$
+    $authors$ \\
+    $endfor$
+  }\par}\par
+\end{titlepage}
+
+$body$
+
+\end{document}
