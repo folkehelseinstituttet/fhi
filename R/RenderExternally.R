@@ -6,7 +6,7 @@
 #' @export RenderExternally
 RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
   file_path <- file.path(output_dir, output_file)
-  if(fs::file_exists(file_path)){
+  if (fs::file_exists(file_path)) {
     fs::file_delete(file_path)
   }
   tmp_dir <- file.path(tempdir(), uuid::UUIDgenerate())
