@@ -5,8 +5,10 @@
 #' @param params Any params that need to be passed to the Rmd file
 #' @export RenderExternally
 RenderExternally <- function(input, output_file, output_dir, params = "x=1") {
-  file.remove(file.path(output_dir, output_file))
-
+  file_path <- file.path(output_dir, output_file)
+  if (fs::file_exists(file_path)) {
+    fs::file_delete(file_path)
+  }
   tmp_dir <- file.path(tempdir(), uuid::UUIDgenerate())
   dir.create(tmp_dir)
   tmp_name <- sprintf("%s.pdf", uuid::UUIDgenerate())

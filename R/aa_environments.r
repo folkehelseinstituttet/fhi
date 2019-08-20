@@ -19,11 +19,10 @@ SYSCALLS <- new.env(parent = emptyenv())
 LOGDATA <- new.env(parent = emptyenv())
 LOGDATA$x <- 1
 
-#' Environment to store data.tables
+#' Environment to store config
 #' test
-#' @export VARS
-VARS <- new.env(parent = emptyenv())
-VARS$x <- 1
+#' @export config
+config <- new.env()
 
 #' Norwegian characters in unicode
 #' @export NORCHAR
