@@ -1,9 +1,19 @@
 ---
 params:
   dev: TRUE
-  date: "`r format(Sys.time(), '%d.%m.%Y')`"
-header: "Sist oppdatert: `r format(Sys.time(), '%d.%m.%Y')`"
-output: fhi::msis_annualreport
+  level: landsdekkende
+  location: Fræna
+  DATE_USE: 2017-11-08
+title: "Prevalensundersøkelsen for helsetjenesteassosierte infeksjoner og antibiotikabruk"
+sub_title: "`r params$location` --- Høst 2017"
+header: "Prevalensundersøkelsen for helsetjenesteassosierte infeksjoner og antibiotikabruk \\newline `r params$location` --- Høst 2017"
+footer: "Folkehelseinstituttet, Oslo, Norge"
+authors:
+  - "Torunn Alberg"
+  - "Hanne-Merete Eriksen"
+  - "Hege Line Magnussen Løwer"
+  - "Richard Aubrey White"
+output: fhi::msisannualreport_document
 ---
 
 # Introduction
@@ -13,3 +23,5 @@ This template demonstrates some of the basic latex you'll need to know to create
 ## Code formatting
 
 Don't use markdown, instead use the more precise latex commands:
+
+
