@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Initializing a dashboard • fhi</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Initializing a dashboard">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.8.31</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.27</span>
       </span>
     </div>
 
@@ -80,6 +81,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -114,8 +116,8 @@
 <h2 class="hasAnchor">
 <a href="#fhidashboardinitialiseopinionated" class="anchor"></a>fhi::DashboardInitialiseOpinionated</h2>
 <p><a href="../reference/DashboardInitialiseOpinionated.html">fhi::DashboardInitialiseOpinionated</a> is always the first function called in a <a href="https://folkehelseinstituttet.github.io/dashboards/rpackages.html#RunProcess">RunProcess.R</a> file. Its main purpose is to properly initialise the environment <code><a href="../reference/PROJ.html">fhi::PROJ</a></code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">}</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [1] "DEFAULT_EMAILS_OAUTH_LOCATION=x"</span></a>
@@ -137,10 +139,10 @@
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p>Here we now create the necessary file structure:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Create an empty package</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">pkg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>),<span class="st">"ANALYSIS"</span>)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span>(pkg,<span class="dt">open=</span>F)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Creating '/tmp/RtmpaGUz6w/ANALYSIS/'</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpaGUz6w/ANALYSIS'</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ✔ Creating '/tmp/RtmpXbmzpa/ANALYSIS/'</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ✔ Setting active project to '/tmp/RtmpXbmzpa/ANALYSIS'</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; ✔ Creating 'R/'</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; ✔ Writing 'DESCRIPTION'</span></a>
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; Package: ANALYSIS</span></a>
@@ -156,17 +158,17 @@
 <a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; ✔ Setting active project to '&lt;no active project&gt;'</span></a>
 <a class="sourceLine" id="cb6-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co"># Create the data/results/src folders</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21">tmpdir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>))</a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>))</a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>))</a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"results"</span>))</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">tmpdir &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(<span class="dt">check=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>))</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>))</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>))</a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"results"</span>))</a>
 <a class="sourceLine" id="cb6-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co"># Create the `ANALYSIS` specific folders inside</span></a>
-<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
-<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files2">dir.create</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_raw"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_clean"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"data_app"</span>,<span class="st">"ANALYSIS"</span>))</a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(tmpdir,<span class="st">"results"</span>,<span class="st">"ANALYSIS"</span>))</a>
 <a class="sourceLine" id="cb6-32" data-line-number="32"></a>
 <a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co"># Initialise</span></a>
 <a class="sourceLine" id="cb6-34" data-line-number="34">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html">DashboardInitialiseOpinionated</a></span>(<span class="st">"ANALYSIS"</span>,</a>
@@ -177,8 +179,8 @@
 <a class="sourceLine" id="cb6-39" data-line-number="39"><span class="co">#&gt; Loading ANALYSIS</span></a>
 <a class="sourceLine" id="cb6-40" data-line-number="40"></a>
 <a class="sourceLine" id="cb6-41" data-line-number="41"><span class="co"># Lets see how `fhi::PROJ` has changed:</span></a>
-<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
-<a class="sourceLine" id="cb6-43" data-line-number="43">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
+<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(fhi<span class="op">::</span>PROJ)){</a>
+<a class="sourceLine" id="cb6-43" data-line-number="43">  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span>(<span class="st">"%s=%s"</span>,i,fhi<span class="op">::</span>PROJ[[i]]))</a>
 <a class="sourceLine" id="cb6-44" data-line-number="44">}</a>
 <a class="sourceLine" id="cb6-45" data-line-number="45"><span class="co">#&gt; [1] "IS_PRODUCTION=FALSE"</span></a>
 <a class="sourceLine" id="cb6-46" data-line-number="46"><span class="co">#&gt; [1] "SRC=src"</span></a>
@@ -189,7 +191,7 @@
 <a class="sourceLine" id="cb6-51" data-line-number="51"><span class="co">#&gt; [1] "COMPUTER_NAME=NO_NAME_FOUND"</span></a>
 <a class="sourceLine" id="cb6-52" data-line-number="52"><span class="co">#&gt; [1] "PRODUCTION_NAME=smhb"</span></a>
 <a class="sourceLine" id="cb6-53" data-line-number="53"><span class="co">#&gt; [1] "IS_DEV=TRUE"</span></a>
-<a class="sourceLine" id="cb6-54" data-line-number="54"><span class="co">#&gt; [1] "STUB=/tmp/RtmpaGUz6w"</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-54" data-line-number="54"><span class="co">#&gt; [1] "STUB=/tmp/RtmpXbmzpa"</span></a></code></pre></div>
 <p>We can see that we have a few new extra variables:</p>
 <p><code>fhi::PROJ$NAME</code> is the name of the automated analysis.</p>
 <p><code>fhi::PROJ$STUB</code> is the master folder containing all of the data folders.</p>
@@ -211,9 +213,9 @@
 <a href="#fhidashboardfolder" class="anchor"></a>fhi::DashboardFolder</h2>
 <p>Now that we have initialised our project, we need to access folder and datafiles. <a href="../reference/DashboardFolder.html">fhi::DashboardFolder</a> is our function for this.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/RtmpaGUz6w/data_raw/ANALYSIS/"</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "/tmp/RtmpXbmzpa/data_raw/ANALYSIS/"</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">fhi<span class="op">::</span><span class="kw"><a href="https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html">DashboardFolder</a></span>(<span class="st">"data_raw"</span>,<span class="st">"myfile.txt"</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/RtmpaGUz6w/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "/tmp/RtmpXbmzpa/data_raw/ANALYSIS//myfile.txt"</span></a></code></pre></div>
 </div>
 <div id="fhidashboardmsg" class="section level2">
 <h2 class="hasAnchor">
@@ -226,7 +228,7 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">MyThirdFunction</span>()</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;            2/33: MySecondFunction()</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;            1/33: MyFirstFunction(d = 4)</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-08-31 17:19:42/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2019-09-27 09:36:10/NO_NAME_FOUND/ANALYSIS Important message!</span></a></code></pre></div>
 </div>
   </div>
 
@@ -247,17 +249,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Richard White, Gunnar Rø, B V.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
