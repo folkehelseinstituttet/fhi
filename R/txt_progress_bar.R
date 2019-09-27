@@ -41,24 +41,23 @@ txt_progress_bar <- function(min = 0, max = 1, initial = 0, char = "=", width = 
     }
     .val <<- value
     nb <- round(width * (value - min) / (max - min))
-    pc <- round(100 * (value - min) / (max - min))
+    pc <- 100 * (value - min) / (max - min)
 
     time_now <- Sys.time()
-    mins_from_start <- round(as.numeric(difftime(time_now, time_start, units = "mins")), 1)
-    total_time <- round(100 * mins_from_start / pc, 1)
+    mins_from_start <- as.numeric(difftime(time_now, time_start, units = "mins"))
+    total_time <- 100 * mins_from_start / pc
+    if(is.nan(total_time) | is.infinite(total_time)) total_time <- 0
+    mins_remaining <- total_time-mins_from_start
+
+    pc <- round(pc)
 
     if (nb == .nb && pc == .pc) {
       return()
     }
-    cat(paste0("\r  |", strrep(" ", nw * width + 6)), file = file)
-    cat(paste(c(
-      "\r  |", rep.int(char, nb), rep.int(
-        " ",
-        nw * (width - nb)
-      ),
-      sprintf("| %3d%%  %s/%s min(s)", pc, mins_from_start, total_time)
-    ), collapse = ""),
-    file = file
+    #cat(paste0("\r  |", strrep(" ", nw * width + 6)), file = file)
+    cat(
+      sprintf("\r***** %s/%s = %3d%%;  (R+E=T) %.1f + %.1f = %.1f min(s) *****", value, max, pc, mins_remaining, mins_from_start, total_time),
+      file = file
     )
     utils::flush.console()
     .nb <<- nb
@@ -71,6 +70,7 @@ txt_progress_bar <- function(min = 0, max = 1, initial = 0, char = "=", width = 
       .killed <<- TRUE
     }
 
+  Sys.sleep(0.01)
   up(initial)
   structure(list(getVal = getVal, up = up, kill = kill), class = "txtProgressBar")
 }
