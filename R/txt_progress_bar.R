@@ -46,15 +46,15 @@ txt_progress_bar <- function(min = 0, max = 1, initial = 0, char = "=", width = 
     time_now <- Sys.time()
     mins_from_start <- as.numeric(difftime(time_now, time_start, units = "mins"))
     total_time <- 100 * mins_from_start / pc
-    if(is.nan(total_time) | is.infinite(total_time)) total_time <- 0
-    mins_remaining <- total_time-mins_from_start
+    if (is.nan(total_time) | is.infinite(total_time)) total_time <- 0
+    mins_remaining <- total_time - mins_from_start
 
     pc <- round(pc)
 
     if (nb == .nb && pc == .pc) {
       return()
     }
-    #cat(paste0("\r  |", strrep(" ", nw * width + 6)), file = file)
+    # cat(paste0("\r  |", strrep(" ", nw * width + 6)), file = file)
     cat(
       sprintf("\r***** %s/%s = %3d%%;  (R+E=T) %.1f + %.1f = %.1f min(s) *****", value, max, pc, mins_remaining, mins_from_start, total_time),
       file = file
