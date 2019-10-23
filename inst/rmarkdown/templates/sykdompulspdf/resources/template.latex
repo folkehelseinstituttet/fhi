@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{float}
+\usepackage[top=4.2cm, bottom=4.2cm, left=1.8cm, right=1.8cm, headsep=1cm]{geometry}
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{background}
+\backgroundsetup{contents={\def\svgwidth{0.111\columnwidth}\input{_skeleton_SP_template.png_tex}},placement=top,opacity=1}
+
+
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\tiny\oldtabular}
+
+\usepackage{svg}
+\usepackage{pdflscape}
+\usepackage{blindtext}
+
+\usepackage[ddmmyy]{datetime}
+\renewcommand{\dateseparator}{.}
+
+\usepackage{fancyhdr, color}
+\newcommand{\changefont}{%
+    \fontsize{9}{11}\selectfont
+}
+\setlength{\headheight}{25.2pt}
+\newsavebox{\myheadbox}
+
+\usepackage{hyperref}
+
+\usepackage{fontspec}
+\IfFontExistsTF{Ubuntu}{%
+  \setmainfont{Ubuntu}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\pagestyle{fancy}
+\lhead{\textcolor{white}{$header$}}
+\lfoot{}
+%\lfoot{$footer$}
+\fancyfoot[L]{\changefont {Sykdomspulsen fra Folkehelseinstituttet \\ Sist oppdatert: \today \\
+E-post: \href{mailto:sykdomspulsen@fhi.no}{sykdomspulsen@fhi.no} \\
+Telefon: 21 07 70 00 \\
+Abonner p{\aa} sykdomspulsen: hhtp://www.fhi.no/sykdomspulsen}}
+
+\rfoot{\textsc{\savebox{\myheadbox}{\centering\def\svgwidth{0.2\columnwidth}\input{_skeleton_fhi.pdf_tex}}\makebox[\wd\myheadbox][r]{ }\\\usebox{\myheadbox}}}
+\cfoot{\thepage}
+\cfoot{}
+
+%\fancyhf{}
+%\\fancyfoot[L]{\sffamily\nouppercase{$footer$}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+
+$body$
+
+\end{document}

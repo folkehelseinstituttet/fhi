@@ -2,7 +2,7 @@
 % Please edit documentation in R/document_sykdompulsepdf.R
 \name{sykdompulspdf_resources_copy}
 \alias{sykdompulspdf_resources_copy}
-\title{Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources}
+\title{Copies all necessary sykdompulspdf_document resources}
 \usage{
 sykdompulspdf_resources_copy(output_dir)
 }
@@ -10,5 +10,5 @@ sykdompulspdf_resources_copy(output_dir)
 \item{output_dir}{Folder to copy resources to}
 }
 \description{
-Copies all necessary sykdompuls_mage_document and sykdompuls_luft_document resources
+Copies all necessary sykdompulspdf_document resources
 }
