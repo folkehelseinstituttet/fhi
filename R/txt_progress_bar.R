@@ -64,11 +64,13 @@ txt_progress_bar <- function(min = 0, max = 1, initial = 0, char = "=", width = 
     .pc <<- pc
   }
   getVal <- function() .val
-  kill <- function() if (!.killed) {
+  kill <- function() {
+    if (!.killed) {
       cat("\n", file = file)
       utils::flush.console()
       .killed <<- TRUE
     }
+  }
 
   Sys.sleep(0.01)
   up(initial)
