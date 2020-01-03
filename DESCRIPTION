@@ -38,6 +38,6 @@ Suggests: testthat,
     usethis
 License: GPL-3
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 Encoding: UTF-8
