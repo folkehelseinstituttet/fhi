@@ -70,7 +70,7 @@ This function specifies all of the location of necessary files for the dashboard
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.10.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.1.3</span>
       </span>
     </div>
 
@@ -134,14 +134,19 @@ This function specifies all of the location of necessary files for the dashboard
 This function specifies all of the location of necessary files for the dashboard setup.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(<span class='no'>NAME</span>, <span class='kw'>PKG</span> <span class='kw'>=</span> <span class='no'>NAME</span>, <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
-  <span class='kw'>PACKAGE_DIR</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <pre class="usage"><span class='fu'>DashboardInitialiseOpinionated</span>(
+  <span class='no'>NAME</span>,
+  <span class='kw'>PKG</span> <span class='kw'>=</span> <span class='no'>NAME</span>,
+  <span class='kw'>STUB</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
+  <span class='kw'>PACKAGE_DIR</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>FORCE_DEV_PACKAGE_LOAD</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>DEV_IF_RSTUDIO</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>SILENT</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>PRODUCTION_NAME</span> <span class='kw'>=</span> <span class='no'>PROJ</span>$<span class='no'>PRODUCTION_NAME</span>,
-  <span class='kw'>EMAILS_XLSX_LOCATION_DEV</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>,
-  <span class='st'>"emails_test.xlsx"</span>), <span class='kw'>EMAILS_XLSX_LOCATION_PROD</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>,
-  <span class='st'>"gmailr"</span>, <span class='st'>"emails.xlsx"</span>), <span class='kw'>EMAILS_OAUTH_LOCATION</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>,
-  <span class='st'>"gmailr"</span>, <span class='st'>".httr-oauth"</span>))</pre>
+  <span class='kw'>EMAILS_XLSX_LOCATION_DEV</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>"emails_test.xlsx"</span>),
+  <span class='kw'>EMAILS_XLSX_LOCATION_PROD</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>"emails.xlsx"</span>),
+  <span class='kw'>EMAILS_OAUTH_LOCATION</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"/etc"</span>, <span class='st'>"gmailr"</span>, <span class='st'>".httr-oauth"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
