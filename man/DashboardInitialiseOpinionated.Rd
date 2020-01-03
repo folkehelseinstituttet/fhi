@@ -4,14 +4,19 @@
 \alias{DashboardInitialiseOpinionated}
 \title{DashboardInitialiseOpinionated}
 \usage{
-DashboardInitialiseOpinionated(NAME, PKG = NAME, STUB = "/",
-  PACKAGE_DIR = ".", FORCE_DEV_PACKAGE_LOAD = FALSE,
-  DEV_IF_RSTUDIO = TRUE, SILENT = FALSE,
+DashboardInitialiseOpinionated(
+  NAME,
+  PKG = NAME,
+  STUB = "/",
+  PACKAGE_DIR = ".",
+  FORCE_DEV_PACKAGE_LOAD = FALSE,
+  DEV_IF_RSTUDIO = TRUE,
+  SILENT = FALSE,
   PRODUCTION_NAME = PROJ$PRODUCTION_NAME,
-  EMAILS_XLSX_LOCATION_DEV = file.path("/etc", "gmailr",
-  "emails_test.xlsx"), EMAILS_XLSX_LOCATION_PROD = file.path("/etc",
-  "gmailr", "emails.xlsx"), EMAILS_OAUTH_LOCATION = file.path("/etc",
-  "gmailr", ".httr-oauth"))
+  EMAILS_XLSX_LOCATION_DEV = file.path("/etc", "gmailr", "emails_test.xlsx"),
+  EMAILS_XLSX_LOCATION_PROD = file.path("/etc", "gmailr", "emails.xlsx"),
+  EMAILS_OAUTH_LOCATION = file.path("/etc", "gmailr", ".httr-oauth")
+)
 }
 \arguments{
 \item{NAME}{The name of the automated analysis folders}

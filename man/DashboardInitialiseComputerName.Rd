@@ -4,8 +4,12 @@
 \alias{DashboardInitialiseComputerName}
 \title{Initialise the computer name}
 \usage{
-DashboardInitialiseComputerName(STUB = "/", SRC = "src", NAME = NULL,
-  changeWorkingDirToTmp = TRUE)
+DashboardInitialiseComputerName(
+  STUB = "/",
+  SRC = "src",
+  NAME = NULL,
+  changeWorkingDirToTmp = TRUE
+)
 }
 \arguments{
 \item{STUB}{The directory containing the `data_raw`, `data_clean`, `data_app`, and `results` folders}

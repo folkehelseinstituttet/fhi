@@ -4,11 +4,17 @@
 \alias{DashboardEmail}
 \title{Sends out mass emails}
 \usage{
-DashboardEmail(emailsFromExcel = NULL, emailSubject, emailText,
-  emailAttachFiles = NULL, emailFooter = TRUE, BCC = TRUE,
+DashboardEmail(
+  emailsFromExcel = NULL,
+  emailSubject,
+  emailText,
+  emailAttachFiles = NULL,
+  emailFooter = TRUE,
+  BCC = TRUE,
   emailsDirect = NULL,
   XLSXLocation = PROJ$DEFAULT_EMAILS_XLSX_LOCATION,
-  OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION)
+  OAUTHLocation = PROJ$DEFAULT_EMAILS_OAUTH_LOCATION
+)
 }
 \arguments{
 \item{emailsFromExcel}{A column of the excel file that holds emails}

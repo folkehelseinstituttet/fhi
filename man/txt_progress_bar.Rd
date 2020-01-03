@@ -4,9 +4,18 @@
 \alias{txt_progress_bar}
 \title{txt_progress_bar}
 \usage{
-txt_progress_bar(min = 0, max = 1, initial = 0, char = "=",
-  width = NA, title, label, style = 1, file = "",
-  time_start = Sys.time())
+txt_progress_bar(
+  min = 0,
+  max = 1,
+  initial = 0,
+  char = "=",
+  width = NA,
+  title,
+  label,
+  style = 1,
+  file = "",
+  time_start = Sys.time()
+)
 }
 \arguments{
 \item{min}{a}
