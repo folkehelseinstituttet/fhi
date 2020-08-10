@@ -4,9 +4,9 @@
 #' @return character
 #' @export
 #' @examples
-#' isoyearweek_c("2020-01")
-isoyearweek_c <- function(x=lubridate::today()) {
-  as.character(isoyearweek(x))
+#' isoyearweek_c("2020-01-01")
+isoyearweek_c <- function(x = lubridate::today()) {
+  return(sprintf("%s-%s", isoyear_n(x), isoweek_c(x)))
 }
 
 new_isoyearweek <- function(x = integer()) {

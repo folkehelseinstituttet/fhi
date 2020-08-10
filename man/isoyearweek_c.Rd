@@ -16,5 +16,5 @@ character
 `isoyearweek` vector
 }
 \examples{
-isoyearweek_c("2020-01")
+isoyearweek_c("2020-01-01")
 }
