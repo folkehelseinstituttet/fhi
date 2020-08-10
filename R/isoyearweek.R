@@ -5,7 +5,7 @@
 #' @export
 #' @examples
 #' isoyearweek_c("2020-01")
-isoyearweek_c <- function(x){
+isoyearweek_c <- function(x) {
   as.character(isoyearweek(x))
 }
 
