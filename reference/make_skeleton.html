@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>isoweek_c — isoweek_c • fhi</title>
+<title>make_skeleton — make_skeleton • fhi</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="isoweek_c — isoweek_c" />
-<meta property="og:description" content="isoweek_c" />
+<meta property="og:title" content="make_skeleton — make_skeleton" />
+<meta property="og:description" content="make_skeleton" />
 
 
 
@@ -126,23 +126,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>isoweek_c</h1>
-    <small class="dont-index">Source: <a href='https://github.com/folkehelseinstituttet/fhi/blob/master/R/isotime.R'><code>R/isotime.R</code></a></small>
-    <div class="hidden name"><code>isoweek_c.Rd</code></div>
+    <h1>make_skeleton</h1>
+    <small class="dont-index">Source: <a href='https://github.com/folkehelseinstituttet/fhi/blob/master/R/skeleton.R'><code>R/skeleton.R</code></a></small>
+    <div class="hidden name"><code>make_skeleton.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>isoweek_c</p>
+    <p>make_skeleton</p>
     </div>
 
-    <pre class="usage"><span class='fu'>isoweek_c</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/now.html'>today</a></span>())</pre>
+    <pre class="usage"><span class='fu'>make_skeleton</span>(
+  <span class='kw'>date_min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>date_max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>yrwk_min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>yrwk_max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>location_code</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>granularity_geo</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
+  <span class='kw'>location_reference</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'>norway_locations_long_b2020</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>date</th>
-      <td><p>The date of interest</p></td>
+      <th>date_min</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>date_max</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>yrwk_min</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>yrwk_max</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>location_code</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>granularity_geo</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>location_reference</th>
+      <td><p>a</p></td>
     </tr>
     </table>
 

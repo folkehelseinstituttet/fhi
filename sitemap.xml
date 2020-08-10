@@ -4,52 +4,13 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//index.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardEmail.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardFolder.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseComputerName.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardInitialiseOpinionated.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsDev.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsInitialised.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardIsProduction.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/DashboardMsg.html</loc>
-  </url>
-  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/FortifyShapeFile.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/LOGDATA.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/Log.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/LogGet.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/NORCHAR.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/PROJ.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/RenderExternally.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/SYSCALLS.html</loc>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/as_isoyearweek.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/config.html</loc>
@@ -59,6 +20,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/file_stable.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/is_isoyearweek.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoweek_c.html</loc>
@@ -74,6 +38,9 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/isoyearweek.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/make_skeleton.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/nb.html</loc>
@@ -95,9 +62,6 @@
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/normomo_resources_remove.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/season.html</loc>
@@ -133,12 +97,12 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/txt_progress_bar.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/vec_arith.fhi_isoyearweek.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/with_dir.html</loc>
   </url>
   <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/x.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//articles/dashboardbasics.html</loc>
   </url>
 </urlset>
