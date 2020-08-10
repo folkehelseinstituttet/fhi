@@ -4,7 +4,7 @@
 \alias{isoyearweek_c}
 \title{`isoyearweek` vector}
 \usage{
-isoyearweek_c(x)
+isoyearweek_c(x = lubridate::today())
 }
 \arguments{
 \item{x}{A numeric vector}
