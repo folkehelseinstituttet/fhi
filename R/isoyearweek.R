@@ -1,3 +1,14 @@
+#' `isoyearweek` vector
+#'
+#' @param x A numeric vector
+#' @return character
+#' @export
+#' @examples
+#' isoyearweek_c("2020-01")
+isoyearweek_c <- function(x){
+  as.character(isoyearweek(x))
+}
+
 new_isoyearweek <- function(x = integer()) {
   vctrs::vec_assert(x, integer())
   vctrs::new_vctr(x, class = "fhi_isoyearweek")
