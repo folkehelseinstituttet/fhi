@@ -17,7 +17,7 @@ yrwks <- format(
   seq.Date(
     as.Date("1900-01-01"),
     as.Date("2200-01-01"),
-    by=7
+    by = 7
   ),
   "%G-%V"
 )

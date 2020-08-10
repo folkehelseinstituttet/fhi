@@ -14,9 +14,9 @@ new_isoyearweek <- function(x = integer()) {
 #' @examples
 #' isoyearweek("2020-01")
 isoyearweek <- function(x = integer()) {
-  if(vctrs::vec_is(x, vctrs::new_date())){
+  if (vctrs::vec_is(x, vctrs::new_date())) {
     x <- as_isoyearweek.Date(x)
-  } else if(vctrs::vec_is(x, character())){
+  } else if (vctrs::vec_is(x, character())) {
     x <- as_isoyearweek.character(x)
   }
   x <- vctrs::vec_cast(x, integer())
@@ -48,29 +48,29 @@ as_isoyearweek <- function(x) {
 }
 
 #' @export
-as_isoyearweek.default <- function(x){
+as_isoyearweek.default <- function(x) {
   vctrs::vec_cast(x, new_isoyearweek())
 }
 
 #' @export
-as_isoyearweek.Date <- function(x){
+as_isoyearweek.Date <- function(x) {
   x <- format(x, "%G-%V")
   x <- unlist(lapply(x, function(x) which(yrwks %in% x)))
   isoyearweek(x)
 }
 
 #' @export
-as_isoyearweek.character <- function(x){
-  if(sum(stringr::str_detect(x, "^[0-9][0-9][0-9][0-9]-[0-9][0-9]$"),na.rm=T)>0){
+as_isoyearweek.character <- function(x) {
+  if (sum(stringr::str_detect(x, "^[0-9][0-9][0-9][0-9]-[0-9][0-9]$"), na.rm = T) > 0) {
     # already in correct format
     x <- unlist(lapply(x, function(x) which(yrwks %in% x)))
     return(isoyearweek(x))
-  } else if(sum(stringr::str_detect(x, "^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$"),na.rm=T)>0){
+  } else if (sum(stringr::str_detect(x, "^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$"), na.rm = T) > 0) {
     # in date format
     x <- as.Date(x)
     return(as_isoyearweek.Date(x))
   } else {
-    return(rep(NA, length=length(x)))
+    return(rep(NA, length = length(x)))
   }
 }
 
@@ -173,13 +173,12 @@ vec_arith.fhi_isoyearweek.character <- function(op, x, y, ...) {
 
 #' @export
 seq.fhi_isoyearweek <- function(
-  from,
-  to,
-  by,
-  length.out = NULL,
-  along.with = NULL,
-  ...
-){
+                                from,
+                                to,
+                                by,
+                                length.out = NULL,
+                                along.with = NULL,
+                                ...) {
   retval <- seq(
     as.numeric(isoyearweek(from)),
     as.numeric(isoyearweek(to)),
