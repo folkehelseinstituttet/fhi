@@ -5,7 +5,9 @@
 \alias{config}
 \title{Environment to store config
 test}
-\format{An object of class \code{environment} of length 0.}
+\format{
+An object of class \code{environment} of length 0.
+}
 \usage{
 config
 }

@@ -32,13 +32,6 @@ isoweek_n <- function(date = lubridate::today()) {
   return(wk)
 }
 
-#' isoyearweek
-#' @param date The date of interest
-#' @export
-isoyearweek <- function(date = lubridate::today()) {
-  return(sprintf("%s-%s", isoyear_n(date), isoweek_c(date)))
-}
-
 #' start_of_season
 #' @param yrwk a
 #' @param start_week the start week of the season

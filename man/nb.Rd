@@ -4,7 +4,9 @@
 \name{nb}
 \alias{nb}
 \title{Norwegian characters in unicode}
-\format{An object of class \code{environment} of length 6.}
+\format{
+An object of class \code{environment} of length 6.
+}
 \usage{
 nb
 }

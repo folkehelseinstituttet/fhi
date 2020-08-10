@@ -32,12 +32,14 @@ Imports:
   utils,
   fhidata,
   fs,
-  glue
+  glue,
+  vctrs,
+  methods
 Suggests: testthat,
     knitr,
     usethis
 License: GPL-3
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Encoding: UTF-8
