@@ -6,6 +6,7 @@
 #' @param location_code a
 #' @param granularity_geo a
 #' @param location_reference a
+#' @export
 make_skeleton <- function(
                           date_min = NULL,
                           date_max = NULL,
