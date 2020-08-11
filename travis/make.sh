@@ -7,7 +7,7 @@ head DESCRIPTION
 
 sed -i "s/packageStartupMessage(\"Version.*$/packageStartupMessage(\"Version $DATETIME\")/" R/onAttach.R
 
-Rscript -e 'devtools::install_version("cpp11", version = "0.1", repos = "http://cran.us.r-project.org")'
+Rscript -e 'install.packages("devtools");devtools::install_version("cpp11", version = "0.1", repos = "http://cran.us.r-project.org")'
 
 ## Other options:
 ## Only add if the commit is tagged: so something like:
