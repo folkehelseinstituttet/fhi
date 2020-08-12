@@ -9,7 +9,6 @@ r_packages:
 - devtools
 before_install:
 - bash travis/make.sh
-- Rscript -e 'install.packages("devtools"); devtools::install_github("r-lib/cpp11")'
 after_success:
 - Rscript -e 'library(covr); codecov()'
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
