@@ -4,11 +4,10 @@
 #' @param version The version to compare it against
 #' @export
 compare_version <- function(
-  package,
-  version
-){
+                            package,
+                            version) {
   compareVersion(
-    gsub("'","", packageVersion(package)),
+    gsub("'", "", packageVersion(package)),
     version
   )
 }
