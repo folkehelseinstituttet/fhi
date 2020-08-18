@@ -4,18 +4,17 @@
 \alias{isoyearweek}
 \title{`isoyearweek` vector}
 \usage{
-isoyearweek(x = integer())
+isoyearweek(x = lubridate::today())
 }
 \arguments{
 \item{x}{A numeric vector}
 }
 \value{
-An S3 vector of class `fhi_isoyearweek`.
+character
 }
 \description{
-This creates a double vector that represents percentages so when it is
-printed, it is multiplied by 100 and suffixed with `%`.
+`isoyearweek` vector
 }
 \examples{
-isoyearweek("2020-01")
+isoyearweek_c("2020-01-01")
 }
