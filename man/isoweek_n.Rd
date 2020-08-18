@@ -4,10 +4,10 @@
 \alias{isoweek_n}
 \title{isoweek_n}
 \usage{
-isoweek_n(date = lubridate::today())
+isoweek_n(x = lubridate::today())
 }
 \arguments{
-\item{date}{The date of interest}
+\item{x}{The date of interest}
 }
 \description{
 isoweek_n

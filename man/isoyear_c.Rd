@@ -4,10 +4,10 @@
 \alias{isoyear_c}
 \title{isoyear_c}
 \usage{
-isoyear_c(date = lubridate::today())
+isoyear_c(x = lubridate::today())
 }
 \arguments{
-\item{date}{The date of interest}
+\item{x}{The date of interest}
 }
 \description{
 isoyear_c

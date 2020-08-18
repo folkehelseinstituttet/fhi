@@ -1,34 +1,34 @@
 #' isoyear_c
-#' @param date The date of interest
+#' @param x The date of interest
 #' @export
-isoyear_c <- function(date = lubridate::today()) {
-  yr <- format.Date(date, "%G")
+isoyear_c <- function(x = lubridate::today()) {
+  yr <- format.Date(x, "%G")
   return(yr)
 }
 
 #' isoyear_n
-#' @param date The date of interest
+#' @param x The date of interest
 #' @export
-isoyear_n <- function(date = lubridate::today()) {
-  yr <- as.numeric(isoyear_c(date))
+isoyear_n <- function(x = lubridate::today()) {
+  yr <- as.numeric(isoyear_c(x))
   return(yr)
 }
 
 #' isoweek_c
-#' @param date The date of interest
+#' @param x The date of interest
 #' @export
-isoweek_c <- function(date = lubridate::today()) {
+isoweek_c <- function(x = lubridate::today()) {
   # wk <- data.table::isoweek(date)
   # wk <- formatC(wk, flag = "0", width = 2)
-  wk <- format.Date(date, "%V")
+  wk <- format.Date(x, "%V")
   return(wk)
 }
 
 #' isoweek_n
-#' @param date The date of interest
+#' @param x The date of interest
 #' @export
-isoweek_n <- function(date = lubridate::today()) {
-  wk <- as.numeric(isoweek_c(date))
+isoweek_n <- function(x = lubridate::today()) {
+  wk <- as.numeric(isoweek_c(x))
   return(wk)
 }
 
