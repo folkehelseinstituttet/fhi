@@ -15,7 +15,7 @@ make_skeleton <- function(
                           location_code = NULL,
                           granularity_geo = "all",
                           location_reference = fhidata::norway_locations_long_b2020) {
-  if (!is.na(date_min) & !is.na(date_max)) {
+  if (!is.null(date_min) & !is.null(date_max)) {
     retval <- make_skeleton_date(
       date_min = date_min,
       date_max = date_max,
@@ -23,8 +23,8 @@ make_skeleton <- function(
       granularity_geo = granularity_geo,
       location_reference = location_reference
     )
-  } else if (!is.na(yrwk_min) & !is.na(yrwk_max)) {
-    retval <- make_skeleton_date(
+  } else if (!is.null(yrwk_min) & !is.null(yrwk_max)) {
+    retval <- make_skeleton_week(
       yrwk_min = yrwk_min,
       yrwk_max = yrwk_max,
       location_code = location_code,
