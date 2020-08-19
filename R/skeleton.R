@@ -81,6 +81,7 @@ make_skeleton_week <- function(
     to = as_isoyearweek(yrwk_max),
     by = 1
   )
+  yrwks <- as.character(yrwks)
 
   locs <- NULL
   if (!is.null(location_code)) {
